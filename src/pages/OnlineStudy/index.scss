@@ -1,0 +1,46 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import "~taro-ui/dist/style/components/tag.scss";
+
+@import '../../static/style/common';
+
+@mixin base-con {
+    background-color: #fff;
+    margin-bottom: 10px;
+  }
+
+.onlineStudy-wrap{
+    background-color: $bg-grey-color;
+    padding-bottom: 200px;
+}
+
+.hotClass-wrap {
+    @include con;
+    @include base-con;
+    .hotClass-grid {
+      padding: 20px 0;
+      .hotClass-item{
+        padding-bottom: 20px;
+        text-align: center;
+      }
+      .hotClass-tag-name {
+        font-size: $sm-mini-fontsize;
+      }
+    }
+  
+  }
+
+  .audio-wrap{
+    @include con;
+    @include base-con;
+    .audio-grid {
+      padding: 20px 0;
+      .audio-item{
+        padding:0 10px 40px;
+        text-align: center;
+      }
+      .audio-tag-name {
+        @include text2line(2);
+        font-size: $sm-fontsize;
+      }
+    }
+  }

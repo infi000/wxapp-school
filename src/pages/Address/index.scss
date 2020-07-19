@@ -1,0 +1,50 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+
+
+.address-con{
+    padding:25px;
+    border-bottom: 1px solid #ddd;
+    .address-con-top{
+        font-size: $normal-fontsize;
+        margin-bottom: 20px;
+        .at-col--auto{
+            margin-right:10px;
+        }
+    }
+    .address-con-mid{
+        font-size: $sm-fontsize;
+        margin-bottom: 20px;
+        color:$text-grey-color;
+        .addr-text{
+            margin-right: 10px;
+        }
+    }
+    .address-con-bottom{
+        font-size: $normal-fontsize;
+
+        margin-bottom: 20px;
+        color:$text-grey-color;
+       .address-default{
+           color:$color-brand;
+       }
+
+    }
+
+}
+
+.addnew-wrap{
+    position: fixed;
+    bottom: 60px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.edit-btn-wrap{
+    width: 100%;
+    padding: 20px 20px;
+    box-sizing: border-box;
+    .btn-submit{
+        margin-bottom: 20px;
+    }
+}

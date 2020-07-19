@@ -1,0 +1,7 @@
+/* Custom Theme */
+$color-brand: rgb(41, 235, 69);
+$color-brand-light: rgb(71, 238, 96);
+$color-brand-dark: rgb(32, 185, 55);
+
+@import '~taro-ui/dist/style/index.scss'; // 引入组件样式 - 方式二
+

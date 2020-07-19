@@ -1,0 +1,7 @@
+@import "~taro-ui/dist/style/components/article.scss";
+@import '../../static/style/common.scss';
+
+.newsDetail-wrap{
+    @include con;
+    // @include base-con;
+}

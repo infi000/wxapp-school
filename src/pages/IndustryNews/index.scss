@@ -1,0 +1,81 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import "~taro-ui/dist/style/components/tag.scss";
+
+@import '../../static/style/common';
+
+@mixin base-con {
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.industryNews-wrap {
+  background-color: $bg-grey-color;
+  padding-bottom: 200px;
+}
+
+.news-wrap {
+  @include con;
+  @include base-con;
+}
+
+.banner-wrap {
+  @include con;
+  @include base-con;
+  .banner-con {
+    height: 300px;
+    .swiper-con {
+      height: 100%;
+      width: 100%;
+      border-radius: 6px;
+      text-align: center;
+    }
+  }
+}
+
+// .list-wrap {
+//   @include con;
+//   @include base-con;
+// }
+.tagbar-wrap {
+  @include con;
+  @include base-con;
+  .tagbar-grid {
+    padding: 20px 0;
+    .at-col-2 {
+      height: 100%;
+    }
+    .tagbar-tag-name {
+      font-size: $sm-mini-fontsize;
+    }
+  }
+}
+
+.hotClass-wrap {
+  @include con;
+  @include base-con;
+  .hotClass-grid {
+    padding: 20px 0;
+    .hotClass-item{
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    .hotClass-tag-name {
+      font-size: $sm-mini-fontsize;
+    }
+  }
+
+}
+
+.recommendClass-wrap {
+  @include con;
+  @include base-con;
+  .recommendClass-list-item {
+    padding: 10px 0;
+    border-bottom: 0.5px solid $bg-grey-color;
+    position: relative;
+    .recommendClass-desc-con {
+      position: absolute;
+      bottom: 10px;
+    }
+  }
+}

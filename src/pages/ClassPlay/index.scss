@@ -1,0 +1,36 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+
+.classPlay-wrap {
+  background-color: $bg-grey-color;
+}
+.vido-wrap {
+  @include base-con;
+  width: 100%;
+  height: 400px;
+  #video {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.tool-wrap {
+  @include con;
+  @include base-con;
+  font-size: $sm-fontsize;
+}
+
+.classList-wrap {
+  @include con;
+  @include base-con;
+  .classList-con {
+    background: $bg-grey-color;
+    height:260px;
+    .classList-on-desc {
+      @include text2line(3);
+      font-size: $mini-fontsize;
+    }
+    .classList-con-tag {
+    }
+  }
+}

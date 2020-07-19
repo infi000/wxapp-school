@@ -1,0 +1,52 @@
+@import "~taro-ui/dist/style/components/flex.scss";
+@import "~taro-ui/dist/style/components/divider.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+@import '../../static/style/common.scss';
+
+.goods-list-con{
+    width: 100%;
+    .goods-con {
+        // padding:20px;
+        // background-color: red;
+        padding-bottom:30px;
+        .goods-con-top{
+            padding-bottom:10px;
+            .goods-price{
+                font-size:   $normal-fontsize;
+                font-weight: bolder;
+            }
+            .goods-saler{
+                text-align: right;
+                padding-right: 20px;
+                font-size:  $sm-fontsize;
+                color:  $text-grey-color;
+            }
+        }
+        .goods-con-mid{
+            width: 100%;
+            height: 300px;
+            padding-bottom:10px;
+            position: relative;
+            .soldout-con{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                
+            }
+        }
+        .goods-con-buttom{
+            @include text2line(2);
+            font-size:  $sm-fontsize;
+        }
+    }
+    .goods-con:nth-child(2n){
+        // background-color: yellow;
+        padding-left:10px;
+        
+    }
+    .goods-con:nth-child(2n-1){
+        // background-color: green;
+        padding-right:10px
+    }
+
+}

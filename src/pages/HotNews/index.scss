@@ -1,0 +1,8 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import "~taro-ui/dist/style/components/tag.scss";
+@import '../../static/style/common.scss';
+
+.hotNews-wrap{
+    @include con;
+    // @include base-con;
+}

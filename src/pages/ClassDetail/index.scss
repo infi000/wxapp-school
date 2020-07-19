@@ -1,0 +1,42 @@
+@import '~taro-ui/dist/style/components/article.scss';
+// @import "~taro-ui/dist/style/components/tag.scss";
+
+@import '../../static/style/common.scss';
+
+.classDetail-wrap {
+  background-color: $bg-grey-color;
+}
+
+.teacherInfo-wrap {
+  @include con;
+  @include base-con;
+  .head-con {
+    padding: 20px;
+  }
+  .teacherInfo-top {
+    font-size: $normal-fontsize;
+    padding-bottom: 20px;
+    .tag-con {
+      float: right;
+    }
+   
+  }
+  .teacherInfo-mid {
+    @include text2line(10);
+    font-size: $mini-fontsize;
+  }
+}
+
+.classInfo-wrap{
+    @include con;
+    @include base-con;
+    .class-item{
+     padding: 30px 0;
+      .class-item-desc{
+        font-size: $mini-fontsize;
+        @include text2line(1);
+        line-height: 49px;
+      }
+    }
+   
+}

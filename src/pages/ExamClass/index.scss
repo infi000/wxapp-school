@@ -1,0 +1,20 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+
+
+
+.examClass-wrap {
+    @include con;
+    @include base-con;
+    .examClass-grid {
+      padding: 20px 0;
+      .examClass-item{
+        padding-bottom: 20px;
+        text-align: center;
+      }
+      .examClass-tag-name {
+        font-size: $sm-mini-fontsize;
+      }
+    }
+  
+  }

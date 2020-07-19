@@ -1,0 +1,131 @@
+@import '../../static/style/common.scss';
+
+.goodsshow-wrap {
+  background-color: $bg-grey-color;
+  .goodsshow-con {
+    @include con;
+    margin-bottom: 10px;
+  }
+}
+.buys-wrap{
+  @include con;
+  background-color: #fff;
+  padding-top:50px;
+}
+
+.swiper-con {
+  height: 700px;
+  width: 100%;
+  .swiper-img-con {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+  }
+}
+.price-desc-con {
+  width: 100%;
+  text-align: center;
+  .price-con {
+    font-size: 50px;
+    font-weight: bolder;
+  }
+  .desc-con {
+    font-size: $normal-fontsize;
+    @include text2line(2);
+  }
+}
+
+.goods-attr-con {
+  font-size: $normal-fontsize;
+  padding-bottom: 25px;
+  .goods-attr {
+    color: $text-grey-color;
+  }
+  .goods-attr-desc {
+    text-align: right;
+  }
+}
+
+.goods-sale-con {
+  font-size: $normal-fontsize;
+  .goods-sale-top {
+    padding-bottom: 25px;
+    .goods-sale-count {
+      font-weight: bold;
+    }
+    .goods-sale-all-btn {
+      text-align: right;
+      color: $text-grey-color;
+    }
+  }
+  .goods-sale-mid {
+    font-size: $sm-fontsize;
+    padding-bottom: 0;
+    .goods-sale-record-con {
+      
+      padding-bottom: 10px;
+      .goods-sale-record-l {
+        color: $text-grey-color;
+        @include text2line(1)
+      }
+      .goods-sale-record-m {
+        text-align: center;
+        font-weight: bold;
+      }
+      .goods-sale-record-r {
+        color: $text-grey-color;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.goods-warning-con{
+    overflow: hidden;
+    .goods-warning-title {
+        font-size: $normal-fontsize;
+        font-weight: bold;
+        padding-bottom: 25px;
+    }
+}
+
+.goods-hot-con{
+    .goods-hot-title {
+        font-size: $normal-fontsize;
+        font-weight: bold;
+        padding-bottom: 25px;
+    }
+
+}
+
+@mixin foot-btn($color) {
+  margin-top: 10px;
+  height: 70px;
+  width: 80%;
+  background-color:$color;
+  text-align: center;
+  line-height: 70px;
+  border-radius: 10px;
+}
+.footer-con{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  border-top:$bg-grey-color;
+  .sale-btn{
+   @include foot-btn(yellow)
+
+  }
+  .buy-btn{
+    @include foot-btn(blue)
+  }
+  .love-btn{
+    width:60px;
+    margin: 20px;
+    height:50px;
+    background-color:yellowgreen;
+  }
+}

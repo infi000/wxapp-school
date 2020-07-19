@@ -1,0 +1,10 @@
+@import '../../static/style/common.scss';
+
+.searchres-wrap{
+    background-color: $bg-grey-color;
+    @include con;
+    height: 100%;
+    overflow: hidden;
+    // margin-bottom: 10px;
+    
+}
