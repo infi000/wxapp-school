@@ -9,6 +9,9 @@ const { useState, useEffect } = Taro;
 const ClassDetail = () => {
   const tabList = [{ title: '课程介绍' }, { title: '课程大纲' }];
   const [currentTab, setCurrentTab] = useState(0);
+  const handleToClassPlay = (id) => {
+    Taro.navigateTo({ url: '/pages/ClassPlay/index?id=' + id });
+  }
   return (
     <View className='classDetail-wrap'>
       <View className='teacherInfo-wrap'>
@@ -46,7 +49,7 @@ const ClassDetail = () => {
                   </View>
                   <View className='at-col at-col-8  class-item-desc'>危机公关经验为0的法律人，如何处理危机并升职加薪（上）</View>
                   <View className='at-col at-col-2'>
-                    <AtButton type='primary' size='small' className='at-button-mini'>
+                    <AtButton type='primary' size='small' className='at-button-mini' onClick={handleToClassPlay}>
                       试听
                     </AtButton>
                   </View>

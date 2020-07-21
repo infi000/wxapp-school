@@ -1,4 +1,4 @@
-import { zyzgz, zjzb, tkjf, qbkc, hyzsk } from '@/static/images/index';
+import { zyzgz,} from '@/static/images/index';
 
 
 export const ROUTER_NAME_MAP = {

@@ -24,8 +24,15 @@
   @include con;
   @include base-con;
   .classList-con {
-    background: $bg-grey-color;
+    padding:6px;
     height:260px;
+    .classList-con-box {
+      width: 100%;
+      height: 100%;
+      padding: 4rpx 20rpx;
+      background: $color-brand-light;
+      box-sizing: border-box;      
+    }
     .classList-on-desc {
       @include text2line(3);
       font-size: $mini-fontsize;

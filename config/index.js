@@ -46,6 +46,12 @@ const config = {
     '@/constants': 'src/constants',
   },
   plugins: ['@tarojs/plugin-sass', '@tarojs/plugin-less', '@tarojs/plugin-terser'],
+  // uglify: {
+  //   enable: true,
+  //   config: {
+  //     // 配置项同 https://github.com/mishoo/UglifyJS2#minify-options
+  //   }
+  // },
   defineConstants: {},
   mini: {
     postcss: {

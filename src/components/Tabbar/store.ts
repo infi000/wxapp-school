@@ -1,5 +1,12 @@
 import delay from '@/utils/delay';
-import { goods, goodsSelected, Home, HomeSelected } from '@/static/images';
+import {
+  hangyezixun1,
+  hangyezixun2,
+  zaixianpeixun1,
+  zaixianpeixun2,
+  xuexikaoshi1,
+  xuexikaoshi2,
+} from '@/static/images';
 import { ROUTER_NAME_MAP } from '@/constants/index';
 
 export default {
@@ -9,20 +16,20 @@ export default {
       {
         title: '行业资讯',
         type: ROUTER_NAME_MAP.industryNews,
-        image: goods,
-        selectedImage: goodsSelected,
+        image: hangyezixun1,
+        selectedImage: hangyezixun2,
       },
       {
         title: '在线培训',
         type: ROUTER_NAME_MAP.onlineStudy,
-        image: goods,
-        selectedImage: goodsSelected,
+        image: zaixianpeixun1,
+        selectedImage: zaixianpeixun2,
       },
       {
         title: '我的',
         type: ROUTER_NAME_MAP.me,
-        image: Home,
-        selectedImage: HomeSelected,
+        image: xuexikaoshi1,
+        selectedImage: xuexikaoshi2,
       },
     ],
     currentNavIndex: 0,

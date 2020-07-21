@@ -32,23 +32,20 @@ const store = dvaApp.getStore();
 
 // console.log("Object.values(ROUTER_MAP)",ROUTER_MAP.map(item=>item.path));
 
- 
 class App extends Component {
-
   componentWillMount() {
     this.update();
-
   }
   config = {
-    pages:[
-      'pages/ClassPlay/index',
+    pages: [
+      // 'pages/ClassPlay/index',
       'pages/Main/index',
-      'pages/ClassDetail/index',
-      'pages/NewsDetail/index',
-      'pages/HotNews/index',
-      'pages/ExamDetail/index',
-      'pages/ExamClass/index',
-      'pages/Me/index',    
+      // 'pages/ClassDetail/index',
+      // 'pages/NewsDetail/index',
+      // 'pages/HotNews/index',
+      // 'pages/ExamDetail/index',
+      // 'pages/ExamClass/index',
+      // 'pages/Me/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -78,17 +75,62 @@ class App extends Component {
     //   ],
     // },
     subpackages: [
+      // {
+      //   root: 'pages/Me',
+      //   name: 'Me',
+      //   pages: [
+      //     'index',
+      //   ],
+      // },
       {
-        root: 'packages',
-        name: 'pack2',
-        pages: ['pages/demo/index'],
+        root: 'pages/ExamClass',
+        name: 'ExamClass',
+        pages: [
+          'index',
+        ],
+      },
+      {
+        root: 'pages/ExamDetail',
+        name: 'ExamDetail',
+        pages: [
+          'index',
+        ],
+      },
+      {
+        root: 'pages/HotNews',
+        name: 'HotNews',
+        pages: [
+          'index',
+        ],
+      },
+      {
+        root: 'pages/NewsDetail',
+        name: 'NewsDetail',
+        pages: [
+ 
+          'index',
+        ],
+      },
+      {
+        root: 'pages/ClassPlay',
+        name: 'ClassPlay',
+        pages: [
+          'index',
+        ],
+      },
+      {
+        root: 'pages/ClassDetail/',
+        name: 'ClassDetail',
+        pages: [
+          'index',
+        ],
       },
     ],
     'networkTimeout': {
       'request': 10000,
       'downloadFile': 10000,
     },
-    "enablePullDownRefresh": true, 
+    'enablePullDownRefresh': true,
     'debug': true,
   };
   update = () => {
