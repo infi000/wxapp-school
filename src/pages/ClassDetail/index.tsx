@@ -2,6 +2,7 @@ import Taro from '@tarojs/taro';
 import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton } from 'taro-ui';
 import { View, Block } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
+import { daoshitouxiang } from '@/static/images/index'
 
 import './index.scss';
 const { useState, useEffect } = Taro;
@@ -19,12 +20,12 @@ const ClassDetail = () => {
         <View className='at-row'>
           <View className='at-col at-col-1 at-col--auto'>
             <View className='head-con'>
-              <AtAvatar size='large' circle image='https://jdc.jd.com/img/200'></AtAvatar>
+              <AtAvatar size='large' circle image={ daoshitouxiang }></AtAvatar>
             </View>
           </View>
           <View className='at-col'>
             <View className='teacherInfo-top'>
-              王刚
+              胡光辉
               <View className='tag-con'>
                 <AtButton type='primary' size='small' className='at-button-mini'>
                   订阅
@@ -32,7 +33,7 @@ const ClassDetail = () => {
               </View>
             </View>
             <View className='teacherInfo-mid'>
-              内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+              高级讲师：胡光辉 CCIE#17022（RS/ISP/DC）。2006年加入WOLF，8年思科培训教学经验，历任CCNA、CCNP、ISP与DC讲师，现任职于上海WOLF-LAB主讲运营商和数据中心方向的CCIE课程。在BGP、QOS、Multicast、MPLS/VPN、存储FC协议、VPC等技术领域有深入研究。以“知其然，知其所以然”为授课宗旨。
             </View>
           </View>
         </View>
