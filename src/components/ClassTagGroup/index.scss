@@ -1,0 +1,15 @@
+@import '../../static/style/common';
+@import '~taro-ui/dist/style/components/flex.scss';
+@import "~taro-ui/dist/style/components/tag.scss";
+
+.hotClass-grid {
+  padding: 20px 0;
+  .hotClass-item {
+    padding-bottom: 40px;
+    text-align: center;
+  }
+  .hotClass-tag-name {
+    font-size: $sm-mini-fontsize;
+    color: $primary-color;
+  }
+}

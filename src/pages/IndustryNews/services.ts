@@ -2,12 +2,20 @@ import request from '@/utils/request';
 import Api from '@/config/api';
 
 /**
- * 获取商品类型
+ * 热门课程
  */
-export const getAllCtype = () => request.get(Api.goodsAllCtype);
+export const getCourseHotcourse = (payload:{count:number}) => request.get(Api.CourseHotcourse,payload);
 /**
- * 商品搜索 返回商品列表
+ * Banner图
  */
-export const getSearchGoods = (payload: ISearchGoodsParams) => request.get(Api.searchGoods, payload);
+export const getNewsBanners = () => request.get(Api.NewsBanners);
+/**
+ * 搜索新闻
+ */
+export const getNewsSearch = () => request.get(Api.NewsSearch,{offset:0,count:4});
+/**
+ * 1、	搜索课程分类
+ */
+export const getCourseCatesearch = () => request.get(Api.CourseCatesearch,{offset:0,count:8});
 
 export default {};

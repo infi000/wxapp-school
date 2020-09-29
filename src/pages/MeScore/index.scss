@@ -1,0 +1,37 @@
+@import '../../static/style/common.scss';
+
+.meScore-wrap {
+    background-color: $bg-grey-color;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+}
+
+.meScore-top{
+    height: 300px;
+    line-height: 300px;
+    background-color: #fff;
+    text-align: center;
+    font-size: $normal-fontsize;
+
+}
+
+.meScore-mid{
+    .meScore-tag{
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+    }
+    .meScore-con{
+        .meScore-con-line{
+            background-color: #fff;
+            text-align: center;
+            height:100px;
+            line-height:100px;
+            margin-bottom: 30px;
+        }
+    }
+}

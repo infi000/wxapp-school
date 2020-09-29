@@ -4,16 +4,15 @@ import SearchBar from './modules/SearchBar';
 import News from './modules/News';
 import Banner from './modules/Banner';
 import RecommendClass from './modules/RecommendClass';
-import TagBar from './modules/TagBar';
 import HotClass from './modules/HotClass';
 import './index.scss';
 
 const IndustryNews = () => {
   return (
     <View className='industryNews-wrap'>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Banner />
-      <TagBar />
+      {/* <TagBar /> */}
       <HotClass />
       <News />
       <RecommendClass />

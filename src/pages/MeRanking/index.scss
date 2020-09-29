@@ -1,0 +1,65 @@
+@import '../../static/style/common.scss';
+$meranking-mid-bottom-h:100px;
+$meranking-top-h:300px;
+
+.meranking-wrap {
+    background-color: $primary-color;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.meranking-top{
+    text-align: center;
+    color: #fff;
+    height: $meranking-top-h;
+    line-height: $meranking-top-h;
+    font-size: $big-fontsize;
+}
+
+.meranking-mid{
+    position: absolute;
+    top: $meranking-top-h;
+    left: 20px;
+    right: 20px;
+    bottom: 80px;
+    background-color: #fff;
+    border-radius: 20px;
+    .meranking-con{
+        position: absolute;
+        top: 20px;
+        left:20px;
+        right: 20px;
+        bottom: $meranking-mid-bottom-h;
+        overflow-y: scroll;
+        .meranking-line{
+            text-align: center;
+            font-size: $normal-fontsize;
+            margin-bottom: 20px;
+            .meranking-line-l{
+                font-size: $big-fontsize;
+                color:$primary-color;
+            }
+            .meranking-line-m{
+
+            }
+            .meranking-line-r{
+                font-size: $big-fontsize;
+                color: #fad600;
+            }
+        }
+    }
+    .meranking-mid-bottom{
+        position: absolute;
+        right: 0px;
+        left:0px;
+        bottom: 0;
+        height: $meranking-mid-bottom-h;
+        border-top: 0.1px solid #c0c0c0;
+        text-align: center;
+        font-size: $big-fontsize;
+        color:$primary-color;
+        line-height:  $meranking-mid-bottom-h;
+    }
+}

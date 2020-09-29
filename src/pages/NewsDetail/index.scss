@@ -1,7 +1,37 @@
-@import "~taro-ui/dist/style/components/article.scss";
+@import '~taro-ui/dist/style/components/article.scss';
 @import '../../static/style/common.scss';
 
-.newsDetail-wrap{
+.newsDetail-wrap {
+  // @include con;
+  // @include base-con;
+}
+
+.article__top {
+  @include con;
+  @include base-con;
+  background-color: $primary-color;
+  color: #fff;
+  .article__title {
+    font-size: $normal-fontsize;
+    margin-bottom: 20px;
+  }
+  .article__info {
+    text-align: right;
+    font-size: $mini-fontsize;
+  }
+}
+
+.article__content{
     @include con;
-    // @include base-con;
+    @include base-con;
+    .article__p{
+        font-size:$mini-fontsize;
+        letter-spacing: 0.05em;
+        color: $p-color;
+    }
+    .at-article__p {
+        margin:10px 0;
+        font-size:$mini-fontsize;
+    }
+
 }

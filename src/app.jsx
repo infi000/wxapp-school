@@ -38,10 +38,14 @@ class App extends Component {
   }
   config = {
     pages: [
-      // 'pages/ClassPlay/index',
+     
+   
       'pages/Main/index',
-      // 'pages/ClassDetail/index',
-      // 'pages/NewsDetail/index',
+      'pages/NewExamDetail/index',
+      'pages/MeScore/index',
+      'pages/MeRanking/index',
+      //  'pages/ClassPlay/index',
+         'pages/NewsDetail/index',
       // 'pages/HotNews/index',
       // 'pages/ExamDetail/index',
       // 'pages/ExamClass/index',
@@ -75,13 +79,6 @@ class App extends Component {
     //   ],
     // },
     subpackages: [
-      // {
-      //   root: 'pages/Me',
-      //   name: 'Me',
-      //   pages: [
-      //     'index',
-      //   ],
-      // },
       {
         root: 'pages/ExamClass',
         name: 'ExamClass',
@@ -103,14 +100,14 @@ class App extends Component {
           'index',
         ],
       },
-      {
-        root: 'pages/NewsDetail',
-        name: 'NewsDetail',
-        pages: [
+      // {
+      //   root: 'pages/NewsDetail',
+      //   name: 'NewsDetail',
+      //   pages: [
  
-          'index',
-        ],
-      },
+      //     'index',
+      //   ],
+      // },
       {
         root: 'pages/ClassPlay',
         name: 'ClassPlay',

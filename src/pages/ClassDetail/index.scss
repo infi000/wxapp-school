@@ -38,5 +38,13 @@
         line-height: 49px;
       }
     }
+    .classInfo-class-name{
+      font-size: $normal-fontsize;
+      text-align: center;
+
+    }
+    .classInfo-class-desc{
+      font-size: $mini-fontsize;
+    }
    
 }

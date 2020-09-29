@@ -1,19 +1,28 @@
-import Taro from '@tarojs/taro';
+import Taro, { useDidShow, useState, useEffect } from '@tarojs/taro';
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components';
-import BANNER_LIST from '@/config/banner';
+import { getNewsBanners } from '../services';
 import '../index.scss';
 
 const Banner = () => {
+  const [bannerList, setBannerList] = useState([]);
+  useEffect(() => {
+    console.log(123)
+    getNewsBanners().then(d=>{
+      d.news && setBannerList(d.news);
+    }).catch(e =>{
+      console.log(e);
+    })
+  },[]);
   return (
     <View className='banner-wrap'>
       <View className='banner-con'>
         <Swiper className='swiper-con' indicatorColor='#999' indicatorActiveColor='#333' circular indicatorDots autoplay>
-          {BANNER_LIST &&
-            BANNER_LIST.map((item) => {
-              const { image } = item;
+          {bannerList &&
+            bannerList.map((item) => {
+              const { cover, id, } = item;
               return (
-                <SwiperItem key={image}>
-                  <Image mode='aspectFit' style='width: 100%;height: 100%;' src={image} />
+                <SwiperItem key={id}>
+                  <Image mode='aspectFit' style='width: 100%;height: 100%;' src={cover} />
                 </SwiperItem>
               );
             })}

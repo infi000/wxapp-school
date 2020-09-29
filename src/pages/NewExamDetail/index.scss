@@ -1,0 +1,103 @@
+@import '~taro-ui/dist/style/components/article.scss';
+@import '../../static/style/common.scss';
+$footer-height: 200px;
+$exam-top-height: 150px;
+$common-padding: 0 30px;
+$exam-font-size: 28px;
+$exam-desc-color: rgb(102, 102, 102);
+$exam-desc-font-size: $sm-fontsize;
+.exam-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.exam-con {
+  background-color: $primary-color;
+  position: absolute;
+  top: 0;
+  bottom: $footer-height;
+  left: 0;
+  right: 0;
+  .con-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $exam-top-height;
+    line-height: $exam-top-height;
+    padding: $common-padding;
+    color: #fff;
+    .top-left {
+      float: left;
+    }
+    .top-right {
+      float: right;
+    }
+  }
+  .con-mid {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: $exam-top-height;
+    bottom: $exam-top-height;
+    background-color: #fff;
+    padding: $common-padding;
+    padding-top: 40px;
+    font-size: $exam-font-size;
+    overflow-y: scroll;
+    .mid-textArea {
+      line-height: 1.7;
+    }
+    .mid-opt {
+      padding: 20px 0;
+      .mid-opt-con {
+        padding-bottom: 40px;
+      }
+    }
+    .mid-label {
+      width: 50px;
+      display: inline-block;
+      text-align: center;
+    }
+    .mid-desc {
+      display: inline;
+      color: $exam-desc-color;
+      font-size: $exam-desc-font-size;
+    }
+    .mid-answer {
+      padding-bottom: 40px;
+    }
+  }
+  .con-bottom {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: $exam-top-height;
+    line-height: $exam-top-height;
+    padding: $common-padding;
+    text-align: center;
+    .bottom-btn-con {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+}
+.exam-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $footer-height;
+  background-color: #fff;
+}
+.exam-grid .at-grid__flex .content-inner__img {
+  width: 60px;
+  height: 60px;
+}
+.exam-grid .at-grid__flex .content-inner__text {
+  font-size: 23px;
+}

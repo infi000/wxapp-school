@@ -1,10 +1,11 @@
-import Taro from '@tarojs/taro';
+import Taro, { useEffect, useState } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon/index';
 import { TOTAL_CLASS } from '@/constants/index';
 import { defaultAudio } from '@/static/images/index';
-
+import { getCourseCatesearch } from './services';
 import './index.scss';
+import ClassTagGroup from '@/components/ClassTagGroup';
 
 export const TOTAL_AUDIO = [
   {
@@ -40,26 +41,23 @@ export const TOTAL_AUDIO = [
 ];
 
 const OnlineStudy = () => {
+  const [hotClass, setHotClass] = useState([]);
   const handleToClass = (item) => {
     const { id } = item;
     Taro.navigateTo({ url: '/pages/ClassDetail/index?id=' + id });
   };
-
+  useEffect(() => {
+    getCourseCatesearch().then(d=>{
+      d.cates && setHotClass(d.cates);
+    }).catch(e =>{
+      console.log(e);
+    })
+  },[]);
   return (
     <View className='onlineStudy-wrap'>
       <View className='hotClass-wrap'>
         <TitleCon title='全部课程' />
-        <View className='at-row at-row--wrap hotClass-grid'>
-          {TOTAL_CLASS.map((item) => {
-            const { name, src } = item;
-            return (
-              <View className='at-col at-col-3 hotClass-item' key={name}>
-                <Image style='height:40px' mode='heightFix' src={src} onClick={()=>handleToClass(item)}/>
-                <View className='hotClass-tag-name'>{name}</View>
-              </View>
-            );
-          })}
-        </View>
+        <ClassTagGroup hotClass={hotClass} />
       </View>
       <View className='audio-wrap'>
         <TitleCon title='音频专题' />

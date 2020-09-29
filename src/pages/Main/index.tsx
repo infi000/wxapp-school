@@ -6,6 +6,7 @@ import IndustryNews from '@/pages/IndustryNews';
 import OnlineStudy from '@/pages/OnlineStudy';
 import Me from '@/pages/Me';
 import { ROUTER_NAME_MAP } from '@/constants/index';
+import '../Me/index.scss';
 
 const Main = (props) => {
   const { nav, currentNavIndex } = useSelector((state) => state.tabbar);

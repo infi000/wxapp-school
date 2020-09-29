@@ -3,11 +3,25 @@ import Taro from '@tarojs/taro';
 import {ImgError} from '../static/images/index';
 
 export function showErrorToast(msg) {
+  console.log("msg",msg);
   Taro.showToast({
-    title: msg,
-    image: '../static/images/icon_error.png'
+    title: msg||'错误',
+    icon: 'none',
   })
 }
+export function showSuccessToast(msg) {
+  Taro.showToast({
+    title: msg,
+    icon: 'success',
+  })
+}
+export function showToast(msg) {
+  Taro.showToast({
+    title: msg,
+    icon: 'none',
+  })
+}
+
 
 export function redirect(url) {
 

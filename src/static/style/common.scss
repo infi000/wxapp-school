@@ -1,7 +1,8 @@
 // 颜色
-$text-grey-color: #c0c0c0;
+$text-grey-color: rgb(150, 150, 150);
 $bg-grey-color: #f5f5f5;
-$primary-color: rgb(41, 235, 69);
+$primary-color: #900000;
+$p-color:#666;
 $color-brand: rgb(41, 235, 69);
 $color-brand-light: rgb(71, 238, 96);
 $color-brand-dark: rgb(32, 185, 55);
@@ -87,3 +88,4 @@ $sm-mini-fontsize: 22px;
   text-align: center;
   font-size: $mini-fontsize;
 }
+

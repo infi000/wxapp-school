@@ -56,11 +56,12 @@
   .hotClass-grid {
     padding: 20px 0;
     .hotClass-item{
-      padding-bottom: 20px;
+      padding-bottom: 40px;
       text-align: center;
     }
     .hotClass-tag-name {
       font-size: $sm-mini-fontsize;
+      color:$primary-color;
     }
   }
 

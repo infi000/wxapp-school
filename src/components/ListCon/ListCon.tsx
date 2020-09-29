@@ -14,6 +14,7 @@ interface IProps {
     desc?: string;
     handleClick?: (params?: any, index?: number) => any;
     tags?: Array<string>;
+    [key:string]:any;
   }>;
 }
 

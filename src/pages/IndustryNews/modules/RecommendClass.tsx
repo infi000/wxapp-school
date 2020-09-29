@@ -1,13 +1,14 @@
-import Taro from '@tarojs/taro';
+import Taro, { useDidShow, useState, useEffect } from '@tarojs/taro';
 import { View } from '@tarojs/components';
 import { ListItemCon } from '@/components/ListCon';
 import TitleCon from '@/components/TitleCon';
 import { defaultFace } from '@/static/images/index';
 import { AtTag } from 'taro-ui';
-
+import { getCourseHotcourse } from '../services';
 import '../index.scss';
 
 const RecommendClass = () => {
+  const [hotClass, setHotClass] = useState([]);
   const handleToClass = (opt) => {
     const { id } = opt;
     Taro.navigateTo({ url: '/pages/ClassDetail/index?id=' + id });
@@ -34,23 +35,28 @@ const RecommendClass = () => {
       },
     },
   ];
-
+  useEffect(() => {
+    getCourseHotcourse({count:4}).then(d=>{
+      d.courses && setHotClass(d.courses);
+    }).catch(e =>{
+      console.log(e);
+    })
+  },[]);
   return (
     <View className='recommendClass-wrap'>
       <TitleCon title='课程推荐' tag='查看更多' />
       <View>
-        {listInfo.map((item) => {
-          const { image, title, child, id } = item;
-          const { left, mid, right } = child;
+        {hotClass.map((item) => {
+          const { cover, cname, id,starttime } = item;
           return (
             <View className='recommendClass-list-item' key={id} onClick={() => handleToClass(item)}>
-              <ListItemCon image={image} title={title}>
+              <ListItemCon image={cover} title={cname}>
                 <View className='at-row at-row__justify--between'>
-                  <View className='at-col at-col-3'>{left}</View>
-                  <View className='at-col at-col-4'>{mid}</View>
+                  <View className='at-col at-col-3'>无</View>
+                  <View className='at-col at-col-4'>{starttime}</View>
                   <View className='at-col at-col-5 textR'>
                     <AtTag size='small' type='primary' circle>
-                      {right}
+                     预约
                     </AtTag>
                   </View>
                 </View>
