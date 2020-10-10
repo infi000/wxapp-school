@@ -1,6 +1,7 @@
 import Taro, { useDidShow, useState, useRouter } from '@tarojs/taro';
 import { View, Block.Image } from '@tarojs/components';
 import { getNewsDetail } from './services';
+import { imgnotfount } from '@/static/images/index';
 import './index.scss';
 const defatulNews:any ={};
 const NewsDetail = () => {
@@ -28,7 +29,7 @@ const NewsDetail = () => {
         <View className='article__content'>
         <Image 
         className='at-article__img' 
-        src={newsDetail.cover} 
+        src={newsDetail.cover || imgnotfount} 
         mode='widthFix' />
         <View className='at-article__p'>{newsDetail.content}</View>
         </View>

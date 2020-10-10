@@ -3,6 +3,8 @@ import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton } from 'taro-ui';
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import { getCourseDetail } from './services';
+import { daoshitouxiang } from '@/static/images/index'
+
 import './index.scss';
 import { get, isArray } from 'lodash';
 const { useState, useEffect } = Taro;

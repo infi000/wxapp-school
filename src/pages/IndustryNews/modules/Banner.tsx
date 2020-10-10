@@ -1,6 +1,7 @@
 import Taro, { useDidShow, useState, useEffect } from '@tarojs/taro';
 import { View, Swiper, SwiperItem, Image } from '@tarojs/components';
 import { getNewsBanners } from '../services';
+import { imgnotfount } from '@/static/images/index';
 import '../index.scss';
 
 const Banner = () => {
@@ -22,7 +23,7 @@ const Banner = () => {
               const { cover, id, } = item;
               return (
                 <SwiperItem key={id}>
-                  <Image mode='aspectFit' style='width: 100%;height: 100%;' src={cover} />
+                  <Image mode='aspectFit' style='width: 100%;height: 100%;' src={cover || imgnotfount} />
                 </SwiperItem>
               );
             })}

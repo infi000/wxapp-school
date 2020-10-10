@@ -8,6 +8,7 @@ const MyAvatar = () => {
   const { isLogIn, wxUserInfo } = useSelector((state:any) => state.main);
   const dispatch = useDispatch();
   const handleLogIn = (e) => {
+    console.log(e);
     logIn(dispatch);
   };
   return (

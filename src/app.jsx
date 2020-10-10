@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro';
-import { Provider } from '@tarojs/redux';
+import { Provider, connect } from '@tarojs/redux';
 import dva from './dva';
 import models from './store';
 // import { ROUTER_MAP } from './router';
@@ -31,9 +31,30 @@ const dvaApp = dva.createApp({
 const store = dvaApp.getStore();
 
 // console.log("Object.values(ROUTER_MAP)",ROUTER_MAP.map(item=>item.path));
-
+@connect(({ main }) => ({
+  ...main,
+}))
 class App extends Component {
   componentWillMount() {
+    this.update();
+    Taro.checkSession({
+      success(res) {
+        //session_key 未过期，并且在本生命周期一直有效
+        Taro.getStorage({
+          key: 'wxUserInfo',
+          success: function(res) {
+            const wxUserInfo = res.data;
+            dispatch({ type: 'main/updateIsLogIn', payload: true });
+            dispatch({ type: 'main/updateWxUserInfo', payload: wxUserInfo });
+            dispatch({ type: 'main/updateOpenid', payload: wxUserInfo.openid });
+          },
+        });
+      },
+      fail() {
+        console.log('session验证未登陆！');
+        Taro.removeStorageSync('wxUserInfo');
+      },
+    });
     this.update();
   }
   config = {

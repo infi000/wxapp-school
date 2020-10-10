@@ -34,5 +34,9 @@ export { default as xuexikaoshi1} from './xuexikaoshi1.png';
 export { default as xuexikaoshi2} from './xuexikaoshi2.png';
 
 
+export { default as daoshitouxiang } from './daoshitouxiang.png';
+export { default as imgnotfount } from './imgnotfount.jpg';
+
+
 
 
