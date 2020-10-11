@@ -16,6 +16,9 @@ const NewsDetail = () => {
       console.log(e);
     })
   });
+  Taro.setNavigationBarTitle({
+    title: '行业要闻',
+  });
   return (
     <View className='newsDetail-wrap'>
       <View className='at-article'>

@@ -26,7 +26,7 @@ const News = () => {
             id:item.id,
             title:item.title,
             image:item.cover || defaultNews,
-            desc:'无',
+            desc:item.ndes || '无',
             handleClick:handleToNewsDetail
           }
         })) 

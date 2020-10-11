@@ -4,6 +4,7 @@ import { getJscode2session, saveUserData } from '@/services/user';
 export const logIn = (dispatch) =>
   Taro.login({
     success: async function(res) {
+      console.log("res",res)
       if (res.code) {
         //发起网络请求
         const { code } = res;

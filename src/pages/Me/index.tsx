@@ -6,6 +6,9 @@ import './index.scss';
 import Others from './modules/Others';
 
 const Me = () => {
+  Taro.setNavigationBarTitle({
+    title: '我的考试',
+  });
   return (
     <View className='me-wrap'>
       <MyAvatar />

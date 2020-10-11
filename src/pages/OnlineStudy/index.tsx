@@ -53,6 +53,9 @@ const OnlineStudy = () => {
       console.log(e);
     })
   },[]);
+  Taro.setNavigationBarTitle({
+    title: '在线培训',
+  });
   return (
     <View className='onlineStudy-wrap'>
       <View className='hotClass-wrap'>

@@ -2,7 +2,8 @@ const MOCK = 'http://easy-mock.sftcwl.com/mock/5f6a20a67266ef5678785185/wxschool
 const yjw_test = 'https://xch.xuexiao.ntof.club/index.php/MiniApi';
 const WxApiRoot = yjw_test;
 export default {
-  searchGoods: WxApiRoot + '/Shop/searchgoods', // 1.	商品搜索（推荐、最热、最新、关键词、分类、页码）
+  getJscode2session: WxApiRoot + '/User/jscode2session', // 29、	小程序登录更新session
+  saveUserData: WxApiRoot + '/User/saveuserdata', // 30、	添加小程序用户信息
   goodsAllCtype: WxApiRoot + '/Shop/allctype', // 3.	获取商品类型
   goodsDetail: WxApiRoot + '/Shop/detail', // 4.	商品详情
   relatedGoods: WxApiRoot + '/Shop/tjgoods', // 5.	商品关联热门推荐
@@ -24,5 +25,6 @@ export default {
   NewsDetail:WxApiRoot+'/News/detail', //9、	新闻详情
   CourseCatesearch:WxApiRoot+'/Course/catesearch', //1、 搜索课程分类	
   CourseDetail:WxApiRoot+'/Course/detail', //10、	课程详情
+  CourseAttcourse:WxApiRoot+'/Course/attcourse', //6、	关注课程
 
 };

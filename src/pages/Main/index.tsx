@@ -10,7 +10,6 @@ import '../Me/index.scss';
 
 const Main = (props) => {
   const { nav, currentNavIndex } = useSelector((state) => state.tabbar);
-
   return (
     <View>
       {nav[currentNavIndex].type == ROUTER_NAME_MAP.industryNews && <IndustryNews />}

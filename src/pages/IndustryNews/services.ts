@@ -17,5 +17,9 @@ export const getNewsSearch = () => request.get(Api.NewsSearch,{offset:0,count:4}
  * 1、	搜索课程分类
  */
 export const getCourseCatesearch = () => request.get(Api.CourseCatesearch,{offset:0,count:8});
+/**
+ * 6、	关注课程
+ */
+export const addCourseAttcourse = (payload:{cid:number}) => request.get(Api.CourseAttcourse,payload);
 
 export default {};

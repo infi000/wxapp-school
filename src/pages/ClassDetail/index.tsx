@@ -2,9 +2,9 @@ import Taro, { useRouter } from '@tarojs/taro';
 import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton } from 'taro-ui';
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
-import { getCourseDetail } from './services';
+import { getCourseDetail, addCourseAttcourse } from './services';
 import { daoshitouxiang } from '@/static/images/index'
-
+import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
 const { useState, useEffect } = Taro;
@@ -31,6 +31,11 @@ const ClassDetail = () => {
     })
     // Taro.navigateTo({ url: '/pages/ClassPlay/index?id=' + id });
   };
+  const handleAddCourseAttcourse = (cid) =>{
+    addCourseAttcourse({cid}).then((d)=>{
+      showSuccessToast(d);
+    })
+  }
   useEffect(() => {
     const { params } = router;
     const { cid } = params || {};
@@ -56,7 +61,7 @@ const ClassDetail = () => {
             <View className='teacherInfo-top'>
               {get(classDetail, ['teacher', 'tname'], '暂无')}
               <View className='tag-con'>
-                <AtButton type='primary' size='small' className='at-button-mini' onClick={() =>handleToClassPlay(item.id,item.cwtype)}>
+                <AtButton type='primary' size='small' className='at-button-mini' onClick={() =>handleAddCourseAttcourse(classDetail.cid)}>
                   订阅
                 </AtButton>
               </View>
