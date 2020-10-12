@@ -26,5 +26,9 @@ export default {
   CourseCatesearch:WxApiRoot+'/Course/catesearch', //1、 搜索课程分类	
   CourseDetail:WxApiRoot+'/Course/detail', //10、	课程详情
   CourseAttcourse:WxApiRoot+'/Course/attcourse', //6、	关注课程
+  myattcourseware:WxApiRoot+'/User/myattcourseware', //22、	我的收藏课件
+  myattnews:WxApiRoot+'/User/myattnews', //23、	我的收藏新闻
+  myattcourse:WxApiRoot+'/User/myattcourse', // 21、	我的收藏课程
+  mycert:WxApiRoot+'/User/mycert', // 24、	我的证书
 
 };

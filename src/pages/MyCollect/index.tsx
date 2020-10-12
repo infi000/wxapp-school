@@ -1,17 +1,13 @@
-import Taro, { useDidShow, useState } from '@tarojs/taro';
+import Taro from '@tarojs/taro';
 import { View, Block } from '@tarojs/components';
 import { useSelector, useDispatch } from '@tarojs/redux';
 import './index.scss';
-import {} from './services';
 import { AtGrid } from 'taro-ui';
 
-const getMyattcourse:any = ()=> {};
 const MyCollect = (props) => {
   Taro.setNavigationBarTitle({
-    title: '我的证书',
+    title: '我的收藏',
   });
-  const [hotClass, setHotClass] = useState([]);
-
   const handleChoose = (item) =>{
     console.log(item);
     const { path } = item;
@@ -19,13 +15,6 @@ const MyCollect = (props) => {
       Taro.navigateTo({ url: path});
     }
   }
-  useDidShow(() => {
-    getMyattcourse().then(d=>{
-      d.courses && setHotClass(d.courses);
-    }).catch(e =>{
-      console.log(e);
-    })
-  });
   return (
     <View className='myCollect-wrap'>
       <AtGrid

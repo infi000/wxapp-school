@@ -15,21 +15,21 @@ const ClassDetail = () => {
   const router = useRouter();
   const [currentTab, setCurrentTab] = useState(0);
   const handleToClassPlay = (id,cwtype) => {
-    Taro.downloadFile({
-      // e.target.dataset.name 是文件的地址
-      url: 'http://127.0.0.1:8080/WMS.pptx',
-      success(res) {
-        const filePath = res.tempFilePath;
-        console.log(filePath)
-        Taro.openDocument({
-          filePath,
-          success(res) {
-            console.log('打开文档成功')
-          }
-        })
-      }
-    })
-    // Taro.navigateTo({ url: '/pages/ClassPlay/index?id=' + id });
+    // Taro.downloadFile({
+    //   // e.target.dataset.name 是文件的地址
+    //   url: 'http://127.0.0.1:8080/WMS.pptx',
+    //   success(res) {
+    //     const filePath = res.tempFilePath;
+    //     console.log(filePath)
+    //     Taro.openDocument({
+    //       filePath,
+    //       success(res) {
+    //         console.log('打开文档成功')
+    //       }
+    //     })
+    //   }
+    // })
+    Taro.navigateTo({ url: '/pages/ClassPlay/index?id=' + id });
   };
   const handleAddCourseAttcourse = (cid) =>{
     addCourseAttcourse({cid}).then((d)=>{

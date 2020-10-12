@@ -41,7 +41,7 @@ const HotNews = () => {
             ...item,
             image:item.cover || defaultNews,
             desc:item.ndes || '无',
-            tags:[`${new Date(Number(item.publishtime+'000')).toLocaleString()}`],
+            tags:[item.cfrom, `${new Date(Number(item.publishtime+'000')).toLocaleString()}`],
             handleClick:handleToNewsDetail
           }
         })

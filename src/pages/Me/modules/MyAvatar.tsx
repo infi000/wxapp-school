@@ -11,6 +11,13 @@ const MyAvatar = () => {
     console.log(e);
     logIn(dispatch);
   };
+  const handleChoose = (item) =>{
+    console.log(item);
+    const { path } = item;
+    if (path) {
+      Taro.navigateTo({ url: path});
+    }
+  }
   return (
     <View className='my-avatar-con'>
       <View className='at-row at-row__align--center  my-avatar-top'>
@@ -31,6 +38,7 @@ const MyAvatar = () => {
         className='avatar-gird'
         hasBorder={false}
         columnNum={4}
+        onClick={handleChoose}
         data={[
           {
             image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -47,6 +55,8 @@ const MyAvatar = () => {
           {
             image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png',
             value: '我的收藏',
+            type: 'myCollect',
+            path: '/pages/MyCollect/index'
           },
           {
             image: 'https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png',

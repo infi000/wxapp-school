@@ -10,32 +10,9 @@ import { showSuccessToast } from '@/utils/util';
 
 const RecommendClass = () => {
   const [hotClass, setHotClass] = useState([]);
-  const handleToClass = (opt) => {
-    const { id } = opt;
-    Taro.navigateTo({ url: '/pages/ClassDetail/index?id=' + id });
+  const handleToClass = (id) => {
+    Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
   };
-  // const listInfo = [
-  //   {
-  //     id: '1',
-  //     image: defaultFace,
-  //     title: '职场中最高的自律，是放弃不断改变',
-  //     child: {
-  //       left: '王益胃',
-  //       mid: '直播：10:00',
-  //       right: '预约',
-  //     },
-  //   },
-  //   {
-  //     id: '2',
-  //     image: defaultFace,
-  //     title: '职场中最高的自律，是放弃不断改变，是放弃不断改变',
-  //     child: {
-  //       left: '王益胃',
-  //       mid: '直播：10:00',
-  //       right: '预约',
-  //     },
-  //   },
-  // ];
   const handleAddCourseAttcourse = (cid) =>{
     addCourseAttcourse({cid}).then(d=>{
       showSuccessToast(d);
@@ -61,7 +38,7 @@ const RecommendClass = () => {
           const { cover, cname, id,cid,starttime } = item;
           return (
             <View className='recommendClass-list-item' key={id}>
-              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(item)}>
+              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(id)}>
                 <View className='at-row at-row__justify--between'>
                   {/* <View className='at-col at-col-1'></View> */}
                   <View className='at-col at-col-7'>开始时间:{starttime}</View>

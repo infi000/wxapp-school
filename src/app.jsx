@@ -59,9 +59,18 @@ class App extends Component {
   }
   config = {
     pages: [
-     
-   
       'pages/Main/index',
+      'pages/Mycert/index',
+      'pages/MyCollect/components/Courseware',
+   
+      'pages/MyCollect/components/News',
+     
+
+      'pages/MyCollect/components/Course',
+
+      'pages/MyCollect/index',
+
+   
       'pages/NewExamDetail/index',
       'pages/MeScore/index',
       'pages/MeRanking/index',

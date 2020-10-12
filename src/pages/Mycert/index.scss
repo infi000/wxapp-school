@@ -1,0 +1,15 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+.myCert-wrap{
+    @include con;
+    @include base-con;
+    .at-grid__flex .content-inner__icon {
+        width: 100%;
+        height: 100%;
+    }
+    .at-grid__flex .content-inner__img {
+        width: 100%;
+        height: 100%; 
+    }
+}
+
