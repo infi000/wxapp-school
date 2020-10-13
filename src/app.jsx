@@ -59,6 +59,7 @@ class App extends Component {
   }
   config = {
     pages: [
+      // 'pages/ClassDetail/index',
       'pages/Main/index',
       'pages/Mycert/index',
       'pages/MyCollect/components/Courseware',

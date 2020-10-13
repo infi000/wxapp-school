@@ -48,3 +48,18 @@
     }
    
 }
+
+.classImg-wrap{
+  background-color:#fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  .btn-back{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+  }
+}

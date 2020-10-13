@@ -1,4 +1,4 @@
-import Taro, { useDidShow, useState } from '@tarojs/taro';
+import Taro, { useDidShow, useState,useRouter } from '@tarojs/taro';
 import { View, Block } from '@tarojs/components';
 import { useSelector, useDispatch } from '@tarojs/redux';
 import './index.scss';
@@ -11,6 +11,7 @@ const MyCollect = (props) => {
     title: '我的证书',
   });
   const [hotClass, setHotClass] = useState([]);
+  const router = useRouter();
 
   const handleChoose = (item) =>{
     console.log(item);
@@ -20,12 +21,15 @@ const MyCollect = (props) => {
     }
   }
   useDidShow(() => {
+    const { params } = router;
+    const { cid = 1 } = params || {};
     getMyattcourse().then(d=>{
       d.courses && setHotClass(d.courses);
     }).catch(e =>{
       console.log(e);
     })
   });
+
   return (
     <View className='myCollect-wrap'>
       <AtGrid

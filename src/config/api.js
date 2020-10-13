@@ -30,5 +30,6 @@ export default {
   myattnews:WxApiRoot+'/User/myattnews', //23、	我的收藏新闻
   myattcourse:WxApiRoot+'/User/myattcourse', // 21、	我的收藏课程
   mycert:WxApiRoot+'/User/mycert', // 24、	我的证书
+  CourseWareLearn:WxApiRoot+'/CourseWare/learn', // 12、	学习课件
 
 };
