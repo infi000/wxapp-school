@@ -48,6 +48,7 @@ $exam-desc-font-size: $sm-fontsize;
     padding-top: 40px;
     font-size: $exam-font-size;
     overflow-y: scroll;
+
     .mid-textArea {
       line-height: 1.7;
     }
@@ -55,6 +56,9 @@ $exam-desc-font-size: $sm-fontsize;
       padding: 20px 0;
       .mid-opt-con {
         padding-bottom: 40px;
+        .choosedAnswer{
+          color:$primary-color
+        }
       }
     }
     .mid-label {

@@ -1,7 +1,7 @@
-import Taro from '@tarojs/taro';
+import Taro, { useDidShow, useRouter } from '@tarojs/taro';
 import { View, Block } from '@tarojs/components';
 import { AtRadio, AtButton, AtModal, AtToast } from 'taro-ui';
-
+import { getExampaperdetail } from './services';
 import './index.scss';
 import { isArray } from 'lodash';
 
@@ -71,6 +71,11 @@ const examInfoList = [
 ];
 
 const ExamDetail = () => {
+  Taro.setNavigationBarTitle({
+    title: '我的考试',
+  });
+  const router = useRouter();
+  // const [examInfoList, setExamInfoList]:[any,any] = useState([]);
   const [answerList, setAnswerList]: [Array<string>, Function] = useState([]);
   const [modal, setModal]: [{ show: boolean; data: { desc: string; status: 'submite' | 'back' } }, Function] = useState({
     show: false,
@@ -118,6 +123,15 @@ const ExamDetail = () => {
     setModal({ show: false, data: { desc: '', status: 'submite' } });
     setToast(false);
   };
+  useDidShow(() => {
+    const { params } = router;
+    const { epid = '1' } = params || {};
+    getExampaperdetail({epid}).then(d=>{
+      // setExamInfoList(d.courses);
+    }).catch(e =>{
+      console.log(e);
+    })
+  });
   return (
     <View className='examDetail-wrap'>
       {examInfoList.map((item, index: number) => {

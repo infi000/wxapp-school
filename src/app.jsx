@@ -60,7 +60,12 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
+
+     
       'pages/Main/index',
+      'pages/NewExamDetail/index',
+
+      'pages/ExamClass/index',
       'pages/Mycert/index',
       'pages/MyCollect/components/Courseware',
    
@@ -72,9 +77,8 @@ class App extends Component {
       'pages/MyCollect/index',
 
    
-      'pages/NewExamDetail/index',
-      'pages/MeScore/index',
       'pages/MeRanking/index',
+     
       //  'pages/ClassPlay/index',
          'pages/NewsDetail/index',
       // 'pages/HotNews/index',
@@ -110,20 +114,20 @@ class App extends Component {
     //   ],
     // },
     subpackages: [
-      {
-        root: 'pages/ExamClass',
-        name: 'ExamClass',
-        pages: [
-          'index',
-        ],
-      },
-      {
-        root: 'pages/ExamDetail',
-        name: 'ExamDetail',
-        pages: [
-          'index',
-        ],
-      },
+      // {
+      //   root: 'pages/ExamClass',
+      //   name: 'ExamClass',
+      //   pages: [
+      //     'index',
+      //   ],
+      // },
+      // {
+      //   root: 'pages/ExamDetail',
+      //   name: 'ExamDetail',
+      //   pages: [
+      //     'index',
+      //   ],
+      // },
       {
         root: 'pages/HotNews',
         name: 'HotNews',

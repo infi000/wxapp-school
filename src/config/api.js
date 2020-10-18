@@ -31,5 +31,10 @@ export default {
   myattcourse:WxApiRoot+'/User/myattcourse', // 21、	我的收藏课程
   mycert:WxApiRoot+'/User/mycert', // 24、	我的证书
   CourseWareLearn:WxApiRoot+'/CourseWare/learn', // 12、	学习课件
+  Exampaper:WxApiRoot+'/Exam/exampaper', // 14、	获取考试试卷
+  Exampaperdetail:WxApiRoot+'/Exam/exampaperdetail', // 31、	获取试卷试题
+  canswer:WxApiRoot+'/Exam/canswer', // 17、	提交题目答案
+  examstart:WxApiRoot+'/Exam/examstart', // 15、	考试/测验开始
+  examend:WxApiRoot+'/Exam/examend', // 16、	考试/测验结束
 
 };
