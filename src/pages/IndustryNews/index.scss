@@ -1,5 +1,5 @@
 @import '~taro-ui/dist/style/components/flex.scss';
-@import "~taro-ui/dist/style/components/tag.scss";
+@import '~taro-ui/dist/style/components/tag.scss';
 
 @import '../../static/style/common';
 
@@ -21,8 +21,9 @@
 .banner-wrap {
   @include con;
   @include base-con;
+  padding: 25px 0;
   .banner-con {
-    height: 300px;
+    height: 400px;
     .swiper-con {
       height: 100%;
       width: 100%;
@@ -53,18 +54,18 @@
 .hotClass-wrap {
   @include con;
   @include base-con;
+  padding-bottom: 0;
   .hotClass-grid {
     padding: 20px 0;
-    .hotClass-item{
-      padding-bottom: 40px;
+    .hotClass-item {
+      padding-bottom: 20px;
       text-align: center;
     }
     .hotClass-tag-name {
       font-size: $sm-mini-fontsize;
-      color:$primary-color;
+      color: $primary-color;
     }
   }
-
 }
 
 .recommendClass-wrap {

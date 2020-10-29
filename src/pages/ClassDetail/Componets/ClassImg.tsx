@@ -10,7 +10,7 @@ const CLassImg = (props) => {
   Taro.setNavigationBarTitle({
     title: info.cwname || '',
   });
-
+console.log('info',info);
   useDidShow(() => {});
 
   return (

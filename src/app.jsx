@@ -61,11 +61,16 @@ class App extends Component {
     pages: [
       // 'pages/ClassDetail/index',
 
-     
       'pages/Main/index',
+      // 'pages/ClassDetail/Componets/ClassImg',
+      'pages/ClassDetail/Componets/ExamTest',
+     
+      'pages/ClassDetail/index',
       'pages/NewExamDetail/index',
 
       'pages/ExamClass/index',
+      'pages/TestClass/index',
+      'pages/TestResult/index',
       'pages/Mycert/index',
       'pages/MyCollect/components/Courseware',
    
@@ -146,13 +151,6 @@ class App extends Component {
       {
         root: 'pages/ClassPlay',
         name: 'ClassPlay',
-        pages: [
-          'index',
-        ],
-      },
-      {
-        root: 'pages/ClassDetail/',
-        name: 'ClassDetail',
         pages: [
           'index',
         ],

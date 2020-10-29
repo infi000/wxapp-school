@@ -36,5 +36,7 @@ export default {
   canswer:WxApiRoot+'/Exam/canswer', // 17、	提交题目答案
   examstart:WxApiRoot+'/Exam/examstart', // 15、	考试/测验开始
   examend:WxApiRoot+'/Exam/examend', // 16、	考试/测验结束
+  daypaper:WxApiRoot+'/Exam/daypaper', // 26、	获取每日小测
+  mydaypaperresult:WxApiRoot+'/User/mydaypaperresult', // 27、	获取小测结果
 
 };

@@ -10,12 +10,17 @@
 
 .onlineStudy-wrap{
     background-color: $bg-grey-color;
-    padding-bottom: 200px;
+    padding-bottom: 150rpx;
+    bottom: 0;
+    top: 0;    
+    position: absolute;
+    overflow-y: scroll;
 }
 
 .hotClass-wrap {
     @include con;
     @include base-con;
+    padding-bottom: 0px;
     .hotClass-grid {
       padding: 20px 0;
       .hotClass-item{
@@ -35,6 +40,7 @@
     .audio-grid {
       padding: 20px 0;
       .audio-item{
+        overflow:hidden;
         padding:0 10px 40px;
         text-align: center;
       }

@@ -47,6 +47,15 @@ $sm-mini-fontsize: 22px;
 @mixin textCenter {
   text-align: center;
 }
+  .basewrap {
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  overflow-y: scroll;
+}
 
 .textL {
   @include textLeft;

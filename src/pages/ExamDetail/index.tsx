@@ -126,11 +126,13 @@ const ExamDetail = () => {
   useDidShow(() => {
     const { params } = router;
     const { epid = '1' } = params || {};
-    getExampaperdetail({epid}).then(d=>{
-      // setExamInfoList(d.courses);
-    }).catch(e =>{
-      console.log(e);
-    })
+    getExampaperdetail({ epid: 1 })
+      .then((d) => {
+        // setExamInfoList(d.courses);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
   });
   return (
     <View className='examDetail-wrap'>
@@ -158,10 +160,10 @@ const ExamDetail = () => {
         );
       })}
       <View className='footer-con'>
-        <AtButton type='primary' size='small' onClick={handleSubmit} >
+        <AtButton type='primary' size='small' onClick={handleSubmit}>
           提交
         </AtButton>
-        <View style={{height:'20px'}}></View>
+        <View style={{ height: '20px' }}></View>
         <AtButton size='small' onClick={handleBack}>
           返回
         </AtButton>

@@ -3,12 +3,12 @@ import { View, Button } from '@tarojs/components';
 import '../index.scss';
 
 const LIST_URL_MAP = [
-  { name: '设置密码', url: '/pages/PhotoWall/index' },
-  { name: '帮助中心', url: '/pages/Collect/index' },
-  { name: '每日小测', url: '/pages/MyVip/index' },
-  { name: '小测结果', url: '/pages/Address/index' },
-  { name: '当日报告', url: '/pages/Kefu/index' },
-  { name: '学习历史', url: '/pages/Kefu/index' },
+  // { name: '设置密码', url: '/pages/PhotoWall/index' },
+  // { name: '帮助中心', url: '/pages/Collect/index' },
+  { name: '每日小测', url: '/pages/TestClass/index' },
+  { name: '小测结果', url: '/pages/TestResult/index' },
+  // { name: '当日报告', url: '/pages/Kefu/index' },
+  // { name: '学习历史', url: '/pages/Kefu/index' },
 ];
 
 const tmplIds = ['vqWshHTalxdFaNqhdSWJ8Mkb7HsysV39m1h9Yk-94hY', '05mTNKODj3164t8tEgu60oLUyqddSUHtjAOS6i1S0Zs'];

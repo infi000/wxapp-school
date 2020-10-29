@@ -1,9 +1,9 @@
 import Taro, { useDidShow, useRouter } from '@tarojs/taro';
-import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton } from 'taro-ui';
+import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton, AtActionSheet, AtActionSheetItem } from 'taro-ui';
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import ClassImg from './Componets/ClassImg';
-import { getCourseDetail, addCourseAttcourse, courseWareLearn } from './services';
+import { getCourseDetail, addCourseAttcourse, courseWareLearn,getExamstart } from './services';
 import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
@@ -14,10 +14,12 @@ const tabList = [{ title: '课程介绍' }, { title: '课程大纲' }];
 const ClassDetail = () => {
   const [classDetail, setClassDetail]: [any, any] = useState({});
   const [modalClassImg, setModalClassImg]: [any, any] = useState({ show: false, data: {} });
+  const [actionSheet, setActionSheet]: [any, any] = useState({ show: false, data: {} });
   const router = useRouter();
   const [currentTab, setCurrentTab] = useState(0);
-  const handleToClassPlay = (params) => {
-    const { cwtype, files, id, cwname } = params;
+  const handleToClassPlay = () => {
+    const { cwtype, files, id, cwname } = actionSheet.data;
+    setActionSheet({ show: false, data: {} });
     courseWareLearn({ cwid: id, cid: classDetail.id });
     if (cwtype == 1 || cwtype == 3) {
       Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}` });
@@ -42,9 +44,14 @@ const ClassDetail = () => {
     if (cwtype == 2) {
       setModalClassImg({
         show: true,
-        data: params,
+        data: actionSheet.data,
       });
     }
+  };
+  const handleToExam = (etype) => {
+    const { id } = actionSheet.data;
+    setActionSheet({ show: false, data: {} });
+    Taro.navigateTo({ url: `/pages/ClassDetail/Componets/ExamTest?cwid=${id}&eptype=${etype}` });
   };
   const handleAddCourseAttcourse = (cid) => {
     addCourseAttcourse({ cid }).then((d) => {
@@ -103,14 +110,19 @@ const ClassDetail = () => {
                 <View className='class-con'>
                   {get(classDetail, ['sourceware'], []).map((item) => {
                     return (
-                      <View className='at-row class-item' key={item}>
+                      <View className='at-row class-item' key={item.cwname}>
                         <View className='at-col at-col-2'>
                           <AtTag size='small'>{CWTYPE_MAP[item.cwtype]}</AtTag>
                         </View>
                         <View className='at-col at-col-8  class-item-desc'>{item.cwname}</View>
                         <View className='at-col at-col-2'>
-                          <AtButton type='primary' size='small' className='at-button-mini' onClick={() => handleToClassPlay(item)}>
-                            学习
+                          <AtButton
+                            type='primary'
+                            size='small'
+                            className='at-button-mini'
+                            onClick={() => setActionSheet({ show: true, data: item })}
+                          >
+                            操作
                           </AtButton>
                         </View>
                       </View>
@@ -129,6 +141,18 @@ const ClassDetail = () => {
           </View>
         </Block>
       )}
+      <AtActionSheet
+        isOpened={actionSheet.show}
+        title={actionSheet.data ? actionSheet.data.cwname : '请选择'}
+        cancelText='取消'
+        onCancel={() => setActionSheet({ show: false, data: {} })}
+        onClose={() => setActionSheet({ show: false, data: {} })}
+      >
+        <AtActionSheetItem onClick={handleToClassPlay}>学习</AtActionSheetItem>
+        <AtActionSheetItem onClick={() => handleToExam('3')}>每日一测</AtActionSheetItem>
+        <AtActionSheetItem onClick={() => handleToExam('2')}>随堂测验</AtActionSheetItem>
+        <AtActionSheetItem onClick={() => handleToExam('1')}>考试</AtActionSheetItem>
+      </AtActionSheet>
     </View>
   );
 };

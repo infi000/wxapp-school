@@ -3,14 +3,14 @@ import { View, Image } from '@tarojs/components';
 import { TOTAL_CLASS } from '@/constants/index';
 import TitleCon from '@/components/TitleCon';
 import { AtModal } from 'taro-ui';
-import { getExampaper, getExamstart } from './services';
+import { getExampaper, getExamstart,getDaypaper } from './services';
 import './index.scss';
 
 const { useState, useEffect } = Taro;
 
-const ExamClass = () => {
+const TestClass = () => {
   Taro.setNavigationBarTitle({
-    title: '我的考试',
+    title: '每日小测',
   });
   const [exam, setExam] = useState([]);
   const [modal, setModal]: [any, any] = useState({
@@ -39,7 +39,7 @@ const ExamClass = () => {
     });
   };
   useDidShow(() => {
-    getExampaper({ eptype: '1' })
+    getDaypaper()
       .then((d) => {
         setExam(d.papers);
       })
@@ -50,7 +50,7 @@ const ExamClass = () => {
   return (
     <View className='examClass-wrap'>
       <View>
-        <TitleCon title='选择考试课程' />
+        <TitleCon title='选择小测' />
         <View className='examClass-grid'>
           {exam.map((item) => {
             const { title, paperdes, id, passscore, score, starttime, endtime, qcount } = item;
@@ -90,7 +90,7 @@ const ExamClass = () => {
       </View>
       <AtModal
         isOpened={modal.show}
-        title='开始考试'
+        title='开始测验'
         cancelText='取消'
         confirmText='确认'
         onClose={resetModal}
@@ -101,4 +101,4 @@ const ExamClass = () => {
   );
 };
 
-export default ExamClass;
+export default TestClass;

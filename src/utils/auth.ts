@@ -19,11 +19,17 @@ export const logIn = (dispatch) =>
               var province = userInfo.province;
               var city = userInfo.city;
               var country = userInfo.country;
+              // Taro.setStorage({ key: 'wxUserInfo', data: { nickName, avatarUrl, gender, province, country, city, openid } });
+              // dispatch({ type: 'main/updateIsLogIn', payload: true });
+              // dispatch({ type: 'main/updateWxUserInfo', payload: { nickName, avatarUrl, gender, province, country, city, openid } });
+              // dispatch({ type: 'main/updateOpenid', payload: openid });
               saveUserData({ nickName, avatarUrl, gender, province, country, city, openid }).then(() => {
                 Taro.setStorage({ key: 'wxUserInfo', data: { nickName, avatarUrl, gender, province, country, city, openid } });
                 dispatch({ type: 'main/updateIsLogIn', payload: true });
                 dispatch({ type: 'main/updateWxUserInfo', payload: { nickName, avatarUrl, gender, province, country, city, openid } });
                 dispatch({ type: 'main/updateOpenid', payload: openid });
+              }).catch(err=>{
+                console.log(err)
               });
             },
           });

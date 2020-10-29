@@ -7,10 +7,10 @@ import Others from './modules/Others';
 
 const Me = () => {
   Taro.setNavigationBarTitle({
-    title: '我的考试',
+    title: '我的',
   });
   return (
-    <View className='me-wrap'>
+    <View className='basewrap me-wrap'>
       <MyAvatar />
       <View className='order-sales-con'>
    
