@@ -60,11 +60,13 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
-
+    
       'pages/Main/index',
+      'pages/HelpCenter/index',
+      'pages/LearnHistory/index',
       // 'pages/ClassDetail/Componets/ClassImg',
       'pages/ClassDetail/Componets/ExamTest',
-     
+      'pages/MeRanking/index',
       'pages/ClassDetail/index',
       'pages/NewExamDetail/index',
 
@@ -82,7 +84,7 @@ class App extends Component {
       'pages/MyCollect/index',
 
    
-      'pages/MeRanking/index',
+    
      
       //  'pages/ClassPlay/index',
          'pages/NewsDetail/index',

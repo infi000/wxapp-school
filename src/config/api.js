@@ -38,5 +38,7 @@ export default {
   examend:WxApiRoot+'/Exam/examend', // 16、	考试/测验结束
   daypaper:WxApiRoot+'/Exam/daypaper', // 26、	获取每日小测
   mydaypaperresult:WxApiRoot+'/User/mydaypaperresult', // 27、	获取小测结果
+  learnhistory:WxApiRoot+'/User/learnhistory', // 28、	获取学习历史
+  scorepos:WxApiRoot+'/User/scorepos', // 18、	个人考试结果（名次排行）
 
 };

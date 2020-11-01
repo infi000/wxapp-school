@@ -1,0 +1,17 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+.learnHistory-wrap{
+    // @include con;
+    // background-color: $bg-grey-color;
+    // @include base-con;
+    padding: 10px 0;
+    background-color: $bg-grey-color;
+    .learn-item{
+        @include con;
+        @include base-con;
+        font-size:$mini-fontsize;
+        .learn-item-line{
+            margin-bottom: 10px;
+        }
+    }
+}

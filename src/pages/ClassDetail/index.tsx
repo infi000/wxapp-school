@@ -9,7 +9,7 @@ import './index.scss';
 import { get, isArray } from 'lodash';
 import { CWTYPE_MAP } from './canstants';
 const { useState, useEffect } = Taro;
-const tabList = [{ title: '课程介绍' }, { title: '课程大纲' }];
+const tabList = [{ title: '课程大纲' }, { title: '课程介绍' }];
 
 const ClassDetail = () => {
   const [classDetail, setClassDetail]: [any, any] = useState({});
