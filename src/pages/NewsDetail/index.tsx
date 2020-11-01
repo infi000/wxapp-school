@@ -1,5 +1,5 @@
 import Taro, { useDidShow, useState, useRouter } from '@tarojs/taro';
-import { View, Block.Image } from '@tarojs/components';
+import { View, Block.Image, RichText } from '@tarojs/components';
 import { getNewsDetail } from './services';
 import { imgnotfount } from '@/static/images/index';
 import './index.scss';
@@ -34,7 +34,8 @@ const NewsDetail = () => {
         className='at-article__img' 
         src={newsDetail.cover || imgnotfount} 
         mode='widthFix' />
-        <View className='at-article__p'>{newsDetail.content}</View>
+        {/* <View className='at-article__p' dangerouslySetInnerHTML={{__html:newsDetail.content}}></View> */}
+        <RichText className='at-article__p' nodes={newsDetail.content}></RichText>
         </View>
       </View>
     </View>
