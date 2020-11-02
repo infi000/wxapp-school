@@ -42,10 +42,14 @@ const ClassDetail = () => {
       return;
     }
     if (cwtype == 2) {
-      setModalClassImg({
-        show: true,
-        data: actionSheet.data,
-      });
+      const info = encodeURIComponent(JSON.stringify(actionSheet.data));
+      console.log(info);
+      Taro.navigateTo({ url: `/pages/ClassDetail/Componets/ClassImg?info=${info}`});
+      return;
+      // setModalClassImg({
+      //   show: true,
+      //   data: actionSheet.data,
+      // });
     }
   };
   const handleToExam = (etype) => {

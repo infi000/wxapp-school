@@ -66,6 +66,7 @@ class App extends Component {
       'pages/LearnHistory/index',
       // 'pages/ClassDetail/Componets/ClassImg',
       'pages/ClassDetail/Componets/ExamTest',
+      'pages/ClassDetail/Componets/ClassImg',
       'pages/MeRanking/index',
       'pages/ClassDetail/index',
       'pages/NewExamDetail/index',

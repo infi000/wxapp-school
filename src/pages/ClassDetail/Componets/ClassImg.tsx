@@ -6,20 +6,31 @@ import { get, isArray } from 'lodash';
 import { AtButton } from 'taro-ui';
 
 const CLassImg = (props) => {
-  const { info = {}, handleBack } = props;
+  // const {  handleBack } = props;
+  const [info,setInfo]:[any,any] = useState({});
+  const router = useRouter();
   Taro.setNavigationBarTitle({
     title: info.cwname || '',
   });
 console.log('info',info);
-  useDidShow(() => {});
+  useDidShow(() => {
+    const { params } = router;
+    const { info = ''} = params || {};
+    console.log(info);
+    if(info){
+      setInfo(()=>{
+        return JSON.parse(decodeURIComponent(info))
+      })
+    }
+  });
 
   return (
     <View className='classImg-wrap'>
-      <View className='btn-back'>
+      {/* <View className='btn-back'>
         <AtButton type='primary' size='small' className='at-button-mini' onClick={handleBack}>
           退出
         </AtButton>
-      </View>
+      </View> */}
       <View className='at-article'>
         <View className='at-article__h2'>{info.cwname}</View>
         <View className='at-article__info'>{info.ctime}</View>

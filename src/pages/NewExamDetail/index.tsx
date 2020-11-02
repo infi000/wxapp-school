@@ -4,6 +4,7 @@ import './index.scss';
 import { getExampaperdetail,getCanswer, getExamend} from './services';
 import ExamBox from './modules/ExamBox';
 import { AtButton, AtGrid, AtRadio } from 'taro-ui';
+import { isString } from 'lodash';
 
 const NewsDetail = () => {
   Taro.setNavigationBarTitle({
@@ -18,7 +19,8 @@ const NewsDetail = () => {
   const { params } = router;
   const { epid = '',examid = '' } = params || {};
   const handleAnswer = (item) => {
-    getCanswer({epid,examid,qid:item.qid,answer:item.id}).then(d =>{
+    const answer = isString(item.content)?item.content.substr(0,1):'';
+    getCanswer({epid,examid,qid:item.qid,answer}).then(d =>{
       setAnserList((opt) => {
         return { ...opt, ...{ [item.qid]: item } };
       });
@@ -55,7 +57,7 @@ const NewsDetail = () => {
   };
   const handleExamEnd = () =>{
     getExamend({examid}).then(d=>{
-      Taro.navigateTo({ url: '/pages/MeRanking/index'});
+      Taro.redirectTo({ url: '/pages/MeRanking/index'});
     })
   }
   useDidShow(() => {
