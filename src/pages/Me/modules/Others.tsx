@@ -9,6 +9,7 @@ const LIST_URL_MAP = [
   { name: '小测结果', url: '/pages/TestResult/index' },
   // { name: '当日报告', url: '/pages/Kefu/index' },
   { name: '学习历史', url: '/pages/LearnHistory/index' },
+  { name: '用户认证', url: '/pages/UserAuth/index' },
 ];
 
 const tmplIds = ['vqWshHTalxdFaNqhdSWJ8Mkb7HsysV39m1h9Yk-94hY', '05mTNKODj3164t8tEgu60oLUyqddSUHtjAOS6i1S0Zs'];

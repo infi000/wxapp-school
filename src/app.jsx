@@ -37,6 +37,7 @@ const store = dvaApp.getStore();
 class App extends Component {
   componentWillMount() {
     this.update();
+    const { dispatch } = this.props;
     Taro.checkSession({
       success(res) {
         //session_key 未过期，并且在本生命周期一直有效
@@ -60,8 +61,11 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
-    
+     
       'pages/Main/index',
+      'pages/NewExamDetail/components/Result',
+      'pages/UserAuth/index',
+ 
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',
       // 'pages/ClassDetail/Componets/ClassImg',
