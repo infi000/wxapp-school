@@ -23,7 +23,7 @@ const Result = (props) => {
   return (
     <View className='exam-wrap'>
       <View className='result-con'>
-        <View className='result-top'>考试科目名称</View>
+        <View className='result-top'>考试科目名称(100分)</View>
         <View className='result-mid'>
           {[1, 2, 34, 5, 6, 7, 8, 9, 0, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4].map((item, index) => {
             return (

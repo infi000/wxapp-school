@@ -16,7 +16,7 @@ const ExamTest = (props) => {
   });
   const router = useRouter();
   const { params } = router;
-  const { cwid, eptype }: any = params || {};
+  const { cwid, cid, eptype }: any = params || {};
   const handleToExam = (item) => {
     setModal({
       show: true,
@@ -50,7 +50,14 @@ const ExamTest = (props) => {
     Taro.setNavigationBarTitle({
       title,
     });
-    getExampaper({ cwid, eptype })
+    let params:any = {eptype};
+    if(cwid){
+      params.cwid = cwid;
+    }
+    if(cid){
+      params.cid = cid;
+    }
+    getExampaper(params)
     // getExampaper({ cwid:'1',eptype:'1' })
       .then((d) => {
         d.papers && setExam(d.papers);
