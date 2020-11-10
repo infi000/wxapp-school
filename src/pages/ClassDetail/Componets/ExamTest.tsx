@@ -48,7 +48,7 @@ const ExamTest = (props) => {
       title = '每日一测';
     }
     Taro.setNavigationBarTitle({
-      title,
+      title:'华鑫学堂'
     });
     let params:any = {eptype};
     if(cwid){

@@ -6,7 +6,7 @@ import { isArray } from 'lodash';
 
 const LearnHistory = (props) => {
   Taro.setNavigationBarTitle({
-    title: '学习历史',
+    title: '华鑫学堂',
   });
   const [learnHistory, setLearnHistory] = useState([]);
   const router = useRouter();

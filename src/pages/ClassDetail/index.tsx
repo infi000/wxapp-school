@@ -77,7 +77,7 @@ const ClassDetail = () => {
       .then((d) => {
         setClassDetail(d);
         Taro.setNavigationBarTitle({
-          title: d.cname || '',
+          title: '华鑫学堂'
         });
       })
       .catch((err) => {

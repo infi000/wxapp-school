@@ -30,7 +30,7 @@ const OnlineStudy = () => {
       });
   }, []);
   Taro.setNavigationBarTitle({
-    title: '在线培训',
+    title:'华鑫学堂',
   });
   useDidShow(() => {});
   return (

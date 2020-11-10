@@ -61,11 +61,11 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
-  
+      'pages/UserAuth/index',
       'pages/Main/index',
       'pages/NewExamDetail/components/Result',
 
-      'pages/UserAuth/index',
+     
       'pages/MeRanking/index',
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',

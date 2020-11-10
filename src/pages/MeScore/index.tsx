@@ -7,7 +7,7 @@ const MeScore = () => {
   useDidShow(() => {
     const { params } = router;
     Taro.setNavigationBarTitle({
-      title: '我的积分',
+      title: '华鑫学堂',
     });
   });
   return (

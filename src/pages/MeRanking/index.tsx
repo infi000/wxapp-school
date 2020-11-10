@@ -12,7 +12,7 @@ const MeRanking = () => {
   useDidShow(() => {
     const { params } = router;
     Taro.setNavigationBarTitle({
-      title: '名次排行',
+      title: '华鑫学堂',
     });
     getScorepos().then((d) => {
      d.scores && setRanking(d.scores);

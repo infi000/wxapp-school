@@ -8,7 +8,7 @@ import { AtGrid } from 'taro-ui';
 const getMyattcourse:any = ()=> {};
 const MyCollect = (props) => {
   Taro.setNavigationBarTitle({
-    title: '我的证书',
+    title: '华鑫学堂',
   });
   const [hotClass, setHotClass] = useState([]);
   const router = useRouter();

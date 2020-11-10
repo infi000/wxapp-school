@@ -14,7 +14,7 @@ const ClassPlay = () => {
     const { cwid, fpath, id, cwname } = params || {};
     setInfo({ cwid, fpath, id, cwname });
     Taro.setNavigationBarTitle({
-      title: cwname || '',
+      title:'华鑫学堂',
     });
   });
 

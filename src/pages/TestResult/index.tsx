@@ -7,7 +7,7 @@ import { AtGrid } from 'taro-ui';
 
 const TestResult = (props) => {
   Taro.setNavigationBarTitle({
-    title: '小测结果',
+    title: '华鑫学堂',
   });
   const [answers, setAnswers] = useState([]);
   const router = useRouter();

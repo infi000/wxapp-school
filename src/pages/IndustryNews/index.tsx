@@ -9,7 +9,7 @@ import './index.scss';
 
 const IndustryNews = () => {
   Taro.setNavigationBarTitle({
-    title: '行业咨询',
+    title: '华鑫学堂',
   });
   return (
     <View className='industryNews-wrap'>

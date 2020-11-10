@@ -6,7 +6,7 @@ import { AtGrid } from 'taro-ui';
 
 const MyCollect = (props) => {
   Taro.setNavigationBarTitle({
-    title: '我的收藏',
+    title: '华鑫学堂',
   });
   const handleChoose = (item) =>{
     console.log(item);

@@ -10,7 +10,7 @@ const { useState, useEffect } = Taro;
 
 const TestClass = () => {
   Taro.setNavigationBarTitle({
-    title: '每日小测',
+    title: '华鑫学堂',
   });
   const [exam, setExam] = useState([]);
   const [modal, setModal]: [any, any] = useState({

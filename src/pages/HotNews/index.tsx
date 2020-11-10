@@ -49,7 +49,7 @@ const HotNews = () => {
       }
     });
     Taro.setNavigationBarTitle({
-      title: '行业要闻',
+      title: '华鑫学堂',
     });
   });
   return (

@@ -8,9 +8,6 @@ import ListCon from '@/components/ListCon';
 
 const MyCollectNews = (props) => {
     const [listInfo, setListInfo] = useState([]);
-    Taro.setNavigationBarTitle({
-    title: '收藏的新闻',
-  });
   const handleToNewsDetail = (params) => {
     const { id } = params;
     Taro.navigateTo({ url: '/pages/NewsDetail/index?nid=' + id });
@@ -32,7 +29,7 @@ const MyCollectNews = (props) => {
       }
     });
     Taro.setNavigationBarTitle({
-      title: '行业要闻',
+      title:'华鑫学堂',
     });
   });
   return (

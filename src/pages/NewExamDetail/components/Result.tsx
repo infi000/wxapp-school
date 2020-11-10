@@ -16,7 +16,7 @@ const Result = (props) => {
   useDidShow(() => {
     dispatch({type: 'tabbar/updateCurrentNavIndex', payload: 2})
     Taro.setNavigationBarTitle({
-      title: '考试结果',
+      title: '华鑫学堂',
     });
   });
   
