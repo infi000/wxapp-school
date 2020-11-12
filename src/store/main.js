@@ -6,6 +6,7 @@ export default {
     windowHeight:getWindowHeight(),
     isLogIn:false,
     wxUserInfo:{},
+    userScoreInfo:{score:'',rank:''},
     openid:''
   },
   reducers: {
@@ -17,6 +18,9 @@ export default {
     },
     updateOpenid: (state, { payload }) => {
       state.openid = payload;
+    },
+    updateUserScoreInfo: (state, { payload }) => {
+      state.userScoreInfo = payload;
     },
   },
   effects: {

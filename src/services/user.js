@@ -11,3 +11,8 @@ export const getJscode2session = async (payload) => request.get(Api.getJscode2se
  */
 
 export const saveUserData = async (payload) => request.get(Api.saveUserData, payload);
+/**
+ * 更新小程序用户信息
+ */
+
+export const getScorepos = async () => request.get(Api.scorepos);

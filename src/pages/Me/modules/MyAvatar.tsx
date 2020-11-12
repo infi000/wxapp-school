@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from '@tarojs/redux';
 import { logIn } from '@/utils/auth';
 import '../index.scss';
 const MyAvatar = () => {
-  const { isLogIn, wxUserInfo } = useSelector((state:any) => state.main);
+  const { isLogIn, wxUserInfo, userScoreInfo } = useSelector((state:any) => state.main);
   const dispatch = useDispatch();
   const handleLogIn = (e) => {
     console.log(e);
@@ -18,6 +18,7 @@ const MyAvatar = () => {
       Taro.navigateTo({ url: path});
     }
   }
+  console.log("userScoreInfo",userScoreInfo);
   return (
     <View className='my-avatar-con'>
       <View className='at-row at-row__align--center  my-avatar-top'>
@@ -27,6 +28,8 @@ const MyAvatar = () => {
               <AtAvatar circle image={wxUserInfo.avatarUrl}></AtAvatar>
             </View>
             <View className='at-col'>{wxUserInfo.nickName}</View>
+            <View className='at-col'>积分：{userScoreInfo.score}</View>
+            <View className='at-col'>排名：{userScoreInfo.rank}</View>
           </Block>
         ) : (
           <Button open-type='getUserInfo' onGetUserInfo={handleLogIn}>

@@ -56,9 +56,7 @@ const NewsDetail = () => {
     }
   };
   const handleExamEnd = () =>{
-    getExamend({examid}).then(d=>{
-      Taro.redirectTo({ url: '/pages/NewExamDetail/components/Result'});
-    })
+    Taro.redirectTo({ url: '/pages/NewExamDetail/components/Result?examid='+examid});
   }
   useDidShow(() => {
     getExampaperdetail({ epid })

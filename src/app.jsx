@@ -4,6 +4,8 @@ import dva from './dva';
 import models from './store';
 // import { ROUTER_MAP } from './router';
 import { set as setGlobalData, get as getGlobalData } from './global_data';
+import { getScorepos } from '@/services/user';
+import { isArray } from 'lodash';
 
 import Index from './pages/index';
 
@@ -50,6 +52,18 @@ class App extends Component {
             dispatch({ type: 'main/updateOpenid', payload: wxUserInfo.openid });
           },
         });
+        getScorepos()
+        .then((d) => {
+          const { uid, scores } = d ||{};
+          let payload = {}
+          if(uid && isArray(scores)){  
+            payload = scores.find((d:any)=> d.id == uid);
+          }
+          dispatch({ type: 'main/updateUserScoreInfo', payload});
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       },
       fail() {
         console.log('session验证未登陆！');
@@ -61,11 +75,11 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
-     
+    
       'pages/Main/index',
-      'pages/NewExamDetail/components/Result',
       'pages/UserAuth/index',
-     
+      'pages/NewExamDetail/components/Result',
+
       'pages/MeRanking/index',
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',

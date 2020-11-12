@@ -4,35 +4,48 @@ import { useSelector, useDispatch } from '@tarojs/redux';
 import '../index.scss';
 import {} from '../services';
 import { AtButton, AtGrid } from 'taro-ui';
+import {  getExamend} from '../services';
+import { get } from 'lodash';
+const defaultDataSource = {examid:'',questions:[],analysis:{}};
 
-const getMyattcourse: any = () => {};
-const Result = (props) => {
-  const {nav, currentNavIndex} = useSelector(state => state.tabbar)
+const Result = () => {
+  const [ dataSource, setDataSource] = useState({...defaultDataSource})
   const dispatch = useDispatch();
   const router = useRouter();
+  const examid = get(router,['params','examid'],''); 
+  const analysis: { [key: string]: string } = get(dataSource, ['analysis'], {});
+  const questions: any[] = get(dataSource, ['questions'], []);
+
   const handleOver = () => {
-    Taro.redirectTo({ url: '/pages/Main/index'});
+    Taro.redirectTo({ url: '/pages/Main/index' });
   };
   useDidShow(() => {
-    dispatch({type: 'tabbar/updateCurrentNavIndex', payload: 2})
+    dispatch({ type: 'tabbar/updateCurrentNavIndex', payload: 2 });
     Taro.setNavigationBarTitle({
       title: '华鑫学堂',
     });
+    getExamend({examid}).then(d=>{
+      setDataSource(d);
+    })
   });
-  
+
   return (
     <View className='exam-wrap'>
       <View className='result-con'>
-        <View className='result-top'>考试科目名称(100分)</View>
+        <View className='result-top'>
+          {analysis.title || '-'}({analysis.totalscore || '-'}分)
+        </View>
         <View className='result-mid'>
-          {[1, 2, 34, 5, 6, 7, 8, 9, 0, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4].map((item, index) => {
+          {questions.map((item, index) => {
             return (
-              <View className='result-item' key={index}>
-                <View className='result-item-top'>
-                  <View className='answer-item'>第一题：B</View>
-                  <View className='answer-item'>正确答案：B</View>
+              <View className='result-item' key={item.id}>
+                <View className={`result-item-top ${item.isright == '1' ? 'isRight' : 'isWrong'}`}>
+                  <View className='answer-item'>
+                    第{index + 1}题：{item.answer || '-'}
+                  </View>
+                  <View className='answer-item'>正确答案：{item.rightAnswer|| '-'}</View>
                 </View>
-                <View className='result-item-min'>解析说明：112312321323123123</View>
+                <View className='result-item-min'>解析说明：{item.analysis|| '-'}</View>
               </View>
             );
           })}

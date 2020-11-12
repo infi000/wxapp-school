@@ -48,6 +48,13 @@ $exam-desc-font-size: $sm-fontsize;
   }
   .result-item {
     padding-bottom: 30px;
+    .isRight{
+   
+      color:green;
+    }
+    .isWrong{
+      color:red;
+    }
     .result-item-top {
       padding-bottom: 10px;
       .answer-item {

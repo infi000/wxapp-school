@@ -40,5 +40,5 @@ export default {
   mydaypaperresult:WxApiRoot+'/User/mydaypaperresult', // 27、	获取小测结果
   learnhistory:WxApiRoot+'/User/learnhistory', // 28、	获取学习历史
   scorepos:WxApiRoot+'/User/scorepos', // 18、	个人考试结果（名次排行）
-
+  userModify:WxApiRoot+'/User/modify', // 33、	更新用户信息
 };
