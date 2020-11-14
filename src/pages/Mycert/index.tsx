@@ -13,9 +13,9 @@ const MyCert = () => {
   const [certs, setCerts] = useState([]);
   const handleChoose = (item) => {
     console.log(item);
-    const { path } = item;
-    if (path) {
-      Taro.navigateTo({ url: path });
+    const { certpath } = item;
+    if (certpath) {
+      Taro.navigateTo({ url: certpath });
     }
   };
   useDidShow(() => {

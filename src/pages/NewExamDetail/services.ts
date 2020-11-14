@@ -13,5 +13,9 @@ export const getCanswer = (params:{epid:string| number;examid:string| number;qid
  * 考试/测验结束
  */
 export const getExamend = (params:{examid:string| number}) => request.get(Api.examend,params);
+/**
+ * 获取用户自己的考试/测验结果/测试历史
+ */
+export const getMyExamResult = (params: { epid: string | number }) => request.get(Api.myexamresult,params);
 
 export default {};

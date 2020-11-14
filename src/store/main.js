@@ -20,7 +20,11 @@ export default {
       state.openid = payload;
     },
     updateUserScoreInfo: (state, { payload }) => {
-      state.userScoreInfo = payload;
+      const { uid, scores } = payload;
+      const info = scores.find((d) => d.id == uid);
+      const rank = scores.findIndex((d) => d.id == uid);
+      info.rank = rank
+      state.userScoreInfo = info;
     },
   },
   effects: {

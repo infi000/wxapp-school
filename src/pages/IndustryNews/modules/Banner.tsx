@@ -6,8 +6,11 @@ import '../index.scss';
 
 const Banner = () => {
   const [bannerList, setBannerList] = useState([]);
+  const handleToNewsDetail = (params) => {
+    const { id } = params;
+    Taro.navigateTo({ url: '/pages/NewsDetail/index?nid=' + id });
+  };
   useEffect(() => {
-    console.log(123)
     getNewsBanners().then(d=>{
       d.news && setBannerList(d.news);
     }).catch(e =>{
@@ -22,7 +25,7 @@ const Banner = () => {
             bannerList.map((item) => {
               const { cover, id, } = item;
               return (
-                <SwiperItem key={id}>
+                <SwiperItem key={id} onClick={() => handleToNewsDetail(item)}>
                   <Image mode='aspectFill' style='width: 100%;height: 100%;' src={cover || imgnotfount} />
                 </SwiperItem>
               );

@@ -41,4 +41,5 @@ export default {
   learnhistory:WxApiRoot+'/User/learnhistory', // 28、	获取学习历史
   scorepos:WxApiRoot+'/User/scorepos', // 18、	个人考试结果（名次排行）
   userModify:WxApiRoot+'/User/modify', // 33、	更新用户信息
+  myexamresult: WxApiRoot + '/Exam/myexamresult', // 32、	获取用户自己的考试/测验结果/测试历史
 };

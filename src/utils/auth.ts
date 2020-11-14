@@ -33,11 +33,9 @@ export const logIn = (dispatch) =>
                   getScorepos()
                     .then((d) => {
                       const { uid, scores } = d || {};
-                      let payload = {};
                       if (uid && isArray(scores)) {
-                        payload = scores.find((d: any) => d.id == uid);
+                        dispatch({ type: 'main/updateUserScoreInfo', payload: d });
                       }
-                      dispatch({ type: 'main/updateUserScoreInfo', payload });
                     })
                     .catch((err) => {
                       console.log(err);

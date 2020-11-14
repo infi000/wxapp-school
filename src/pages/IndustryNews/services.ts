@@ -12,7 +12,7 @@ export const getNewsBanners = () => request.get(Api.NewsBanners);
 /**
  * 搜索新闻
  */
-export const getNewsSearch = () => request.get(Api.NewsSearch,{offset:0,count:4});
+export const getNewsSearch = () => request.get(Api.NewsSearch,{offset:0,count:2});
 /**
  * 1、	搜索课程分类
  */
