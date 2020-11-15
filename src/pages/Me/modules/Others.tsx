@@ -1,6 +1,7 @@
 import Taro, { useEffect, useState } from '@tarojs/taro';
 import { View, Button } from '@tarojs/components';
 import '../index.scss';
+import { useSelector } from '@tarojs/redux';
 
 const LIST_URL_MAP = [
   // { name: '设置密码', url: '/pages/PhotoWall/index' },
@@ -14,6 +15,8 @@ const LIST_URL_MAP = [
 
 const tmplIds = ['vqWshHTalxdFaNqhdSWJ8Mkb7HsysV39m1h9Yk-94hY', '05mTNKODj3164t8tEgu60oLUyqddSUHtjAOS6i1S0Zs'];
 const Others = () => {
+  const { userIsAuth } = useSelector((state) => state.main);
+
   const [tmplIds, setTmplIds]: [string[], any] = useState([]);
   const handleClickItem = (url) => {
     Taro.navigateTo({ url });
@@ -24,16 +27,18 @@ const Others = () => {
       {LIST_URL_MAP.map((item) => {
         const { name, url } = item;
         return (
-          <View
-            className='at-row me-others-con'
-            key={name}
-            onClick={() => {
-              handleClickItem(url);
-            }}
-          >
-            <View className='at-col-6 textL'>{name}</View>
-            <View className='at-col-6 textR'></View>
-          </View>
+          (name == '用户认证' && userIsAuth == 0) ? null :(
+            <View
+              className='at-row me-others-con'
+              key={name}
+              onClick={() => {
+                handleClickItem(url);
+              }}
+            >
+              <View className='at-col-6 textL'>{name}</View>
+              <View className='at-col-6 textR'></View>
+            </View>
+          )
         );
       })}
     </View>

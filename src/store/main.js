@@ -7,7 +7,8 @@ export default {
     isLogIn:false,
     wxUserInfo:{},
     userScoreInfo:{score:'',rank:''},
-    openid:''
+    openid:'',
+    userIsAuth:'0' // 是否认证
   },
   reducers: {
     updateIsLogIn: (state, {payload}) =>{
@@ -25,6 +26,9 @@ export default {
       const rank = scores.findIndex((d) => d.id == uid);
       info.rank = rank
       state.userScoreInfo = info;
+    },
+    updateUserIsAuth: (state, { payload }) => {
+      state.userIsAuth = payload;
     },
   },
   effects: {

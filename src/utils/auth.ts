@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { getJscode2session, saveUserData, getScorepos } from '@/services/user';
+import { getJscode2session, saveUserData, getScorepos, getUserIsauth } from '@/services/user';
 import { isArray } from 'lodash';
 
 export const logIn = (dispatch) =>
@@ -20,10 +20,6 @@ export const logIn = (dispatch) =>
               var province = userInfo.province;
               var city = userInfo.city;
               var country = userInfo.country;
-              // Taro.setStorage({ key: 'wxUserInfo', data: { nickName, avatarUrl, gender, province, country, city, openid } });
-              // dispatch({ type: 'main/updateIsLogIn', payload: true });
-              // dispatch({ type: 'main/updateWxUserInfo', payload: { nickName, avatarUrl, gender, province, country, city, openid } });
-              // dispatch({ type: 'main/updateOpenid', payload: openid });
               saveUserData({ nickname: nickName, avatarurl: avatarUrl, gender, province, country, city, openid })
                 .then(() => {
                   Taro.setStorage({ key: 'wxUserInfo', data: { nickName, avatarUrl, gender, province, country, city, openid } });
@@ -38,6 +34,11 @@ export const logIn = (dispatch) =>
                       }
                     })
                     .catch((err) => {
+                      console.log(err);
+                    });
+                    getUserIsauth().then((d)=>{
+                      dispatch({ type: 'main/updateUserIsAuth', payload: d });
+                    }) .catch((err) => {
                       console.log(err);
                     });
                 })

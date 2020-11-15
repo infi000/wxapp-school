@@ -29,6 +29,32 @@
       width: 100%;
       border-radius: 6px;
       text-align: center;
+      position: relative;
+      .banner-title-con {
+        position: absolute;
+        bottom: 70px;
+        // bottom: 270px;
+        left: 35px;
+        right: 35px;
+        // padding: 10px 0;
+        height: 45px;
+        line-height: 45px;
+        background-color: rgba(0, 0, 0, 0.5);
+  
+
+        .banner-title {
+          color: #fff;
+          font-size: $sm-mini-fontsize;
+          @include text2line(1);
+          width: 80%;
+          float: left;
+        }
+        .banner-logo {
+          width: 20%;
+          height: 100%;
+          float: left;
+        }
+      }
     }
   }
 }

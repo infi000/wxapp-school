@@ -15,7 +15,9 @@ const MyCert = () => {
     console.log(item);
     const { certpath } = item;
     if (certpath) {
-      Taro.navigateTo({ url: certpath });
+      const path = encodeURIComponent(certpath)
+      Taro.navigateTo({ url: '/pages/WebView/index?path='+ path });
+      
     }
   };
   useDidShow(() => {

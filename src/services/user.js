@@ -16,3 +16,8 @@ export const saveUserData = async (payload) => request.get(Api.saveUserData, pay
  */
 
 export const getScorepos = async () => request.get(Api.scorepos);
+/**
+ * 用户是否认证通过
+ */
+
+export const getUserIsauth = async () => request.get(Api.userIsauth);

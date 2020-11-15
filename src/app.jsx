@@ -4,7 +4,7 @@ import dva from './dva';
 import models from './store';
 // import { ROUTER_MAP } from './router';
 import { set as setGlobalData, get as getGlobalData } from './global_data';
-import { getScorepos } from '@/services/user';
+import { getScorepos,getUserIsauth } from '@/services/user';
 import { isArray } from 'lodash';
 
 import Index from './pages/index';
@@ -62,6 +62,11 @@ class App extends Component {
         .catch((err) => {
           console.log(err);
         });
+        getUserIsauth().then((d)=>{
+          dispatch({ type: 'main/updateUserIsAuth', payload: d });
+        }) .catch((err) => {
+          console.log(err);
+        });
       },
       fail() {
         console.log('session验证未登陆！');
@@ -73,9 +78,10 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
-    
-
       'pages/Main/index',
+
+
+      'pages/WebView/index',
       'pages/UserAuth/index',
       'pages/NewExamDetail/components/Result',
 
