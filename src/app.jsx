@@ -78,12 +78,13 @@ class App extends Component {
   config = {
     pages: [
       // 'pages/ClassDetail/index',
+
       'pages/Main/index',
 
+      'pages/NewExamDetail/components/Result',
 
       'pages/WebView/index',
       'pages/UserAuth/index',
-      'pages/NewExamDetail/components/Result',
 
       'pages/MeRanking/index',
       'pages/HelpCenter/index',

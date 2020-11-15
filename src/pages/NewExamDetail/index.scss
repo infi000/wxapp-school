@@ -40,14 +40,18 @@ $exam-desc-font-size: $sm-fontsize;
     left: 0;
     top: $result-top-height;
     bottom: $result-top-height;
-    background-color: #fff;
-    padding: $common-padding;
+    background-color: $bg-grey-color;
+    // padding: $common-padding;
     padding-top: 40px;
     font-size: $exam-font-size;
     overflow-y: scroll;
   }
   .result-item {
-    padding-bottom: 30px;
+    // padding-bottom: 30px;
+    padding: 30px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px #ccc;
     .isRight{
    
       color:green;
