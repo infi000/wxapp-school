@@ -12,13 +12,12 @@ const MyCert = () => {
   });
   const [certs, setCerts] = useState([]);
   const handleChoose = (item) => {
-    console.log(item);
     const { certpath } = item;
-    if (certpath) {
-      const path = encodeURIComponent(certpath)
-      Taro.navigateTo({ url: '/pages/WebView/index?path='+ path });
-      
-    }
+    const urls = certs.map((item:any) => item.image);
+    Taro.previewImage({
+      current: certpath, // 当前显示图片的http链接
+      urls // 需要预览的图片http链接列表
+    })
   };
   useDidShow(() => {
     getMycert()

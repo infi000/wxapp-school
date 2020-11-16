@@ -4,11 +4,13 @@ import Taro, { useDidShow, useState, useRouter } from '@tarojs/taro';
 import { View, Block, Picker } from '@tarojs/components';
 import _Uploader from '@/components/Tabbar';
 import { useSelector, useDispatch } from '@tarojs/redux';
-import { AtList, AtListItem, AtButton, AtGrid, AtInput } from 'taro-ui';
+import { AtList, AtListItem, AtButton, AtGrid, AtInput, AtActionSheet, AtActionSheetItem } from 'taro-ui';
 import { postUserModify } from './services';
-import {showSuccessToast } from '@/utils/util';
+import { showSuccessToast, showErrorToast } from '@/utils/util';
 import './index.scss';
+import { getUserIsauth } from '@/services/user';
 
+type PCAType = 'area' | 'city' | 'province';
 const MAP = {
   province: ['江苏'],
   city: ['苏州'],
@@ -28,13 +30,19 @@ const defaultPikerParams: any = {
   city: '',
   area: '',
 };
+const defaultSelectModal: { show: boolean; option: Array<any>; type?: PCAType } = {
+  show: false,
+  option: [],
+};
 const UserAuth = (props) => {
   Taro.setNavigationBarTitle({
     title: '华鑫学堂',
   });
-  const [formParams, setFormParams]:[any , any] = useState(defaultParams);
-  const [pikerParams, setPikerParams] = useState(defaultPikerParams);
+  const [formParams, setFormParams]: [any, any] = useState({ ...defaultParams });
+  const [pikerParams, setPikerParams] = useState({ ...defaultPikerParams });
+  const [selectModal, setSelectModal] = useState({ ...defaultSelectModal });
   const router = useRouter();
+  const dispatch = useDispatch();
   const handleUpdateForm = (params, type) => {
     console.log(params);
     setFormParams((opt) => {
@@ -51,11 +59,31 @@ const UserAuth = (props) => {
     handleUpdateForm(MAP[type][index], type);
   };
   const handleSubmite = () => {
-    console.log(formParams);
-    console.log(pikerParams);
-    postUserModify(formParams).then(d=>{
-      showSuccessToast('提交成功')
-    })
+    console.log('formParams', formParams);
+    if (Object.values(formParams).findIndex((item) => item === '') >= 0) {
+      showErrorToast('请输入参数');
+      return;
+    }
+    postUserModify(formParams).then((d) => {
+      showSuccessToast('提交成功');
+      getUserIsauth().then((d)=>{
+        dispatch({ type: 'main/updateUserIsAuth', payload: d });
+      }) .catch((err) => {
+        console.log(err);
+      });
+      setTimeout(() => {
+        Taro.navigateTo({
+          url: '/pages/Main/index',
+        });
+      }, 500);
+    });
+  };
+  const handleOpenSelect = (type: PCAType) => {
+    setSelectModal({
+      show: true,
+      option: MAP[type],
+      type,
+    });
   };
   useDidShow(() => {
     const { params } = router;
@@ -69,7 +97,14 @@ const UserAuth = (props) => {
       <AtInput name='value' title='身份证号' type='text' value={formParams.card} onChange={(e) => handleUpdateForm(e, 'card')} />
       <AtInput name='value' title='省' type='text' disabled value={formParams.province} onChange={(e) => handleUpdateForm(e, 'province')} />
       <AtInput name='value' title='市' type='text' disabled value={formParams.city} onChange={(e) => handleUpdateForm(e, 'city')} />
-      <AtInput name='value' title='区' type='text' value={formParams.area} onChange={(e) => handleUpdateForm(e, 'area')} />
+      <AtInput
+        name='value'
+        title='区'
+        type='text'
+        value={formParams.area}
+        onChange={(e) => handleUpdateForm(e, 'area')}
+        onFocus={() => handleOpenSelect('area')}
+      />
 
       {/* <View>
         <Picker mode='selector' range={MAP.province} onChange={(e) => handleSelectChange(e, 'province')} value={pikerParams.province}>
@@ -104,6 +139,26 @@ const UserAuth = (props) => {
       <AtButton type='primary' size='small' onClick={handleSubmite}>
         提交
       </AtButton>
+      <AtActionSheet
+        isOpened={selectModal.show}
+        onClose={() => {
+          setSelectModal({ ...defaultSelectModal });
+        }}
+      >
+        {MAP.area.map((name) => {
+          return (
+            <AtActionSheetItem
+              key={name}
+              onClick={() => {
+                handleUpdateForm(name, selectModal.type);
+                setSelectModal({ ...defaultSelectModal });
+              }}
+            >
+              {name}
+            </AtActionSheetItem>
+          );
+        })}
+      </AtActionSheet>
     </View>
   );
 };

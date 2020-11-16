@@ -27,7 +27,7 @@ const HotClass = () => {
   return (
     <View className='hotClass-wrap'>
       <TitleCon title='热门课程' />
-      <ClassTagGroup hotClass={memoHotClass} />
+      <ClassTagGroup hotClass={memoHotClass} col='4'/>
     </View>
   );
 };

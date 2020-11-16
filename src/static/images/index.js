@@ -32,6 +32,12 @@ export { default as zaixianpeixun1} from './zaixianpeixun1.png';
 export { default as zaixianpeixun2} from './zaixianpeixun2.png';
 export { default as xuexikaoshi1} from './xuexikaoshi1.png';
 export { default as xuexikaoshi2} from './xuexikaoshi2.png';
+export { default as kx1} from './kx1.png';
+export { default as kx2} from './kx2.png';
+export { default as epx1} from './epx1.png';
+export { default as epx2} from './epx2.png';
+export { default as wo1} from './wo1.png';
+export { default as wo2} from './wo2.png';
 
 
 export { default as daoshitouxiang } from './daoshitouxiang.png';

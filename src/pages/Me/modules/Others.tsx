@@ -27,7 +27,7 @@ const Others = () => {
       {LIST_URL_MAP.map((item) => {
         const { name, url } = item;
         return (
-          (name == '用户认证' && userIsAuth == 0) ? null :(
+          (name == '用户认证' && userIsAuth == 1) ? null :(
             <View
               className='at-row me-others-con'
               key={name}

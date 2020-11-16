@@ -24,7 +24,7 @@ export default {
       const { uid, scores } = payload;
       const info = scores.find((d) => d.id == uid);
       const rank = scores.findIndex((d) => d.id == uid);
-      info.rank = rank
+      info.rank = Number(rank)+1;
       state.userScoreInfo = info;
     },
     updateUserIsAuth: (state, { payload }) => {
