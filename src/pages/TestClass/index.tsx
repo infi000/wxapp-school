@@ -1,9 +1,10 @@
+//每日小测
 import Taro, { useDidShow } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { TOTAL_CLASS } from '@/constants/index';
 import TitleCon from '@/components/TitleCon';
 import { AtModal } from 'taro-ui';
-import { getExampaper, getExamstart,getDaypaper } from './services';
+import { getExampaper, getExamstart, getDaypaper } from './services';
 import './index.scss';
 
 const { useState, useEffect } = Taro;
@@ -29,7 +30,7 @@ const TestClass = () => {
     getExamstart({ epid: id }).then((d) => {
       resetModal();
       const { examid } = d || {};
-      Taro.navigateTo({ url: '/pages/NewExamDetail/index?epid=' + id + '&examid=' + examid });
+      Taro.navigateTo({ url: '/pages/NewExamDetail/index?epid=' + id + '&examid=' + examid + '&eptype=3' });
     });
   };
   const resetModal = () => {
@@ -81,7 +82,7 @@ const TestClass = () => {
                   {qcount}
                 </View>
                 <View className='at-col at-col-12 examClass-item-btn' onClick={() => handleToExam(item)}>
-                  进入考试
+                  进入测验
                 </View>
               </View>
             );

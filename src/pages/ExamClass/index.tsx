@@ -1,3 +1,4 @@
+// 我的考试
 import Taro, { useDidShow } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { TOTAL_CLASS } from '@/constants/index';
@@ -29,7 +30,7 @@ const ExamClass = () => {
     getExamstart({ epid: id }).then((d) => {
       resetModal();
       const { examid } = d || {};
-      Taro.navigateTo({ url: '/pages/NewExamDetail/index?epid=' + id + '&examid=' + examid });
+      Taro.navigateTo({ url: '/pages/NewExamDetail/index?epid=' + id + '&examid=' + examid + '&eptype=1' });
     });
   };
   const resetModal = () => {

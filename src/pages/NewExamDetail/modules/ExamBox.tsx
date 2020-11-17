@@ -23,9 +23,10 @@ interface IProps {
   answerNum: number;
   totalAnswerNum: number;
   answerList: object;
+  eptype?:'1' | '2' | '3'; // 1考试 2随堂测验 3每日一测
 }
 const ExamBox = (props: IProps) => {
-  const { info = defaultInfo, handleAnswer,handleExamEnd, showCheckInfo, answerNum, totalAnswerNum, answerList } = props;
+  const { info = defaultInfo, handleAnswer,handleExamEnd, showCheckInfo, answerNum, totalAnswerNum, answerList,eptype } = props;
   return (
     <View className='exam-con'>
       <View className='con-top'>

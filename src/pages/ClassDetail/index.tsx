@@ -23,7 +23,7 @@ const ClassDetail = () => {
     setClassActionSheet({ show: false, data: {} });
     courseWareLearn({ cwid: id, cid: classDetail.id });
     if (cwtype == 1 || cwtype == 3) {
-      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}` });
+      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${id}` });
       return;
     }
     if (cwtype == 4) {
@@ -123,7 +123,7 @@ const ClassDetail = () => {
                     </AtButton>
                   </View>
                 </View>
-                {get(classDetail, ['sourceware'], []).map((item) => {
+                {classDetail.sourceware && get(classDetail, ['sourceware'],[]).map((item) => {
                   return (
                     <View className='at-row class-item' key={item.cwname}>
                       <View className='at-col at-col-2'>
@@ -163,9 +163,9 @@ const ClassDetail = () => {
         onClose={() => setActionSheet({ show: false, data: {} })}
       >
         <AtActionSheetItem onClick={handleToClassPlay}>学习</AtActionSheetItem>
-        <AtActionSheetItem onClick={() => handleToExam('3')}>每日一测</AtActionSheetItem>
+        {/* <AtActionSheetItem onClick={() => handleToExam('3')}>每日一测</AtActionSheetItem> */}
         <AtActionSheetItem onClick={() => handleToExam('2')}>随堂测验</AtActionSheetItem>
-        <AtActionSheetItem onClick={() => handleToExam('1')}>考试</AtActionSheetItem>
+        {/* <AtActionSheetItem onClick={() => handleToExam('1')}>考试</AtActionSheetItem> */}
       </AtActionSheet>
       <AtActionSheet
         isOpened={classActionSheet.show}
@@ -174,9 +174,9 @@ const ClassDetail = () => {
         onCancel={() => setClassActionSheet({ show: false, data: {} })}
         onClose={() => setClassActionSheet({ show: false, data: {} })}
       >
-        <AtActionSheetItem onClick={() => handleClassToExam('3')}>每日一测</AtActionSheetItem>
+        {/* <AtActionSheetItem onClick={() => handleClassToExam('3')}>每日一测</AtActionSheetItem> */}
         <AtActionSheetItem onClick={() => handleClassToExam('2')}>随堂测验</AtActionSheetItem>
-        <AtActionSheetItem onClick={() => handleClassToExam('1')}>考试</AtActionSheetItem>
+        {/* <AtActionSheetItem onClick={() => handleClassToExam('1')}>考试</AtActionSheetItem> */}
       </AtActionSheet>
     </View>
   );

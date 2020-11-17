@@ -6,7 +6,9 @@ import {} from '../services';
 import { AtButton, AtGrid } from 'taro-ui';
 import { getExamend, getMyExamResult} from '../services';
 import { get, isString } from 'lodash';
-const defaultDataSource = {examid:'',questions:[],analysis:{}};
+import {res} from './mock';
+// const defaultDataSource = {examid:'',questions:[],analysis:{}};
+const defaultDataSource = res;
 
 const Result = () => {
   const [ dataSource, setDataSource] = useState({...defaultDataSource})
@@ -25,9 +27,9 @@ const Result = () => {
     Taro.setNavigationBarTitle({
       title: '华鑫学堂',
     });
-    getMyExamResult({ epid }).then(d=>{
-      setDataSource(d);
-    })
+    // getMyExamResult({ epid }).then(d=>{
+    //   setDataSource(d);
+    // })
   });
 
   return (
@@ -37,15 +39,19 @@ const Result = () => {
           {analysis.title || '-'}({analysis.totalscore || '-'}分)
         </View>
         <View className='result-mid'>
-          {questions.map((item, index) => {
+          {questions && questions.map((item, index) => {
             // const [rightAnswer, analysis] = isString(item.analysis)?item.analysis.join('/n'):['',''];
             const answer = item.answers.map(i => i.answer);
             const rightanswer = item.rightanswer.map(i => i.answer);
             return (
               <View className='result-item' key={item.id}>
+                   <View className='result-item-question'>
+                   题目：{item.title}({item.score || '-'}分)
+                  </View>
                 <View className={`result-item-top ${item.isright == '1' ? 'isRight' : 'isWrong'}`}>
+               
                   <View className='answer-item'>
-                    第{index + 1}题({item.score || '-'}分)：{answer.join() || '-'}
+                   选择：{answer.join() || '-'}
                   </View>
                   <View className='answer-item'>正确答案：{rightanswer|| '-'}</View>
                 </View>

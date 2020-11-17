@@ -1,59 +1,80 @@
 import Taro, { useDidShow, useRouter } from '@tarojs/taro';
 import { View, Block, Video } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
-import { isArray } from 'lodash';
+import { get, isArray } from 'lodash';
 import { AtTag } from 'taro-ui';
+import { getCourseDetail } from './services';
+import { CWTYPE_MAP } from './canstants';
 import './index.scss';
 const { useState, useEffect } = Taro;
 
 const ClassPlay = () => {
-  const [info, setInfo] = useState({ cwid: '', fpath: '', id: '', cwname: '' });
+  const [info, setInfo] = useState({ cwid: '', fpath: '', id: '', cwname: '', cid: '' });
+  const [classDetail, setClassDetail]: [any, any] = useState({});
+  const [videoShow, setVideoShow]: [any, any] = useState(true);
   const router = useRouter();
   useDidShow(() => {
     const { params } = router;
-    const { cwid, fpath, id, cwname } = params || {};
-    setInfo({ cwid, fpath, id, cwname });
+    const { cwid, fpath, id, cwname, cid } = params || {};
+    setInfo({ cwid, fpath, id, cwname, cid });
     Taro.setNavigationBarTitle({
-      title:'华鑫学堂',
+      title: '华鑫学堂',
+    });
+    getCourseDetail({ cid: 1 }).then((d) => {
+      setClassDetail(d);
     });
   });
-
+  const handleChooseVideo = (params) => {
+    const { files, cwname } = params;
+    setInfo((opt) => {
+      return { ...opt, cwid: files[0].cwid, fpath: files[0].fpath, id: files[0].id, cwname };
+    });
+    setVideoShow(false);
+    setTimeout(() => {
+      setVideoShow(true);
+    }, 100);
+  };
+  const sourceware = get(classDetail, ['sourceware'], []);
+console.log(info);
   return (
     <View className='classPlay-wrap'>
       <View className='vido-wrap'>
-        <Video src={info.fpath} controls={true} autoplay={false} initialTime={0} id='video' loop={false} muted={false} />
+        {
+           videoShow && <Video src={info.fpath} controls={true} autoplay={false} initialTime={0} id='video' loop={false} muted={false} />
+        }
       </View>
-      {false && (
-        <Block>
-          <View className='tool-wrap'>
-            <View className='at-row'>
-              <View className='at-col at-col-6 textC'>收藏</View>
-              <View className='at-col at-col-6 textC'>分享</View>
-            </View>
+      <Block>
+        <View className='tool-wrap'>
+          <View className='at-row'>
+            {/* <View className='at-col at-col-6 textC'>收藏</View>
+              <View className='at-col at-col-6 textC'>分享</View> */}
+            <View className='at-col at-col-12 textC'>当前播放：{info.cwname || '-'} </View>
           </View>
-          <View className='classList-wrap'>
-            <TitleCon title='职场岗前培训课程' />
-            <View className='at-row'>
-              <View className='at-col at-col-6 classList-con'>
-                <View className='classList-con-box'>
-                  <View className='classList-con-tag'>
-                    <AtTag size='small'>视频</AtTag>
-                  </View>
-                  <View className='classList-on-desc'>1.危机公关经验为0的法律人，如何处理危机并升职加薪（上）</View>
-                </View>
-              </View>
-              <View className='at-col at-col-6 classList-con'>
-                <View className='classList-con-box'>
-                  <View className='classList-con-tag'>
-                    <AtTag size='small'>视频</AtTag>
-                  </View>
-                  <View className='classList-on-desc'>1.危机公关经验为0的法律人，如何处理危机并升职加薪（上）</View>
-                </View>
-              </View>
-            </View>
+        </View>
+        <View className='classList-wrap'>
+          <TitleCon title='相关视频' />
+          <View className='at-row at-row--wrap'>
+            {sourceware.length > 0
+              ? sourceware.map((item) => {
+                  return (
+                    item.cwtype == 1 && (
+                      <View className='at-col at-col-6 classList-con' key={item.id} onClick={() => handleChooseVideo(item)}>
+                        <View className='classList-con-box'>
+                          <View className='classList-con-tag'>
+                            <AtTag size='small'>{CWTYPE_MAP[item.cwtype]}</AtTag>
+                          </View>
+                          <View className='classList-on-desc' >
+                            {item.cwname}
+                          </View>
+                        </View>
+                      </View>
+                    )
+                  );
+                })
+              : null}
           </View>
-        </Block>
-      )}
+        </View>
+      </Block>
     </View>
   );
 };

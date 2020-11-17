@@ -77,10 +77,11 @@ class App extends Component {
   }
   config = {
     pages: [
-      // 'pages/ClassDetail/index',
+
 
       'pages/Main/index',
-
+      'pages/ClassPlay/index',
+    
       'pages/NewExamDetail/components/Result',
 
       'pages/WebView/index',
@@ -175,13 +176,13 @@ class App extends Component {
       //     'index',
       //   ],
       // },
-      {
-        root: 'pages/ClassPlay',
-        name: 'ClassPlay',
-        pages: [
-          'index',
-        ],
-      },
+      // {
+      //   root: 'pages/ClassPlay',
+      //   name: 'ClassPlay',
+      //   pages: [
+      //     'index',
+      //   ],
+      // },
     ],
     'networkTimeout': {
       'request': 10000,

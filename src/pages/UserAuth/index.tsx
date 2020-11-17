@@ -59,11 +59,11 @@ const UserAuth = (props) => {
     handleUpdateForm(MAP[type][index], type);
   };
   const handleSubmite = () => {
-    console.log('formParams', formParams);
-    if (Object.values(formParams).findIndex((item) => item === '') >= 0) {
-      showErrorToast('请输入参数');
-      return;
-    }
+    // console.log('formParams', formParams);
+    // if (Object.values(formParams).findIndex((item) => item === '') >= 0) {
+    //   showErrorToast('请输入参数');
+    //   return;
+    // }
     postUserModify(formParams).then((d) => {
       showSuccessToast('提交成功');
       getUserIsauth().then((d)=>{
