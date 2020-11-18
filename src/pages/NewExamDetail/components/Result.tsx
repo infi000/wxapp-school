@@ -7,8 +7,8 @@ import { AtButton, AtGrid } from 'taro-ui';
 import { getExamend, getMyExamResult} from '../services';
 import { get, isString } from 'lodash';
 import {res} from './mock';
-// const defaultDataSource = {examid:'',questions:[],analysis:{}};
-const defaultDataSource = res;
+const defaultDataSource = {examid:'',questions:[],analysis:{}};
+// const defaultDataSource = res;
 
 const Result = () => {
   const [ dataSource, setDataSource] = useState({...defaultDataSource})
@@ -27,9 +27,9 @@ const Result = () => {
     Taro.setNavigationBarTitle({
       title: '华鑫学堂',
     });
-    // getMyExamResult({ epid }).then(d=>{
-    //   setDataSource(d);
-    // })
+    getMyExamResult({ epid }).then(d=>{
+      setDataSource(d);
+    })
   });
 
   return (

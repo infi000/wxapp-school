@@ -2,6 +2,7 @@ import Taro, { useMemo } from '@tarojs/taro';
 import { View, Button, Block } from '@tarojs/components';
 import { AtAvatar, AtGrid } from 'taro-ui';
 import { useSelector, useDispatch } from '@tarojs/redux';
+import { IS_AUTH_MAP } from '@/constants/'
 import { logIn } from '@/utils/auth';
 import '../index.scss';
 const GRID_OPTION = [
@@ -73,7 +74,7 @@ const MyAvatar = () => {
             {userIsAuth == 1 ? <Block>
               <View className='at-col'>积分：{userScoreInfo.score}</View>
               <View className='at-col'>排名：{userScoreInfo.rank}</View>
-            </Block> : <View className='at-col'>未认证</View>}
+            </Block> : <View className='at-col'>{IS_AUTH_MAP.get(Number(userIsAuth))}</View>}
           </Block>
         ) : (
             <Button open-type='getUserInfo' onGetUserInfo={handleLogIn}>

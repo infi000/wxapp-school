@@ -8,7 +8,7 @@ export default {
     wxUserInfo:{},
     userScoreInfo:{score:'',rank:''},
     openid:'',
-    userIsAuth:'0' // 是否认证
+    userIsAuth: '0' // 是否认证，0:默认；1认证通过，3认证中，4认证失败
   },
   reducers: {
     updateIsLogIn: (state, {payload}) =>{
@@ -29,7 +29,7 @@ export default {
     },
     updateUserIsAuth: (state, { payload }) => {
       state.userIsAuth = payload;
-      // state.userIsAuth = '1';
+      // state.userIsAuth = '4';
     },
   },
   effects: {
