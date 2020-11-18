@@ -29,6 +29,7 @@ export default {
     },
     updateUserIsAuth: (state, { payload }) => {
       state.userIsAuth = payload;
+      // state.userIsAuth = '1';
     },
   },
   effects: {

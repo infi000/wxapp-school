@@ -12,7 +12,7 @@ interface IProps{
 const ClassTagGroup = (props:IProps) => {
   const handleToClass = (opt) => {
     const { id } = opt;
-    Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
+    Taro.navigateTo({ url: '/pages/ClassDetail/index?from=分类&cid=' + id });
   };
   const { hotClass , col = '4' } = props;
   return (
