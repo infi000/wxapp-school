@@ -78,16 +78,16 @@ class App extends Component {
   config = {
     pages: [
 
-      
+   
+
       'pages/Main/index',
       'pages/ClassPlay/index',
       'pages/TestResult/index',
       'pages/NewExamDetail/components/Result',
-
+      'pages/MeRanking/index',
       'pages/WebView/index',
       'pages/UserAuth/index',
 
-      'pages/MeRanking/index',
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',
       'pages/ClassDetail/Componets/ExamTest',

@@ -11,7 +11,7 @@ const defaultDataSource = {  questions: [], analysis: {} };
 const TestResult = () => {
   const [dataSource, setDataSource] = useState({ ...defaultDataSource })
   Taro.setNavigationBarTitle({
-    title: '华鑫学堂',
+    title: '热线学堂',
   });
   const router = useRouter();
   const analysis: { [key: string]: string } = get(dataSource, ['analysis'], {});

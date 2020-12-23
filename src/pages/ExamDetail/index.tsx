@@ -72,7 +72,7 @@ const examInfoList = [
 
 const ExamDetail = () => {
   Taro.setNavigationBarTitle({
-    title: '华鑫学堂',
+    title: '热线学堂',
   });
   const router = useRouter();
   // const [examInfoList, setExamInfoList]:[any,any] = useState([]);

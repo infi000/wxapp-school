@@ -20,7 +20,7 @@ const ClassDetail = () => {
   const { params } = router;
   const { cid = '', from = '' } = params || {};
   Taro.setNavigationBarTitle({
-    title: '华鑫学堂'
+    title: '热线学堂'
   });
   const handleToClassPlay = () => {
     const { cwtype, files, id, cwname } = actionSheet.data;

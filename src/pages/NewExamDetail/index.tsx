@@ -8,7 +8,7 @@ import { isString } from 'lodash';
 
 const NewsDetail = () => {
   Taro.setNavigationBarTitle({
-    title: '华鑫学堂',
+    title: '热线学堂',
   });
   const [answerList, setAnserList] = useState({}); // 用户答题列表 {id:{内容}}
   const [answerNum, setAnswerNum] = useState(0); // 当前答题位置

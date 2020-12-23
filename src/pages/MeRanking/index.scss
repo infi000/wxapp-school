@@ -1,6 +1,8 @@
 @import '../../static/style/common.scss';
 $meranking-mid-bottom-h:100px;
-$meranking-top-h:300px;
+$meranking-top-h:120px;
+$meranking-tab-h:120px;
+$meranking-mid-top:300px;
 
 .meranking-wrap {
     background-color: $primary-color;
@@ -9,6 +11,16 @@ $meranking-top-h:300px;
     bottom: 0;
     left: 0;
     right: 0;
+}
+.meranking-tab{
+    text-align: center;
+    color: #fff;
+    height: $meranking-tab-h;
+    line-height: $meranking-tab-h;
+    font-size: $big-fontsize;
+    .meranking-tab-choosed{
+        color:#fad600;
+    }
 }
 .meranking-top{
     text-align: center;
@@ -20,7 +32,7 @@ $meranking-top-h:300px;
 
 .meranking-mid{
     position: absolute;
-    top: $meranking-top-h;
+    top:$meranking-mid-top;
     left: 20px;
     right: 20px;
     bottom: 80px;

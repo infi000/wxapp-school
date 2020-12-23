@@ -4,7 +4,7 @@ import './index.scss';
 
 const HelpCenter = (props) => {
   Taro.setNavigationBarTitle({
-    title: '华鑫学堂',
+    title: '热线学堂',
   });
   const [hotClass, setHotClass] = useState([]);
   const router = useRouter();

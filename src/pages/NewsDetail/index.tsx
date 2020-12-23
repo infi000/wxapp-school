@@ -44,7 +44,7 @@ const NewsDetail = () => {
     })
   });
   Taro.setNavigationBarTitle({
-    title:'华鑫学堂',
+    title:'热线学堂',
   });
   const HTML = () => {
     let str = newsDetail.content;

@@ -9,7 +9,7 @@ import ListCon, { ListItemCon } from '@/components/ListCon';
 
 const MyCourse = (props) => {
     Taro.setNavigationBarTitle({
-    title: '华鑫学堂',
+    title: '热线学堂',
   });
   const [hotClass, setHotClass] = useState([]);
   const handleToClass = (id) => {

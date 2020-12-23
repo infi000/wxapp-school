@@ -12,7 +12,7 @@ const MeRanking = () => {
   useDidShow(() => {
     const { params } = router;
     Taro.setNavigationBarTitle({
-      title: '华鑫学堂',
+      title: '热线学堂',
     });
     getScorepos().then((d) => {
      d.scores && setRanking(d.scores);
@@ -33,6 +33,12 @@ const MeRanking = () => {
   },[ranking,uid])
   return (
     <View className='meranking-wrap'>
+      <View className='meranking-tab'>
+        <View className='at-row at-row__justify--between'>
+          <View className='at-col at-col-6 meranking-tab-choosed'>总排行</View>
+          <View className='at-col at-col-6'>地区排行</View>
+        </View>
+      </View>
       <View className='meranking-top'>
         <View className='at-row at-row__justify--between '>
           <View className='at-col at-col-3'>名次：{myRank.index}</View>
