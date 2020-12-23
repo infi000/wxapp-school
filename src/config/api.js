@@ -1,5 +1,6 @@
 const MOCK = 'http://easy-mock.sftcwl.com/mock/5f6a20a67266ef5678785185/wxschool';
 const yjw_test = 'https://xch.xuexiao.ntof.club/index.php/MiniApi';
+export const host = 'https://xch.xuexiao.ntof.club';
 const WxApiRoot = yjw_test;
 export default {
   getJscode2session: WxApiRoot + '/User/jscode2session', // 29、	小程序登录更新session
