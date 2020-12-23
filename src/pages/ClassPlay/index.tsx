@@ -57,7 +57,7 @@ console.log(info);
             {sourceware.length > 0
               ? sourceware.map((item) => {
                   return (
-                    item.cwtype == 1 && (
+                    (item.cwtype == 1 || item.cwtype == 3)&& (
                       <View className='at-col at-col-6 classList-con' key={item.id} onClick={() => handleChooseVideo(item)}>
                         <View className='classList-con-box'>
                           <View className='classList-con-tag'>

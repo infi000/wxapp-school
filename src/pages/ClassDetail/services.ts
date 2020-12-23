@@ -27,5 +27,9 @@ export const addCourseAttcourse = (payload:{cid:number}) => request.get(Api.Cour
  *  12、	学习课件
  */
 export const courseWareLearn = (payload:{cid:number|string,cwid:number|string}) => request.get(Api.CourseWareLearn,payload);
+/**
+ *  5、	获取课程分类下最新课程详情
+ */
+export const getLastcourse = (payload: {cid: number | string }) => request.get(Api.lastcourse,payload);
 
 export default {};

@@ -3,7 +3,7 @@ import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton, AtActionSheet, AtActionS
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import ClassImg from './Componets/ClassImg';
-import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart } from './services';
+import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart, getLastcourse } from './services';
 import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
@@ -15,8 +15,13 @@ const ClassDetail = () => {
   const [classDetail, setClassDetail]: [any, any] = useState({});
   const [actionSheet, setActionSheet]: [any, any] = useState({ show: false, data: {} });
   const [classActionSheet, setClassActionSheet]: [any, any] = useState({ show: false, data: {} });
-  const router = useRouter();
   const [currentTab, setCurrentTab] = useState(0);
+  const router = useRouter();
+  const { params } = router;
+  const { cid = '', from = '' } = params || {};
+  Taro.setNavigationBarTitle({
+    title: '华鑫学堂'
+  });
   const handleToClassPlay = () => {
     const { cwtype, files, id, cwname } = actionSheet.data;
     setActionSheet({ show: false, data: {} });
@@ -26,7 +31,7 @@ const ClassDetail = () => {
       Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${id}` });
       return;
     }
-    if (cwtype == 4) {
+    if ([4,5].includes(Number(cwtype))) {
       Taro.downloadFile({
         url: files[0].fpath,
         success(res) {
@@ -71,18 +76,25 @@ const ClassDetail = () => {
     console.log('classDetail', classDetail);
   };
   useDidShow(() => {
-    const { params } = router;
-    const { cid = '' } = params || {};
-    getCourseDetail({ cid })
-      .then((d) => {
-        setClassDetail(d);
-        Taro.setNavigationBarTitle({
-          title: '华鑫学堂'
+    // 判断是从课程分类里进的还是从课程进的
+    if (from == '分类') {
+      getLastcourse({ cid })
+        .then((d) => {
+          setClassDetail(d);
+        })
+        .catch((err) => {
+          console.log(err);
         });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    } else {
+      getCourseDetail({ cid })
+        .then((d) => {
+          setClassDetail(d);
+
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   });
   return (
     <View className='classDetail-wrap'>
@@ -123,7 +135,7 @@ const ClassDetail = () => {
                     </AtButton>
                   </View>
                 </View>
-                {classDetail.sourceware && get(classDetail, ['sourceware'],[]).map((item) => {
+                {classDetail.sourceware && get(classDetail, ['sourceware'], []).map((item) => {
                   return (
                     <View className='at-row class-item' key={item.cwname}>
                       <View className='at-col at-col-2'>

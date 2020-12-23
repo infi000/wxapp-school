@@ -44,4 +44,5 @@ export default {
   userModify:WxApiRoot+'/User/modify', // 33、	更新用户信息
   myexamresult: WxApiRoot + '/Exam/myexamresult', // 32、	获取用户自己的考试/测验结果/测试历史
   userIsauth: WxApiRoot + '/User/isauth', //34、	用户是否认证通过
+  lastcourse: WxApiRoot + '/Course/lastcourse', //5、	获取课程分类下最新课程详情
 };

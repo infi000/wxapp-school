@@ -1,20 +1,20 @@
 import Taro, { useDidShow, useState, useRouter } from '@tarojs/taro';
 import { View, Block, RichText } from '@tarojs/components';
 import { useSelector, useDispatch } from '@tarojs/redux';
+import ExamRusult from '@/components/ExamRusult'
 import '../index.scss';
 import {} from '../services';
 import { AtButton, AtGrid } from 'taro-ui';
 import { getExamend, getMyExamResult} from '../services';
 import { get, isString } from 'lodash';
 import {res} from './mock';
-// const defaultDataSource = {examid:'',questions:[],analysis:{}};
-const defaultDataSource = res;
+const defaultDataSource = {examid:'',questions:[],analysis:{}};
+// const defaultDataSource = res;
 
 const Result = () => {
   const [ dataSource, setDataSource] = useState({...defaultDataSource})
   const dispatch = useDispatch();
   const router = useRouter();
-  const examid = get(router,['params','examid'],''); 
   const epid = get(router, ['params','epid'],''); 
   const analysis: { [key: string]: string } = get(dataSource, ['analysis'], {});
   const questions: any[] = get(dataSource, ['questions'], []);
@@ -27,48 +27,13 @@ const Result = () => {
     Taro.setNavigationBarTitle({
       title: '华鑫学堂',
     });
-    // getMyExamResult({ epid }).then(d=>{
-    //   setDataSource(d);
-    // })
+    getMyExamResult({ epid }).then(d=>{
+      setDataSource(d);
+    })
   });
 
   return (
-    <View className='exam-wrap'>
-      <View className='result-con'>
-        <View className='result-top'>
-          {analysis.title || '-'}({analysis.totalscore || '-'}分)
-        </View>
-        <View className='result-mid'>
-          {questions && questions.map((item, index) => {
-            // const [rightAnswer, analysis] = isString(item.analysis)?item.analysis.join('/n'):['',''];
-            const answer = item.answers.map(i => i.answer);
-            const rightanswer = item.rightanswer.map(i => i.answer);
-            return (
-              <View className='result-item' key={item.id}>
-                   <View className='result-item-question'>
-                   题目：{item.title}({item.score || '-'}分)
-                  </View>
-                <View className={`result-item-top ${item.isright == '1' ? 'isRight' : 'isWrong'}`}>
-               
-                  <View className='answer-item'>
-                   选择：{answer.join() || '-'}
-                  </View>
-                  <View className='answer-item'>正确答案：{rightanswer|| '-'}</View>
-                </View>
-                <View className='result-item-min'>解析说明：{item.analysis|| '-'}</View>
-              </View>
-            );
-          })}
-        </View>
-        <View className='result-footer'>
-          <View className='bottom-btn-con'>
-            <AtButton type='secondary' size='small' onClick={handleOver}>
-              查看完毕
-            </AtButton>
-          </View>
-        </View>
-      </View>
-    </View>
+    <ExamRusult analysis={analysis} questions={questions} handleOver={handleOver}  />
   );
 };
 

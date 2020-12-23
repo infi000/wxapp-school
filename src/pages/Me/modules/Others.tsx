@@ -1,4 +1,4 @@
-import Taro, { useEffect, useState } from '@tarojs/taro';
+import Taro, { useEffect, useState, useMemo } from '@tarojs/taro';
 import { View, Button } from '@tarojs/components';
 import '../index.scss';
 import { useSelector } from '@tarojs/redux';
@@ -13,33 +13,36 @@ const LIST_URL_MAP = [
   { name: '用户认证', url: '/pages/UserAuth/index' },
 ];
 
-const tmplIds = ['vqWshHTalxdFaNqhdSWJ8Mkb7HsysV39m1h9Yk-94hY', '05mTNKODj3164t8tEgu60oLUyqddSUHtjAOS6i1S0Zs'];
 const Others = () => {
   const { userIsAuth } = useSelector((state) => state.main);
 
-  const [tmplIds, setTmplIds]: [string[], any] = useState([]);
   const handleClickItem = (url) => {
     Taro.navigateTo({ url });
   };
-
+  const list_arr = useMemo(() => {
+    let res:any = [];
+    if (userIsAuth == 1){
+      // 已经认证
+      res = LIST_URL_MAP.filter(item => ['帮助中心', '每日小测', '小测结果','学习历史'].includes(item.name))
+    }else{
+      res = LIST_URL_MAP.filter(item => ['帮助中心', '用户认证'].includes(item.name))
+    }
+    return res;
+  }, [userIsAuth])
   return (
     <View className='me-other-wrap'>
-      {LIST_URL_MAP.map((item) => {
+      {list_arr.map((item) => {
         const { name, url } = item;
-        return (
-          (name == '用户认证' && userIsAuth == 1) ? null :(
-            <View
-              className='at-row me-others-con'
-              key={name}
-              onClick={() => {
-                handleClickItem(url);
-              }}
-            >
-              <View className='at-col-6 textL'>{name}</View>
-              <View className='at-col-6 textR'></View>
-            </View>
-          )
-        );
+        return <View
+          className='at-row me-others-con'
+          key={name}
+          onClick={() => {
+            handleClickItem(url);
+          }}
+        >
+          <View className='at-col-6 textL'>{name}</View>
+          <View className='at-col-6 textR'></View>
+        </View>
       })}
     </View>
   );
