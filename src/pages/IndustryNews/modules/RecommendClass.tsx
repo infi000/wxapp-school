@@ -35,10 +35,10 @@ const RecommendClass = () => {
       <TitleCon title='课程推荐' />
       <View>
         {hotClass.map((item) => {
-          const { cover, cname, id,cid,starttime } = item;
+          const { cover, cname, id,cid,starttime ,ctype} = item;
           return (
             <View className='recommendClass-list-item' key={id}>
-              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(id)}>
+              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(id)} ctype={ctype}>
                 <View className='at-row at-row__justify--between'>
                   {/* <View className='at-col at-col-1'></View> */}
                   <View className='at-col at-col-7'>开始时间:{starttime}</View>

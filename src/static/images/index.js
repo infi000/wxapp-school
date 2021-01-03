@@ -47,4 +47,10 @@ export { default as logo12345 } from './12345logo.jpg';
 
 
 
+export { default as ctype1 } from './ctype1.png';
+export { default as ctype2 } from './ctype2.png';
+export { default as ctype3 } from './ctype3.png';
+
+
+
 

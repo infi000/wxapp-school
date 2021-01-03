@@ -80,6 +80,7 @@ class App extends Component {
 
    
 
+   
       'pages/Main/index',
       'pages/ClassPlay/index',
       'pages/TestResult/index',
@@ -87,7 +88,7 @@ class App extends Component {
       'pages/MeRanking/index',
       'pages/WebView/index',
       'pages/UserAuth/index',
-
+      'pages/ClassList/index',
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',
       'pages/ClassDetail/Componets/ExamTest',

@@ -11,10 +11,10 @@ interface IProps{
 
 const ClassTagGroup = (props:IProps) => {
   const handleToClass = (opt) => {
-    const { id } = opt;
-    Taro.navigateTo({ url: '/pages/ClassDetail/index?from=分类&cid=' + id });
+    const { id,cname } = opt;
+    Taro.navigateTo({ url: '/pages/ClassList/index?title='+cname+'&cid=' + id });
   };
-  const { hotClass , col = '4' } = props;
+  const { hotClass , col = '3' } = props;
   return (
     <View className='at-row at-row--wrap hotClass-grid'>
       {isArray(hotClass) && hotClass.length>0 ? hotClass.map((item, index) => {

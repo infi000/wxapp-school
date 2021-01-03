@@ -2,9 +2,9 @@ import Taro from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import { isArray } from 'lodash';
 import { AtTag } from 'taro-ui';
+import { ctype1, ctype2, ctype3 } from '@/static/images/index';
 
 import './index.scss';
-import { ReactDOM } from 'react';
 
 interface IProps {
   listInfo: Array<{

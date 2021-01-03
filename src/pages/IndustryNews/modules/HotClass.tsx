@@ -4,7 +4,6 @@ import TitleCon from '@/components/TitleCon';
 import ClassTagGroup from '@/components/ClassTagGroup';
 import '../index.scss';
 import { getCourseCatesearch } from '../services';
-import { tkjf } from '@/static/images/index';
 import { isArray } from 'lodash';
 
 
@@ -27,7 +26,7 @@ const HotClass = () => {
   return (
     <View className='hotClass-wrap'>
       <TitleCon title='热门课程' />
-      <ClassTagGroup hotClass={memoHotClass} col='4'/>
+      <ClassTagGroup hotClass={memoHotClass} col='3'/>
     </View>
   );
 };

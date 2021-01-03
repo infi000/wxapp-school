@@ -1,30 +1,27 @@
-import Taro, { useDidShow, useEffect, useState } from '@tarojs/taro';
+import Taro, { useDidShow, useEffect, useRouter, useState } from '@tarojs/taro';
 import { View, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon/index';
-import { getCourseCatesearch, getCourseHotcourse } from './services';
+import { coursesearch } from './services';
 import './index.scss';
-import ClassTagGroup from '@/components/ClassTagGroup';
 import { ctype1, ctype2, ctype3 } from '@/static/images/index';
+import { AtDivider } from 'taro-ui'
 
 const IMGAGE_TAG = ['',ctype1,ctype2, ctype3];
-const OnlineStudy = () => {
-  const [tagClass, setTagClass] = useState([]);
+const ClassList = () => {
+  const router = useRouter();
+  const { params } = router;
+  const { cid = '', title = '精品课程' } = params || {};
+
   const [niceClass, setNiceClass] = useState([]);
   const handleToClass = (item) => {
     const { id } = item;
     Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
   };
-  useEffect(() => {
-    getCourseCatesearch()
+  useDidShow(() => {
+
+    coursesearch({cid})
       .then((d) => {
-        d.cates && setTagClass(d.cates);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
-    getCourseHotcourse({ count: 12 })
-      .then((d) => {
-        d.courses && setNiceClass(d.courses);
+        d.courses && setNiceClass(d.courses || []);
       })
       .catch((e) => {
         console.log(e);
@@ -36,12 +33,8 @@ const OnlineStudy = () => {
   useDidShow(() => {});
   return (
     <View className='onlineStudy-wrap'>
-      <View className='hotClass-wrap'>
-        {/* <TitleCon title='全部课程' /> */}
-        <ClassTagGroup hotClass={tagClass} />
-      </View>
       <View className='audio-wrap'>
-        <TitleCon title='精品课程' />
+        <TitleCon title={title} />
         <View className='at-row at-row--wrap audio-grid'>
           {[...niceClass].map((item) => {
             const { cname, cover, id, ctype } = item;
@@ -56,11 +49,12 @@ const OnlineStudy = () => {
                 </View>
               </View>
             );
-          })}
+          })} 
+          {niceClass.length === 0 && <AtDivider content='暂无' /> }
         </View>
       </View>
     </View>
   );
 };
 
-export default OnlineStudy;
+export default ClassList;

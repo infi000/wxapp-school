@@ -7,6 +7,12 @@
     display: block;
     height: 160px;
     width: 160px;
+    position: relative;
+    .list-image-con-tag{
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
   }
   .list-desc-con {
     padding-left: 20px;
