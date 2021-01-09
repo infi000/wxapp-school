@@ -5,17 +5,21 @@ import { coursesearch } from './services';
 import './index.scss';
 import { ctype1, ctype2, ctype3 } from '@/static/images/index';
 import { AtDivider } from 'taro-ui'
+import { useIspass } from '@/utils/hooks';
 
 const IMGAGE_TAG = ['',ctype1,ctype2, ctype3];
 const ClassList = () => {
   const router = useRouter();
+  const checktPass = useIspass();
   const { params } = router;
   const { cid = '', title = '精品课程' } = params || {};
-
   const [niceClass, setNiceClass] = useState([]);
+  
   const handleToClass = (item) => {
-    const { id } = item;
-    Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
+    const { id, ctype } = item;
+    checktPass(ctype,()=>{
+      Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
+    })
   };
   useDidShow(() => {
 

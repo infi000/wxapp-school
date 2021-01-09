@@ -7,11 +7,15 @@ import { AtTag } from 'taro-ui';
 import { getCourseHotcourse, addCourseAttcourse } from '../services';
 import '../index.scss';
 import { showSuccessToast } from '@/utils/util';
+import { useIspass } from '@/utils/hooks';
 
 const RecommendClass = () => {
   const [hotClass, setHotClass] = useState([]);
-  const handleToClass = (id) => {
-    Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
+  const checktPass = useIspass();
+  const handleToClass = (id,ctype) => {
+    checktPass(ctype,()=>{
+      Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
+    })
   };
   const handleAddCourseAttcourse = (cid) =>{
     addCourseAttcourse({cid}).then(d=>{
@@ -38,7 +42,7 @@ const RecommendClass = () => {
           const { cover, cname, id,cid,starttime ,ctype} = item;
           return (
             <View className='recommendClass-list-item' key={id}>
-              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(id)} ctype={ctype}>
+              <ListItemCon image={cover} title={cname}  onClick={() => handleToClass(id,ctype)} ctype={ctype}>
                 <View className='at-row at-row__justify--between'>
                   {/* <View className='at-col at-col-1'></View> */}
                   <View className='at-col at-col-7'>开始时间:{starttime}</View>

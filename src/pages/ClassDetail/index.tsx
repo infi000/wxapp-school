@@ -3,7 +3,7 @@ import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton, AtActionSheet, AtActionS
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import ClassImg from './Componets/ClassImg';
-import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart, getLastcourse } from './services';
+import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart, getLastcourse, } from './services';
 import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
@@ -124,7 +124,7 @@ const ClassDetail = () => {
           <AtTabs current={currentTab} tabList={tabList} onClick={setCurrentTab}>
             <AtTabsPane current={currentTab} index={0}>
               <View className='class-con'>
-                <View className='at-row class-item'>
+                {/* <View className='at-row class-item'>
                   <View className='at-col at-col-2'>
                     <AtTag size='small'>主课程</AtTag>
                   </View>
@@ -134,7 +134,7 @@ const ClassDetail = () => {
                       操作
                     </AtButton>
                   </View>
-                </View>
+                </View> */}
                 {classDetail.sourceware && get(classDetail, ['sourceware'], []).map((item) => {
                   return (
                     <View className='at-row class-item' key={item.cwname}>

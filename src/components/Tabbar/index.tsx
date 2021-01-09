@@ -1,13 +1,10 @@
 
 import Taro, {useCallback} from '@tarojs/taro';
 import  { AtTabBar } from 'taro-ui';
-import { Block } from '@tarojs/components'
+import { Block, View } from '@tarojs/components'
 import { useSelector, useDispatch } from '@tarojs/redux'
-import { ROUTER_MAP } from '@/router/index';
-// import * as app from '../../utils/app';
 
-
-export default () => {
+const Tabbar = () => {
   const {nav, currentNavIndex} = useSelector(state => state.tabbar)
   const dispatch = useDispatch();
   const onClick = useCallback((tab) => {
@@ -33,3 +30,6 @@ export default () => {
       />
   </Block>
 }
+
+
+export default Tabbar;

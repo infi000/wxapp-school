@@ -1,5 +1,8 @@
 import Taro from '@tarojs/taro';
 import { cloneDeep } from 'lodash';
+import request from '@/utils/request';
+import Api from '@/config/api';
+import { showErrorToast } from '@/utils/util';
 
 const { useState, useEffect } = Taro;
 export default {};
@@ -78,3 +81,19 @@ export const useInitialValue = (namespace,dispatch) =>{
   } ,[])
 };
 
+
+export const useIspass = () => {
+  return (ctype:string,cb:(d?:any)=>void) => {
+    if(ctype !== '1') {
+      request.get(Api.userIspass).then((d) =>{
+        if(d==1){
+          cb(d)
+        }else{
+          showErrorToast('无权限');
+        }
+      })
+    }else{
+      cb();
+    }
+  }
+}

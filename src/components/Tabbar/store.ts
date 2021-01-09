@@ -1,11 +1,5 @@
 import delay from '@/utils/delay';
 import {
-  hangyezixun1,
-  hangyezixun2,
-  zaixianpeixun1,
-  zaixianpeixun2,
-  xuexikaoshi1,
-  xuexikaoshi2,
   kx1,
   kx2,
   epx1,

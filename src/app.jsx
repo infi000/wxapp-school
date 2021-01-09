@@ -77,7 +77,6 @@ class App extends Component {
   }
   config = {
     pages: [
-
    
 
    
@@ -87,7 +86,7 @@ class App extends Component {
       'pages/NewExamDetail/components/Result',
       'pages/MeRanking/index',
       'pages/WebView/index',
-      'pages/UserAuth/index',
+    
       'pages/ClassList/index',
       'pages/HelpCenter/index',
       'pages/LearnHistory/index',
@@ -96,6 +95,7 @@ class App extends Component {
 
       'pages/ClassDetail/index',
       'pages/NewExamDetail/index',
+      'pages/UserAuth/index',
 
       'pages/ExamClass/index',
       'pages/TestClass/index',

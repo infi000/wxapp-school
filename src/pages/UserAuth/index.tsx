@@ -5,17 +5,22 @@ import { View, Block, Picker } from '@tarojs/components';
 import _Uploader from '@/components/Tabbar';
 import { useSelector, useDispatch } from '@tarojs/redux';
 import { AtList, AtListItem, AtButton, AtGrid, AtInput, AtActionSheet, AtActionSheetItem } from 'taro-ui';
-import { postUserModify } from './services';
+import { postUserModify, getAreaAll } from './services';
 import { showSuccessToast, showErrorToast } from '@/utils/util';
 import './index.scss';
-import { getUserIsauth } from '@/services/user';
 
-type PCAType = 'area' | 'city' | 'province';
-const MAP = {
-  province: ['江苏'],
-  city: ['苏州'],
-  area: ['姑苏区', '相城区', '吴中区', '吴江市', '昆山市', '张家港市', '太仓市', '常熟市', '苏州高新区', '苏州工业园区'],
-};
+type PCAType = 'aid' | 'city' | 'province';
+type TArea = {
+  id:string;
+  aname:string;//地区
+  ctime:string;
+}
+type IAreaAll  = {
+  id:string;
+  panme:string;//省
+  areas:TArea[]
+}
+
 const Uploader: any = _Uploader;
 const defaultParams = {
   uname: '',
@@ -23,12 +28,12 @@ const defaultParams = {
   card: '',
   province: '江苏',
   city: '苏州',
-  area: '',
+  aid: '',
 };
 const defaultPikerParams: any = {
   province: '',
   city: '',
-  area: '',
+  aid: '',
 };
 const defaultSelectModal: { show: boolean; option: Array<any>; type?: PCAType } = {
   show: false,
@@ -41,6 +46,7 @@ const UserAuth = (props) => {
   const [formParams, setFormParams]: [any, any] = useState({ ...defaultParams });
   const [pikerParams, setPikerParams] = useState({ ...defaultPikerParams });
   const [selectModal, setSelectModal] = useState({ ...defaultSelectModal });
+  const [MAP, setMAP] = useState<IAreaAll[]|[]>([]);
   const router = useRouter();
   const dispatch = useDispatch();
   const handleUpdateForm = (params, type) => {
@@ -88,24 +94,26 @@ const UserAuth = (props) => {
   useDidShow(() => {
     const { params } = router;
     const { cid = 1 } = params || {};
+    getAreaAll().then(d=>{  
+      setMAP(d)
+    })
   });
-
+  const v =(MAP[0] && MAP[0].areas &&  MAP[0].areas.find(opt => opt.id == formParams.aid) )? MAP[0].areas.find(opt => opt.id == formParams.aid)['aname'] : '';
   return (
     <View className='baseWrap'>
       <AtInput name='value' title='姓名' type='text' value={formParams.uname} onChange={(e) => handleUpdateForm(e, 'uname')} />
       <AtInput name='value' title='手机号' type='text' value={formParams.phone} onChange={(e) => handleUpdateForm(e, 'phone')} />
       <AtInput name='value' title='身份证号' type='text' value={formParams.card} onChange={(e) => handleUpdateForm(e, 'card')} />
       <AtInput name='value' title='省' type='text' disabled value={formParams.province} onChange={(e) => handleUpdateForm(e, 'province')} />
-      <AtInput name='value' title='市' type='text' disabled value={formParams.city} onChange={(e) => handleUpdateForm(e, 'city')} />
+      {/* <AtInput name='value' title='市' type='text' disabled value={formParams.city} onChange={(e) => handleUpdateForm(e, 'city')} /> */}
       <AtInput
         name='value'
-        title='区'
+        title='地区'
         type='text'
-        value={formParams.area}
-        onChange={(e) => handleUpdateForm(e, 'area')}
-        onFocus={() => handleOpenSelect('area')}
+        value={ v }
+        onChange={(e) => handleUpdateForm(e, 'aid')}
+        onFocus={() => handleOpenSelect('aid')}
       />
-
       {/* <View>
         <Picker mode='selector' range={MAP.province} onChange={(e) => handleSelectChange(e, 'province')} value={pikerParams.province}>
           <AtList>
@@ -121,9 +129,9 @@ const UserAuth = (props) => {
         </Picker>
       </View>
       <View>
-        <Picker mode='selector' range={MAP.area} onChange={(e) => handleSelectChange(e, 'area')} value={pikerParams.area}>
+        <Picker mode='selector' range={MAP.aid} onChange={(e) => handleSelectChange(e, 'aid')} value={pikerParams.aid}>
           <AtList>
-            <AtListItem title='区' extraText={formParams.area} />
+            <AtListItem title='区' extraText={formParams.aid} />
           </AtList>
         </Picker>
       </View> */}
@@ -145,16 +153,17 @@ const UserAuth = (props) => {
           setSelectModal({ ...defaultSelectModal });
         }}
       >
-        {MAP.area.map((name) => {
+        {MAP[0] && MAP[0].areas.map((opt) => {
+          const {aname, id} = opt;
           return (
             <AtActionSheetItem
-              key={name}
+              key={id}
               onClick={() => {
-                handleUpdateForm(name, selectModal.type);
+                handleUpdateForm(id, selectModal.type);
                 setSelectModal({ ...defaultSelectModal });
               }}
             >
-              {name}
+              {aname}
             </AtActionSheetItem>
           );
         })}

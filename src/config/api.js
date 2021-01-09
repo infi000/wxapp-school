@@ -19,7 +19,6 @@ export default {
   setDefaultAddress: WxApiRoot + '/User/defulatAddress', // 设置默认地址
   delAddress: WxApiRoot + '/User/delAddress', // 删除地址
   delOrder: WxApiRoot + '/Order/del', // 16.	删除订单
-
   CourseHotcourse:WxApiRoot+'/Course/hotcourse', //2、	热门课程
   NewsBanners:WxApiRoot+'/News/banners', //3、	Banner图
   NewsSearch:WxApiRoot+'/News/search', //4、	搜索新闻
@@ -46,4 +45,6 @@ export default {
   userIsauth: WxApiRoot + '/User/isauth', //34、	用户是否认证通过
   lastcourse: WxApiRoot + '/Course/lastcourse', //5、	获取课程分类下最新课程详情
   coursesearch: WxApiRoot + '/Course/search', //5、		搜索课程
+  areaAll: WxApiRoot + '/Area/all', //37、	获取省及地区
+  userIspass: WxApiRoot + '/User/ispass', //36、	用户是否已经考试通过（通过后可选修和进阶课程）
 };

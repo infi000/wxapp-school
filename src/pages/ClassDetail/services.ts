@@ -31,5 +31,9 @@ export const courseWareLearn = (payload:{cid:number|string,cwid:number|string}) 
  *  5、	获取课程分类下最新课程详情
  */
 export const getLastcourse = (payload: {cid: number | string }) => request.get(Api.lastcourse,payload);
+/**
+ *  36、	用户是否已经考试通过（通过后可选修和进阶课程）
+ */
+export const getUserIspass = () => request.get(Api.userIspass);
 
 export default {};
