@@ -37,3 +37,17 @@ export function redirect(url) {
     });
   }
 }
+
+/**
+ * 
+ * @param {string} msg 
+ * @param {string} type info，success，error，warning 
+ */
+export function showMessage(msg,type) {
+  console.log(msg,type);
+  Taro.atMessage({
+    'message': msg,
+    'type': type,
+  })
+}
+

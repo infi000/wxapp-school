@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-import { showErrorToast } from '../utils/util';
+import { showErrorToast, showMessage } from '../utils/util';
 
 /**
  * 封封微信的的request
@@ -52,13 +52,13 @@ function request(url, data = {}, method = 'GET') {
           } else if (res.data.res == 'succ') {
             resolve(res.data.data);
           } else {
-            // Taro.showModal({
-            //   title: '错误信息',
-            //   content: res.data.errmsg,
-            //   showCancel: false
-            // });
-            console.log("res",res);
-            showErrorToast(res.data.errdata || res.data);
+    
+            // console.log("res",res);
+            // if(res.data.code == -11){
+            //   showMessage('请先登陆', 'info');
+            // }else{
+            //   showErrorToast(res.data.errdata || res.data);
+            // }
             // reject(res.data.errdata);
           }
         } else {
