@@ -39,9 +39,9 @@ console.log(info);
   return (
     <View className='classPlay-wrap'>
       <View className='vido-wrap'>
-        {
+        {/* {
            videoShow && <Video src={info.fpath} controls={true} autoplay={false} initialTime={0} id='video' loop={false} muted={false} />
-        }
+        } */}
       </View>
       <Block>
         <View className='tool-wrap'>

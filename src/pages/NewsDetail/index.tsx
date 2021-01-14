@@ -17,19 +17,6 @@ function formatRichText(html) { //控制小程序中图片大小
   newContent = newContent.replace(/<br[^>]*\/>/gi, '');
   return newContent;
     }
-const htmlSnip =
-`<img src="/Uploads/Editor/2020-12-16/5fd8e4be1d247.jpg"/> 
-<p>	<span><span style="color:red">测试</span><span style="color:red">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span></span> </p><p>	<span><span style="color:#000000;"><video src="/Uploads/Editor/2020-12-16/5fd8df8d103a9.mp4" type="video/mp4" width="550" height="400" autostart="false" loop="true" controls="controls" /><br /></span></span> </p>
-<h1>Title</h1>
-<div class="div_class">
-  <h1>Title</h1>
-  <p class="p">
-    Life is&nbsp;<i>like</i>&nbsp;a box of
-    <b>&nbsp;chocolates</b>.
-  </p>
-</div>
-`
-const or = `<img src="/Uploads/Editor/2020-12-16/5fd8e4be1d247.jpg" alt="" /> <p>	<span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span></span> </p><p>	<span><span style="color:#000000;"><video src="/Uploads/Editor/2020-12-16/5fd8df8d103a9.mp4" type="video/mp4" width="550" height="400" autostart="false" loop="true" controls="controls" /><br /></span></span> </p><p>	<span><span style="color:#000000;"><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span></span></span> </p><p>	<span><span style="color:#000000;"><span style="color:#000000;">图片：<img src="/Uploads/Editor/2020-12-16/5fd8e4eb7d36d.jpg" alt="" /></span></span></span></p><p>	<span><span style="color:#000000;"><span style="color:#000000;">视频：<video src="/Uploads/Editor/2020-12-16/5fd8e5029bf8b.mp4" type="video/mp4" width="550" height="400" autostart="false" loop="true" controls="controls" /></span></span></span></p><p>	<span><span style="color:#000000;"><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><span style="color:#000000;">测试</span><br /></span></span> </p><p>	<span><span style="color:#000000;"><span style="color:#000000;"><img src="/Uploads/Editor/2020-12-15/5fd8c760da0aa.jpg" alt="" /><br /></span></span></span> </p><p>	<span><span style="color:#000000;"><span style="color:#000000;"><img src="/Uploads/Editor/2020-12-15/5fd8c6a8ce411.mp4" alt="" /><br /></span></span></span> </p>`
 const defatulNews:any ={};
 const NewsDetail = () => {
   const [newsDetail, setNewsDetail] = useState(defatulNews);
