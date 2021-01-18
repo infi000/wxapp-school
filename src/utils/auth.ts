@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro';
 import { getJscode2session, saveUserData, getScorepos, getUserIsauth } from '@/services/user';
 import { isArray } from 'lodash';
 
-export const logIn = (dispatch) =>
+export const logIn = (dispatch, SuccessCb?: Function, errorCb?: Function) =>
   Taro.login({
     success: async function(res) {
       console.log('res', res);
@@ -23,7 +23,7 @@ export const logIn = (dispatch) =>
               saveUserData({ nickname: nickName, avatarurl: avatarUrl, gender, province, country, city, openid })
                 .then(() => {
                   Taro.setStorage({ key: 'wxUserInfo', data: { nickName, avatarUrl, gender, province, country, city, openid } });
-                  dispatch({ type: 'main/updateIsLogIn', payload: true });
+                  dispatch({ type: 'main/updateIsLogIn', payload: 1 });
                   dispatch({ type: 'main/updateWxUserInfo', payload: { nickName, avatarUrl, gender, province, country, city, openid } });
                   dispatch({ type: 'main/updateOpenid', payload: openid });
                   getScorepos()
@@ -36,11 +36,14 @@ export const logIn = (dispatch) =>
                     .catch((err) => {
                       console.log(err);
                     });
-                    getUserIsauth().then((d)=>{
+                  getUserIsauth()
+                    .then((d) => {
                       dispatch({ type: 'main/updateUserIsAuth', payload: d });
-                    }) .catch((err) => {
+                    })
+                    .catch((err) => {
                       console.log(err);
                     });
+                    SuccessCb && setTimeout(SuccessCb,0);
                 })
                 .catch((err) => {
                   console.log(err);
@@ -50,6 +53,7 @@ export const logIn = (dispatch) =>
         });
       } else {
         console.log('登录失败！' + res.errMsg);
+        errorCb && errorCb();
       }
     },
   });

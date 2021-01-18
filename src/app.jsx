@@ -47,7 +47,7 @@ class App extends Component {
           key: 'wxUserInfo',
           success: function(res) {
             const wxUserInfo = res.data;
-            dispatch({ type: 'main/updateIsLogIn', payload: true });
+            dispatch({ type: 'main/updateIsLogIn', payload: 1 });
             dispatch({ type: 'main/updateWxUserInfo', payload: wxUserInfo });
             dispatch({ type: 'main/updateOpenid', payload: wxUserInfo.openid });
           },
@@ -69,6 +69,7 @@ class App extends Component {
         });
       },
       fail() {
+        dispatch({ type: 'main/updateIsLogIn', payload: 2 });
         console.log('session验证未登陆！');
         Taro.removeStorageSync('wxUserInfo');
       },

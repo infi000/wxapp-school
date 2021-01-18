@@ -4,7 +4,7 @@ export default {
   namespace: 'main',
   state: {
     windowHeight:getWindowHeight(),
-    isLogIn:false,
+    isLogIn:0, // 0默认 1登陆 2未登陆
     wxUserInfo:{},
     userScoreInfo:{score:'',rank:''},
     openid:'',

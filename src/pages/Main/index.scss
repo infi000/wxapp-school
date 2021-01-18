@@ -1,0 +1,22 @@
+@import '../../static/style/common.scss';
+
+.sq-box{
+    padding: 50px 20px;
+
+    .sq-line1{
+        font-size: $normal-fontsize;
+        margin-top:50px;
+    }
+    .sq-line2{
+        margin-top:50px;
+        color:$text-grey-color;
+        font-size: $sm-fontsize;
+    }
+    .sq-line3{
+        margin-top:50px;
+        Button{
+            background-color: #07c05f;
+            color:#fff;
+        }
+    }
+}

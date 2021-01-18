@@ -53,13 +53,13 @@ function request(url, data = {}, method = 'GET') {
             resolve(res.data.data);
           } else {
     
-            // console.log("res",res);
-            // if(res.data.code == -11){
-            //   showMessage('请先登陆', 'info');
-            // }else{
-            //   showErrorToast(res.data.errdata || res.data);
-            // }
-            // reject(res.data.errdata);
+            console.log("res",res);
+            if(res.data.code == -11){
+              // showMessage('请先登陆', 'info');
+            }else{
+              showErrorToast(res.data.errdata || res.data);
+            }
+            reject(res.data.errdata);
           }
         } else {
           console.log("res",res);
