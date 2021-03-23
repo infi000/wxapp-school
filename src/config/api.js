@@ -47,4 +47,5 @@ export default {
   coursesearch: WxApiRoot + '/Course/search', //5、		搜索课程
   areaAll: WxApiRoot + '/Area/all', //37、	获取省及地区
   userIspass: WxApiRoot + '/User/ispass', //36、	用户是否已经考试通过（通过后可选修和进阶课程）
+  areapos: WxApiRoot + '/User/areapos', //39 地区积分排行
 };
