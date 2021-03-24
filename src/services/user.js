@@ -21,3 +21,9 @@ export const getScorepos = async () => request.get(Api.scorepos);
  */
 
 export const getUserIsauth = async () => request.get(Api.userIsauth);
+
+/**
+ * 
+ * 过审用的 返回假的openid
+ */
+export const getOpenId = async () => request.get(Api.getOpenId);

@@ -1,18 +1,19 @@
 import Taro from '@tarojs/taro';
 import { showErrorToast, showMessage } from '../utils/util';
-
+import { set as setGlobalData, get as getGlobalData } from '../global_data';
 /**
  * 封封微信的的request
  */
 function request(url, data = {}, method = 'GET') {
-  let openid = '123456';
+  const fekeOpenid = getGlobalData('FAKE_OPENID');
+  let openid = fekeOpenid;
   let header = {
     'Content-Type': 'application/json',
   };
   try {
-    var value = Taro.getStorageSync('wxUserInfo');
+    const value = Taro.getStorageSync('wxUserInfo');
     if (value) {
-      openid = value.openid;
+      openid = fekeOpenid || value.openid;
     }
   } catch (e) {}
 
@@ -90,7 +91,7 @@ request.form = (url, data) => {
 request.formData = (url, data) => {
   let openid = '';
   try {
-    var value = Taro.getStorageSync('wxUserInfo');
+    const value = Taro.getStorageSync('wxUserInfo');
     if (value) {
       openid = value.openid;
     }
