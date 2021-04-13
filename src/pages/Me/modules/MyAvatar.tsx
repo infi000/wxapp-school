@@ -47,9 +47,15 @@ const GRID_OPTION = [
 const MyAvatar = () => {
   const { isLogIn, wxUserInfo, userScoreInfo, userIsAuth } = useSelector((state: any) => state.main);
   const dispatch = useDispatch();
-  const handleLogIn = (e) => {
-    console.log(e);
-    logIn(dispatch);
+  const handleLogIn = () => {
+    // eslint-disable-next-line no-undef
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res);
+        logIn({dispatch,userInfo: res.userInfo});
+      }
+    })
   };
   const handleChoose = (item) => {
     console.log(item);
@@ -77,7 +83,7 @@ const MyAvatar = () => {
             </Block> : <View className='at-col'>{IS_AUTH_MAP.get(Number(userIsAuth))}</View>}
           </Block>
         ) : (
-            <Button open-type='getUserInfo' onGetUserInfo={handleLogIn}>
+            <Button onClick={handleLogIn}>
               授权登录
             </Button>
           )}

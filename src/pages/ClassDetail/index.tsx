@@ -36,7 +36,6 @@ const ClassDetail = () => {
         url: files[0].fpath,
         success(res) {
           const filePath = res.tempFilePath;
-          console.log(filePath);
           Taro.openDocument({
             filePath,
             success(res) {
@@ -73,7 +72,6 @@ const ClassDetail = () => {
     const id = get(classDetail, ['id'], '');
     const cname = get(classDetail, ['cname'], '');
     setClassActionSheet({ show: true, data: { id, cname } });
-    console.log('classDetail', classDetail);
   };
   useDidShow(() => {
     // 判断是从课程分类里进的还是从课程进的

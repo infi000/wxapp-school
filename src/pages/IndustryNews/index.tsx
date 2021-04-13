@@ -16,7 +16,7 @@ const IndustryNews = () => {
       {/* <SearchBar /> */}
       <Banner />
       {/* <TagBar /> */}
-      <HotClass />
+      {/* <HotClass /> */}
       <News />
       <RecommendClass />
     </View>

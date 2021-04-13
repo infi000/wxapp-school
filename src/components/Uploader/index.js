@@ -39,10 +39,8 @@ export default class Index extends Taro.Component {
     });
   }
   onFail(mes) {
-    console.log(mes);
   }
   onImageClick(index, file) {
-    console.log(index, file);
   }
   render() {
     const { length } = this.props;

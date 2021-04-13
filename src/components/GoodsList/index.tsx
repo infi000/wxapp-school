@@ -12,7 +12,6 @@ interface IProps {
 const GoodsList = (props: IProps) => {
   const { list = [] } = props;
   const handleChooseGoods = (opt) => {
-    console.log(opt)
     const { id, issale } = opt;
     if (issale === '-1') {
       return;

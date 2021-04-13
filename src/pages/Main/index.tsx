@@ -1,6 +1,6 @@
+/* eslint-disable react/jsx-no-undef */
 import Taro from '@tarojs/taro';
 import { View, Button, Block } from '@tarojs/components';
-import { AtFloatLayout } from 'taro-ui';
 import { useSelector, useDispatch } from '@tarojs/redux';
 import Tabbar from '@/components/Tabbar';
 import IndustryNews from '@/pages/IndustryNews';
@@ -17,8 +17,15 @@ const Main = (props) => {
   const { isLogIn } = useSelector((state) => state.main);
   const dispatch = useDispatch();
   const handleLogIn = (e) => {
-    console.log(e);
-    logIn(dispatch);
+    // console.log(e);
+    // eslint-disable-next-line no-undef
+    wx.getUserProfile({
+      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        console.log(res);
+        logIn({dispatch,userInfo: res.userInfo});
+      }
+    })
   };
   console.log('isLogIn=====', isLogIn);
   return (
@@ -26,6 +33,8 @@ const Main = (props) => {
       {isLogIn === 0 && <View></View>}
       {isLogIn === 1 && (
         <Block>
+          {/* <View>123213123213</View> */}
+          {/* <IndustryNews /> */}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.industryNews && <IndustryNews />}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.onlineStudy && <OnlineStudy />}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.me && <Me />}
@@ -38,7 +47,7 @@ const Main = (props) => {
           <View className='sq-line1'>申请获取您的以下权限:</View>
           <View className='sq-line2'>获得您的公开信息(昵称、头像等)</View>
           <View className='sq-line3'>
-            <Button open-type='getUserInfo' onGetUserInfo={handleLogIn}>
+            <Button  onClick={handleLogIn}>
               授权登陆
             </Button>
           </View>

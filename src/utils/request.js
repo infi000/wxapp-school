@@ -20,14 +20,14 @@ function request(url, data = {}, method = 'GET') {
   if (method === 'FORM') {
     data.append('openid', openid);
     header = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    }
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
   } else if (method === 'POST') {
     data = { openid, ...data };
     header = {
-      "Content-Type": "application/x-www-form-urlencoded"
-    }
-  }else {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    };
+  } else {
     data = { openid, ...data };
   }
   return new Promise(function(resolve, reject) {
@@ -53,23 +53,26 @@ function request(url, data = {}, method = 'GET') {
           } else if (res.data.res == 'succ') {
             resolve(res.data.data);
           } else {
-    
-            console.log("res",res);
-            if(res.data.code == -11){
-              // showMessage('请先登陆', 'info');
-            }else{
+            console.log('res', res);
+            if (res.data.code == -11) {
+              Taro.removeStorageSync('userInfo');
+              Taro.removeStorageSync('token');
+              Taro.redirectTo({
+              url: '/pages/Login/index'
+            });
+            } else {
               showErrorToast(res.data.errdata || res.data);
             }
             reject(res.data.errdata);
           }
         } else {
-          console.log("res",res);
-          showErrorToast('接口错误')
+          console.log('res', res);
+          showErrorToast('接口错误');
           // reject(res.errdata);
         }
       },
       fail: function(err) {
-        console.log(err)
+        console.log(err);
         // reject(err);
       },
     });
@@ -99,12 +102,12 @@ request.formData = (url, data) => {
 
   return new Promise(function(resolve, reject) {
     Taro.uploadFile({
-      url:url,
-      filePath:[],
+      url: url,
+      filePath: [],
       name: 'file',
       formData: {
         'openid': openid,
-        ...data
+        ...data,
       },
       success: function(res) {
         if (res.statusCode == 200) {
@@ -128,18 +131,18 @@ request.formData = (url, data) => {
             //   content: res.data.errmsg,
             //   showCancel: false
             // });
-            console.log("res",res);
+            console.log('res', res);
             showErrorToast(res.data.errdata);
             // reject(res.data.errdata);
           }
         } else {
-          console.log("res",res);
+          console.log('res', res);
           showErrorToast(res.data.errdata);
         }
       },
       fail: function(err) {
         console.log(err);
-        showErrorToast('接口错误')
+        showErrorToast('接口错误');
         // reject(err);
       },
     });
