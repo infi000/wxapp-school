@@ -1,4 +1,5 @@
 @import '../../static/style/common.scss';
+@import "~taro-ui/dist/style/components/list.scss";
 
 .feedback-wrap {
   position: fixed;
@@ -7,8 +8,25 @@
   left: 0;
   bottom: 0;
   // background-color: red;
+ .feedback-content {
+  position: absolute;
+  bottom: 28%;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow-y: scroll;
+ }
  .feedback-item {
-   padding: 10px;
-   margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+ .feedback-form{
+   border: 1px solid #ccc;
+   padding: 20px;
+   position: absolute;
+   bottom: 0;
+   left: 0;
+   right: 0;
+
  }
 }

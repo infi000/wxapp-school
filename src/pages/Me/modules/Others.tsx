@@ -6,6 +6,7 @@ import { useSelector } from '@tarojs/redux';
 const LIST_URL_MAP = [
   // { name: '设置密码', url: '/pages/PhotoWall/index' },
   { name: '帮助中心', type:'helpCetner' },
+  { name: '反馈中心',  url: '/pages/Feedback/index' },
   { name: '测试学习', url: '/pages/TestClass/index' },
   { name: '小测结果', url: '/pages/TestResult/index' },
   // { name: '当日报告', url: '/pages/Kefu/index' },
@@ -39,7 +40,7 @@ const Others = () => {
     let res:any = [];
     if (userIsAuth == 1){
       // 已经认证
-      res = LIST_URL_MAP.filter(item => ['帮助中心', '测试学习', '小测结果','学习历史'].includes(item.name))
+      res = LIST_URL_MAP.filter(item => ['帮助中心','反馈中心', '测试学习', '小测结果','学习历史'].includes(item.name))
     }else{
       res = LIST_URL_MAP.filter(item => ['帮助中心', '用户认证(请进行实名认证)'].includes(item.name))
     }

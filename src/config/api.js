@@ -49,6 +49,6 @@ export default {
   userIspass: WxApiRoot + '/User/ispass', //36、	用户是否已经考试通过（通过后可选修和进阶课程）
   areapos: WxApiRoot + '/User/areapos', //39 地区积分排行
   getOpenId: WxApiRoot + '/User/getopenid', // 返回通用的openid
-  addMessage: MOCK + '/Message/add', // 反馈问题
-  myMessage: MOCK + '/Message/mymsg', // 获取我的反馈问题
+  addMessage: WxApiRoot + '/Message/add', // 反馈问题
+  myMessage: WxApiRoot + '/Message/mymsg', // 获取我的反馈问题
 };
