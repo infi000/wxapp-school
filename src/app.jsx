@@ -106,6 +106,7 @@ class App extends Component {
   }
   config = {
     pages: [
+      // 'pages/Feedback/index',
       'pages/Main/index',
       'pages/Login/index',
       'pages/ClassPlay/index',
