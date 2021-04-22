@@ -6,11 +6,13 @@ import Banner from './modules/Banner';
 import RecommendClass from './modules/RecommendClass';
 import HotClass from './modules/HotClass';
 import './index.scss';
+import { useShare } from '@/utils/hooks';
 
 const IndustryNews = () => {
   Taro.setNavigationBarTitle({
     title: '热线学堂',
   });
+  // useShare();
   return (
     <View className='industryNews-wrap'>
       {/* <SearchBar /> */}

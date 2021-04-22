@@ -1,4 +1,6 @@
 @import '../../static/style/common.scss';
+@import "~taro-ui/dist/style/components/action-sheet.scss";
+
 $meranking-mid-bottom-h:100px;
 $meranking-top-h:120px;
 $meranking-tab-h:120px;
@@ -11,6 +13,13 @@ $meranking-mid-top:300px;
     bottom: 0;
     left: 0;
     right: 0;
+}
+.meranking-change-tag{
+    position: absolute;
+    bottom: -70px;
+    right: 30px;
+    font-size: $mini-fontsize;
+    color: yellow;
 }
 .meranking-tab{
     text-align: center;
@@ -28,6 +37,7 @@ $meranking-mid-top:300px;
     height: $meranking-top-h;
     line-height: $meranking-top-h;
     font-size: $big-fontsize;
+    position: relative;
 }
 
 .meranking-mid{

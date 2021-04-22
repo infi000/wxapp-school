@@ -1,0 +1,40 @@
+@import '~taro-ui/dist/style/components/flex.scss';
+@import '../../static/style/common.scss';
+.MyScore-wrap{
+    // @include con;
+    // background-color: $bg-grey-color;
+    // @include base-con;
+}
+
+.recommendClass-wrap {
+    @include con;
+    @include base-con;
+    .recommendClass-list-item {
+      padding: 10px 0;
+      border-bottom: 0.5px solid $bg-grey-color;
+      position: relative;
+      .recommendClass-desc-con {
+        position: absolute;
+        bottom: 10px;
+      }
+    }
+  }
+  
+  .myScore-item{
+    @include con;
+    @include base-con;
+    border-bottom: 1px solid #ccc;
+    font-size: $mini-fontsize;
+
+   
+}
+
+.myScore-item-title {
+    font-size: $normal-fontsize;
+
+}
+
+.myScore-item-desc {
+    font-size: $mini-fontsize;
+
+}

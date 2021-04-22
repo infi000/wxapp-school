@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro, { useRouter, useShareAppMessage, useShareTimeline } from '@tarojs/taro';
 import { cloneDeep } from 'lodash';
 import request from '@/utils/request';
 import Api from '@/config/api';
@@ -12,15 +12,15 @@ export const useCheckBoxList = (
   handleSelectedAll: (type?: boolean) => void;
   handleSelected: (index: number, type?: boolean) => void;
   isSelectedAll: boolean;
-  checkBoxList: Array<{ checked: boolean; [key: string]: any }>;
-  checkedItem: [] | Array<{ checked: boolean; [key: string]: any }>;
+  checkBoxList: Array<{ checked: boolean;[key: string]: any }>;
+  checkedItem: [] | Array<{ checked: boolean;[key: string]: any }>;
 } => {
   const [checkBoxList, setCheckboxList]: [any, any] = useState(() => {
     return list
       ? list.map((item) => {
-          item.checked = false;
-          return item;
-        })
+        item.checked = false;
+        return item;
+      })
       : [];
   });
   const [checkedItem, setCheckedItem]: [any, any] = useState([]);
@@ -61,9 +61,9 @@ export const useCheckBoxList = (
     setCheckboxList(() => {
       return list
         ? list.map((item) => {
-            item.checked = false;
-            return item;
-          })
+          item.checked = false;
+          return item;
+        })
         : [];
     });
   }, [list]);
@@ -75,25 +75,34 @@ export const useCheckBoxList = (
  * @param namespace string 当前模块stroe的namesacpe
  * @param dispatch useDispatch方法
  */
-export const useInitialValue = (namespace,dispatch) =>{
+export const useInitialValue = (namespace, dispatch) => {
   useEffect(() => {
-    dispatch({type:`${namespace}/init`})
-  } ,[])
+    dispatch({ type: `${namespace}/init` })
+  }, [])
 };
 
 
 export const useIspass = () => {
-  return (ctype:string,cb:(d?:any)=>void) => {
-    if(ctype !== '1') {
-      request.get(Api.userIspass).then((d) =>{
-        if(d==1){
+  return (ctype: string, cb: (d?: any) => void) => {
+    if (ctype !== '1') {
+      request.get(Api.userIspass).then((d) => {
+        if (d == 1) {
           cb(d)
-        }else{
+        } else {
           showErrorToast('无权限');
         }
       })
-    }else{
+    } else {
       cb();
     }
   }
+}
+
+
+export const useShare = (params?: { path: string; }) => {
+  useShareAppMessage(() => {
+    return {
+      title:'热线学堂'
+    }
+  });
 }

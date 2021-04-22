@@ -51,4 +51,8 @@ export default {
   getOpenId: WxApiRoot + '/User/getopenid', // 返回通用的openid
   addMessage: WxApiRoot + '/Message/add', // 反馈问题
   myMessage: WxApiRoot + '/Message/mymsg', // 获取我的反馈问题
+  userShare: WxApiRoot + '/User/share', // 分享
+  userClock: WxApiRoot + '/User/clock', // 今日签到
+  userMyScore: WxApiRoot + '/User/myscore', // 我的积分信息
+  userMyinfo: WxApiRoot + '/User/myinfo', // 我的积分信息
 };

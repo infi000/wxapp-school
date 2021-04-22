@@ -4,7 +4,7 @@ import { set as setGlobalData, get as getGlobalData } from '../global_data';
 /**
  * 封封微信的的request
  */
-function request(url, data = {}, method = 'GET') {
+function request(url, data = {}, method = 'GET', noAlert = false) {
   const fekeOpenid = getGlobalData('FAKE_OPENID');
   let openid = fekeOpenid;
   let header = {
@@ -67,7 +67,7 @@ function request(url, data = {}, method = 'GET') {
           }
         } else {
           console.log('res', res);
-          showErrorToast('接口错误');
+          !noAlert && showErrorToast('接口错误');
           // reject(res.errdata);
         }
       },

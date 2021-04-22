@@ -4,6 +4,7 @@ import { getNewsDetail } from './services';
 import { imgnotfount } from '@/static/images/index';
 import { host } from '@/config/api';
 import './index.scss';
+import { useShare } from '@/utils/hooks';
 function formatRichText(html) { //控制小程序中图片大小
   let newContent = html.replace(/<img[^>]*>/gi, function(match, capture) {
     console.log(match.search(/style=/gi));
@@ -43,7 +44,7 @@ const NewsDetail = () => {
 
     return formatRichText(str);
   }
-  console.log(HTML());
+  useShare();
   return (
     <View className='newsDetail-wrap'>
       <View className='at-article'>

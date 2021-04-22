@@ -11,6 +11,12 @@
   padding: 40px;
   .my-avatar-top {
     height: 180px;
+    position: relative;
+    .my-level{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 }
 

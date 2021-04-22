@@ -27,3 +27,15 @@ export const getUserIsauth = async () => request.get(Api.userIsauth);
  * 过审用的 返回假的openid
  */
 export const getOpenId = async () => request.get(Api.getOpenId);
+
+/**
+ * 分享
+ * @returns 
+ */
+export const postUserShare = async () => request(Api.userShare, {}, 'GET', true);
+
+/**
+ * 签到
+ * @returns 
+ */
+export const postUserClock = async () => request(Api.userClock, {}, 'GET', true);

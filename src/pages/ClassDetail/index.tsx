@@ -8,6 +8,7 @@ import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
 import { CWTYPE_MAP } from './canstants';
+import { useShare } from '@/utils/hooks';
 const { useState, useEffect } = Taro;
 const tabList = [{ title: '课程大纲' }, { title: '课程介绍' }];
 
@@ -19,6 +20,7 @@ const ClassDetail = () => {
   const router = useRouter();
   const { params } = router;
   const { cid = '', from = '' } = params || {};
+  useShare();
   Taro.setNavigationBarTitle({
     title: '热线学堂'
   });

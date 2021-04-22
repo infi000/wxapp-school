@@ -1,10 +1,11 @@
-import Taro, { useMemo } from '@tarojs/taro';
+import Taro, { useDidShow, useEffect, useMemo, useState } from '@tarojs/taro';
 import { View, Button, Block } from '@tarojs/components';
 import { AtAvatar, AtGrid } from 'taro-ui';
 import { useSelector, useDispatch } from '@tarojs/redux';
 import { IS_AUTH_MAP } from '@/constants/'
 import { logIn } from '@/utils/auth';
 import '../index.scss';
+import { getUserMyinfo } from '../services';
 const GRID_OPTION = [
   {
     image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
@@ -46,6 +47,7 @@ const GRID_OPTION = [
 ]
 const MyAvatar = () => {
   const { isLogIn, wxUserInfo, userScoreInfo, userIsAuth } = useSelector((state: any) => state.main);
+  const [myLevel, setMyLevel] = useState('-');
   const dispatch = useDispatch();
   const handleLogIn = () => {
     // eslint-disable-next-line no-undef
@@ -68,6 +70,12 @@ const MyAvatar = () => {
     return userIsAuth == 1 ? GRID_OPTION:[];
   }, [userIsAuth])
   console.log("userScoreInfo", userScoreInfo);
+  useEffect(() => {
+    getUserMyinfo().then(d => {
+      const {slevel = '-'} = d;
+      setMyLevel(slevel);
+    })
+  },[])
   return (
     <View className='my-avatar-con'>
       <View className='at-row at-row__align--center  my-avatar-top'>
@@ -76,10 +84,14 @@ const MyAvatar = () => {
             <View className='at-col  at-col-3'>
               <AtAvatar circle image={wxUserInfo.avatarUrl}></AtAvatar>
             </View>
-            <View className='at-col'>{wxUserInfo.nickName}</View>
+          
             {userIsAuth == 1 ? <Block>
+              <View className='at-col'>{wxUserInfo.nickName}</View>
+
               <View className='at-col'>积分：{userScoreInfo.score}</View>
               <View className='at-col'>排名：{userScoreInfo.rank}</View>
+              <View className='my-level'>等级：{myLevel}</View>
+
             </Block> : <View className='at-col'>{IS_AUTH_MAP.get(Number(userIsAuth))}</View>}
           </Block>
         ) : (

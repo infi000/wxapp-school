@@ -81,3 +81,13 @@ export const TOTAL_CLASS = [
         src: zyzgz
     },
 ];
+
+export const SCORE_TYPE = {
+    1:'学习',
+    5:'消耗',
+    6:'登录',
+    7:'分享个人/群',
+    8:'分享朋友圈',
+    9:'其他分享',
+    10:'反馈（奖励分数）'
+}

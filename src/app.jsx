@@ -1,12 +1,12 @@
+/* eslint-disable no-undef */
 import Taro, { Component } from '@tarojs/taro';
 import { Provider, connect } from '@tarojs/redux';
 import dva from './dva';
 import models from './store';
 // import { ROUTER_MAP } from './router';
 import { set as setGlobalData, get as getGlobalData } from './global_data';
-import { getScorepos, getUserIsauth, getOpenId } from '@/services/user';
+import { getScorepos, getUserIsauth, getOpenId, postUserShare, postUserClock } from '@/services/user';
 import { isArray } from 'lodash';
-
 import Index from './pages/index';
 
 // import configStore from './store'
@@ -38,9 +38,11 @@ const store = dvaApp.getStore();
 }))
 class App extends Component {
   async componentWillMount() {
+
     this.update();
     const { dispatch } = this.props;
     // 这块的逻辑就是为了过审核
+
     const fekeOpenid = await getOpenId();
     if (fekeOpenid) {
       setGlobalData('FAKE_OPENID', fekeOpenid);
@@ -103,16 +105,19 @@ class App extends Component {
       },
     });
     this.update();
+    postUserClock();
   }
   config = {
     pages: [
       'pages/Main/index',
+
+      'pages/MeRanking/index',
       'pages/Feedback/index',
       'pages/Login/index',
       'pages/ClassPlay/index',
       'pages/TestResult/index',
       'pages/NewExamDetail/components/Result',
-      'pages/MeRanking/index',
+ 
       'pages/WebView/index',
 
       'pages/ClassList/index',
@@ -136,7 +141,7 @@ class App extends Component {
       'pages/MyCollect/components/Course',
 
       'pages/MyCollect/index',
-
+      'pages/MyScore/index',
       //  'pages/ClassPlay/index',
       'pages/NewsDetail/index',
       // 'pages/HotNews/index',
@@ -213,6 +218,8 @@ class App extends Component {
     },
     'enablePullDownRefresh': true,
     'debug': true,
+    'enableShareTimeline': true,
+    'enableShareAppMessage': true,
   };
   update = () => {
     if (process.env.TARO_ENV === 'weapp') {
@@ -233,6 +240,14 @@ class App extends Component {
   };
 
   componentDidShow() {
+    Taro.showShareMenu({
+      withShareTicket: true,
+      menus: ['shareAppMessage', 'shareTimeline'],
+      success:(res) => {
+        console.log("分享啦", res);
+        postUserShare({stype:7})
+      }
+    });
     // user
     //   .checkLogin()
     //   .then((res) => {
@@ -241,11 +256,47 @@ class App extends Component {
     //   .catch(() => {
     //     setGlobalData('hasLogin', false);
     //   });
+
+    // wx.onShareAppMessage: function() {
+    //   wx.showShareMenu({
+    //       withShareTicket: true,
+    //       menus: ['shareAppMessage', 'shareTimeline']
+    //     })
+    // },
+    // //用户点击右上角分享朋友圈
+    // wx.onShareTimeline(function () {
+    //   console.log('分享拉@@@@@');
+    //   return {
+    //       title: 'we',
+    //     }
+    // });
+ 
+    // Taro.useShareAppMessage(res => {
+    //   return {
+    //     title: '热线学堂',
+    //     path: '/pages/Main/index',
+    //     // imageUrl
+    //   }
+    // })
   }
 
   componentDidHide() {}
 
   componentDidCatchError() {}
+  onShareTimeline(){
+    return{
+     
+        title:'分享',
+
+    }
+}
+
+ onShareAppMessage()
+ {
+     return{
+         title:'点击转发后,页面文章的标题',
+     }
+ }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
