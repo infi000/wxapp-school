@@ -11,7 +11,7 @@ const { useState, useEffect } = Taro;
 
 const ExamClass = () => {
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   const [exam, setExam] = useState([]);
   const [modal, setModal]: [any, any] = useState({

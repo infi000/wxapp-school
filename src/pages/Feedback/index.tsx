@@ -16,7 +16,7 @@ const Collect = () => {
   const dispatch = useDispatch();
   const [inputVal, setInputVal] = useState('');
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   const handleGetMsg = () => {
     getMsg({ offset: 0, count: 100 }).then(d => {

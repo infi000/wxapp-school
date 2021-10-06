@@ -10,7 +10,7 @@ import { isArray } from 'lodash';
 
 const MyCourseware = (props) => {
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   const [coursewares, setCoursewares]:[any,any] = useState([]);
   const handleToClassPlay = (id,cwtype) => {

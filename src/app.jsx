@@ -109,6 +109,7 @@ class App extends Component {
   }
   config = {
     pages: [
+      'pages/UserAuth/index',
       'pages/Main/index',
 
       'pages/MeRanking/index',
@@ -128,7 +129,7 @@ class App extends Component {
 
       'pages/ClassDetail/index',
       'pages/NewExamDetail/index',
-      'pages/UserAuth/index',
+
 
       'pages/ExamClass/index',
       'pages/TestClass/index',
@@ -273,7 +274,7 @@ class App extends Component {
  
     // Taro.useShareAppMessage(res => {
     //   return {
-    //     title: '热线学堂',
+    //     title: 'DI动力课堂',
     //     path: '/pages/Main/index',
     //     // imageUrl
     //   }

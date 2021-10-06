@@ -32,7 +32,7 @@ const NewsDetail = () => {
     })
   });
   Taro.setNavigationBarTitle({
-    title:'热线学堂',
+    title:'DI动力课堂',
   });
   const HTML = () => {
     let str = newsDetail.content;

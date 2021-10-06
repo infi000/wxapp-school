@@ -32,7 +32,7 @@ const MeRanking = () => {
   useDidShow(() => {
     const { params } = router;
     Taro.setNavigationBarTitle({
-      title: '热线学堂',
+      title: 'DI动力课堂',
     });
     getInfo('1')
   });

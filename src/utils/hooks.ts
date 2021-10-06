@@ -102,7 +102,7 @@ export const useIspass = () => {
 export const useShare = (params?: { path: string; }) => {
   useShareAppMessage(() => {
     return {
-      title:'热线学堂'
+      title:'DI动力课堂'
     }
   });
 }

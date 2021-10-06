@@ -22,7 +22,7 @@ const ClassDetail = () => {
   const { cid = '', from = '' } = params || {};
   useShare();
   Taro.setNavigationBarTitle({
-    title: '热线学堂'
+    title: 'DI动力课堂'
   });
   const handleToClassPlay = () => {
     const { cwtype, files, id, cwname } = actionSheet.data;

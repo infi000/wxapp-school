@@ -25,7 +25,7 @@ const Result = () => {
   useDidShow(() => {
     dispatch({ type: 'tabbar/updateCurrentNavIndex', payload: 2 });
     Taro.setNavigationBarTitle({
-      title: '热线学堂',
+      title: 'DI动力课堂',
     });
     getMyExamResult({ epid }).then(d=>{
       setDataSource(d);

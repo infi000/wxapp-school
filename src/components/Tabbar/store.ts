@@ -14,19 +14,19 @@ export default {
   state: {
     nav: [
       {
-        title: '快讯',
+        title: 'DI快讯',
         type: ROUTER_NAME_MAP.industryNews,
         image: kx1,
         selectedImage: kx2,
       },
       {
-        title: 'e培训',
+        title: '资源中心',
         type: ROUTER_NAME_MAP.onlineStudy,
         image: epx1,
         selectedImage: epx2,
       },
       {
-        title: '@我',
+        title: '我的',
         type: ROUTER_NAME_MAP.me,
         image: wo1,
         selectedImage: wo2,

@@ -7,7 +7,7 @@ import Others from './modules/Others';
 
 const Me = () => {
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   return (
     <View className='basewrap me-wrap'>

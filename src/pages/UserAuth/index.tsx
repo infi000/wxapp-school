@@ -41,7 +41,7 @@ const defaultSelectModal: { show: boolean; option: Array<any>; type?: PCAType } 
 };
 const UserAuth = (props) => {
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   const [formParams, setFormParams]: [any, any] = useState({ ...defaultParams });
   const [pikerParams, setPikerParams] = useState({ ...defaultPikerParams });

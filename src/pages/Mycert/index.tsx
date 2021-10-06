@@ -8,7 +8,7 @@ import { isArray } from 'lodash';
 
 const MyCert = () => {
   Taro.setNavigationBarTitle({
-    title: '热线学堂',
+    title: 'DI动力课堂',
   });
   const [certs, setCerts] = useState([]);
   const handleChoose = (item) => {

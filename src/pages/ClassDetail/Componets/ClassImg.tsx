@@ -10,7 +10,7 @@ const CLassImg = (props) => {
   const [info,setInfo]:[any,any] = useState({});
   const router = useRouter();
   Taro.setNavigationBarTitle({
-    title:'热线学堂',
+    title:'DI动力课堂',
   });
 console.log('info',info);
   useDidShow(() => {
