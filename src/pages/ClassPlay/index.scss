@@ -6,8 +6,12 @@
 }
 .vido-wrap {
   @include base-con;
+  // background-color: #000;
   width: 100%;
   height: 400px;
+  .btn-live{
+    // padding-top: 100px;
+  }
   #video {
     height: 100%;
     width: 100%;

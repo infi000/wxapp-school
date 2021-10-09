@@ -51,3 +51,12 @@ export function showMessage(msg,type) {
   })
 }
 
+
+
+export const formatNews = (item2) => {return [].concat(...(item2.map(item => {
+  const {news_item, create_time} = item.content;
+  
+  return news_item.map(item => ({...item,create_time}))
+      
+  
+  })))}

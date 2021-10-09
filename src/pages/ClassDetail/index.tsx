@@ -1,9 +1,9 @@
-import Taro, { useDidShow, useRouter } from '@tarojs/taro';
+import Taro, { showToast, useDidShow, useRouter } from '@tarojs/taro';
 import { AtAvatar, AtTag, AtTabs, AtTabsPane, AtButton, AtActionSheet, AtActionSheetItem } from 'taro-ui';
 import { View, Block, Image } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import ClassImg from './Componets/ClassImg';
-import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart, getLastcourse, } from './services';
+import { getCourseDetail, addCourseAttcourse, courseWareLearn, getExamstart, getLastcourse, isBuyCid, payex, createorder, } from './services';
 import { showSuccessToast } from '@/utils/util';
 import './index.scss';
 import { get, isArray } from 'lodash';
@@ -17,6 +17,7 @@ const ClassDetail = () => {
   const [actionSheet, setActionSheet]: [any, any] = useState({ show: false, data: {} });
   const [classActionSheet, setClassActionSheet]: [any, any] = useState({ show: false, data: {} });
   const [currentTab, setCurrentTab] = useState(0);
+  const [isBuy, setIsBuy] = useState(false);
   const router = useRouter();
   const { params } = router;
   const { cid = '', from = '' } = params || {};
@@ -30,7 +31,7 @@ const ClassDetail = () => {
     setClassActionSheet({ show: false, data: {} });
     courseWareLearn({ cwid: id, cid: classDetail.id });
     if (cwtype == 1 || cwtype == 3) {
-      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${id}` });
+      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${id}&cwtype=${cwtype}` });
       return;
     }
     if ([4,5].includes(Number(cwtype))) {
@@ -70,6 +71,55 @@ const ClassDetail = () => {
       showSuccessToast(d);
     });
   };
+
+  const handleBuy = async (cid, money) => {
+    const { orderid } =  await createorder({cid, money});
+    payex({orderid, paytype: 'miniwxpay' }).then(d => {
+      if (d == '1') {
+        Taro.navigateBack({
+          delta: 1 , success: function (res) {
+            Taro.showToast({
+              title: '购买成功',
+              icon: 'success',
+              duration: 2000
+            })
+          }
+        });
+        return;
+      }
+      const { arraydata } = d || {};
+      const { nonceStr, timeStamp, signType, paySign } = arraydata || {};
+      const pak = arraydata.package;
+      Taro.requestPayment({
+        timeStamp: timeStamp + "",
+        nonceStr: nonceStr,
+        package: pak,
+        signType,
+        paySign,
+        success: function (res) {
+          console.log('res', res)
+          Taro.showToast({
+            title: '购买成功',
+            icon: 'success',
+            duration: 2000
+          })
+          setIsBuy(true)
+          // 返回上一级页面。
+
+        },
+        fail: function (err) {
+          console.log('err', err)
+          Taro.showToast({
+            title: '购买失败',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      })
+    })
+  }
+
+
   const handleActionClass = () => {
     const id = get(classDetail, ['id'], '');
     const cname = get(classDetail, ['cname'], '');
@@ -87,9 +137,17 @@ const ClassDetail = () => {
         });
     } else {
       getCourseDetail({ cid })
-        .then((d) => {
-          setClassDetail(d);
-
+        .then((data) => {
+          setClassDetail(data);
+          isBuyCid({cid}).then(d => {
+            console.log(' classDetail.money', data);
+            if(d == 1 || data.money == '0.00'){
+              setIsBuy(true);
+            }else{
+              setIsBuy(false);
+            }
+            console.log('isBuyCid', d);
+          })
         })
         .catch((err) => {
           console.log(err);
@@ -114,6 +172,15 @@ const ClassDetail = () => {
                   <AtButton type='primary' size='small' className='at-button-mini' onClick={() => handleAddCourseAttcourse(classDetail.id)}>
                     订阅
                   </AtButton>
+                  {
+                    isBuy ? <AtButton disabled type='secondary' size='small' className='at-button-mini  classDetail-btn-buy'>
+                    已购买
+                  </AtButton> : 
+                   <AtButton type='secondary' size='small'   className='at-button classDetail-btn-buy' onClick={() => handleBuy(classDetail.id, classDetail.money)}>
+                    {`请付款：¥${get(classDetail, ['money'], '-')}`}
+                 </AtButton> 
+                  }
+            
                 </View>
               </View>
               <View className='teacherInfo-mid'>{get(classDetail, ['teacher', 'tdes'], '暂无')}</View>
@@ -144,6 +211,7 @@ const ClassDetail = () => {
                       <View className='at-col at-col-8  class-item-desc'>{item.cwname}</View>
                       <View className='at-col at-col-2'>
                         <AtButton
+                          disabled={!isBuy}
                           type='primary'
                           size='small'
                           className='at-button-mini'

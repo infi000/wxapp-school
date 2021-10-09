@@ -8,7 +8,8 @@ export default {
     wxUserInfo:{},
     userScoreInfo:{score:'',rank:''},
     openid:'',
-    userIsAuth: '0' // 是否认证，0:默认；1认证通过，3认证中，4认证失败
+    userIsAuth: '0', // 是否认证，0:默认；1认证通过，3认证中，4认证失败
+    newsInfo:{}
   },
   reducers: {
     updateIsLogIn: (state, {payload}) =>{
@@ -19,6 +20,9 @@ export default {
     },
     updateOpenid: (state, { payload }) => {
       state.openid = payload;
+    },
+    updateNewsInfo: (state, { payload }) => {
+      state.newsInfo = payload;
     },
     updateUserScoreInfo: (state, { payload }) => {
       const { uid, scores } = payload;

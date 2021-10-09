@@ -3,21 +3,8 @@ import { View, Block.Image, RichText, WebView } from '@tarojs/components';
 import { getNewsDetail } from './services';
 import { imgnotfount } from '@/static/images/index';
 import { host } from '@/config/api';
-import './index.scss';
 import { useShare } from '@/utils/hooks';
-function formatRichText(html) { //控制小程序中图片大小
-  let newContent = html.replace(/<img[^>]*>/gi, function(match, capture) {
-    console.log(match.search(/style=/gi));
-    if(match.search(/style=/gi) == -1){
-      match = match.replace(/\<img/gi,'<img style=""');
-    }
-    return match;
-  });
-  
-  newContent = newContent.replace(/style="/gi, '$& max-width:100% !important; ');
-  newContent = newContent.replace(/<br[^>]*\/>/gi, '');
-  return newContent;
-    }
+
 const NewsDetail = () => {
   const [newsDetail, setNewsDetail] = useState('');
   const router = useRouter();
@@ -32,7 +19,7 @@ const NewsDetail = () => {
   });
 
   return (
-    <WebView src={newsDetail}  />
+    <WebView src={'http://dakaadmin.tangguostore.com/live.html?url='+newsDetail}  />
     // <View className='newsDetail-wrap'>
     //   <View className='at-article'>
     //     <View className='article__top'>

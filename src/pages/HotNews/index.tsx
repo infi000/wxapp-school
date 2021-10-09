@@ -5,43 +5,38 @@ import { defaultNews } from '@/static/images/index';
 import { getNewsSearch } from './services';
 import './index.scss';
 import { isArray } from 'lodash';
+import { formatNews } from '@/utils/util';
+import { useDispatch } from '@tarojs/redux';
 
 const PAGE_LEN = 1000;
 const HotNews = () => {
+  const dispatch = useDispatch();
+
+
   const handleToNewsDetail = (params) => {
-    const { id } = params;
-    Taro.navigateTo({ url: '/pages/NewsDetail/index?nid=' + id });
+    dispatch({ type: 'main/updateNewsInfo', payload: params });
+
+    const { url } = params;
+    console.log("params", params);
+    
+
+    Taro.navigateTo({ url: '/pages/NewsDetail/index?url=' +  encodeURIComponent(url)});
   };
+
+
   const [listInfo, setListInfo] = useState([]);
-  // const listInfo = [
-  //   {
-  //     id: '1',
-  //     image: defaultNews,
-  //     handleClick: handleToNewsDetail,
-  //     title: '职场中最高的自律，是放弃不断改变',
-  //     desc: '很多年前，我刚刚进入职场的时候，遇到一位领导。很多年前，我刚刚进入职场的时候，遇到一位领导。',
-  //     tags: ['新闻', '2020-10-12 12:12:12'],
-  //   },
-  //   {
-  //     id: '2',
-  //     image: defaultNews,
-  //     handleClick: handleToNewsDetail,
-  //     title: '职场中最高的自律，是放弃不断改变，是放弃不断改变',
-  //     desc:
-  //       '很多年前，我刚刚进入职场的时候，遇到一位领导。很多年前，我刚刚进入职场的时候，遇到一位领导，遇到一位领导。很多年前，我刚刚进入职场的时候，遇到一位领导，遇到一位领导。很多年前，我刚刚进入职场的时候，遇到一位领导。',
-  //     tags: ['2020-10-12 12:12:12'],
-  //   },
-  // ];
+
   useDidShow(() => {
     getNewsSearch({ offset: 0, count: PAGE_LEN }).then((d) => {
-      const news = d.news;
+      const news = d.item;
       if(Array.isArray(news)){
-       const res:any =  news.map((item)=>{
+        const news2:any  = formatNews(d.item)
+       const res:any =  news2.map((item)=>{
           return {
             ...item,
-            image:item.cover || defaultNews,
-            desc:item.ndes || '无',
-            tags:[item.cfrom, `${new Date(Number(item.publishtime+'000')).toLocaleString()}`],
+            image:item.thumb_url || defaultNews,
+            desc:item.digest || '无',
+            tags:[`${new Date(Number(item.create_time+'000')).toLocaleString()}`],
             handleClick:handleToNewsDetail
           }
         })
@@ -52,6 +47,7 @@ const HotNews = () => {
       title: 'DI动力课堂',
     });
   });
+  console.log("listInfo", listInfo);
   return (
     <View className='hotNews-wrap'>
       <ListCon listInfo={listInfo} />

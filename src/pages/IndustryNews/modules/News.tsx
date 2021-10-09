@@ -5,28 +5,39 @@ import TitleCon from '@/components/TitleCon';
 import {getNewsSearch} from '../services';
 import { defaultNews } from '@/static/images/index';
 import '../index.scss';
+import { formatNews } from '@/utils/util';
+import { useDispatch } from '@tarojs/redux';
 
 
 
 const News = () => {
   const [hotNews, setHotNews] = useState([]);
+  const dispatch = useDispatch();
+
    const handleToNews = () =>{
     Taro.navigateTo({ url:'/pages/HotNews/index'});
   }
   const handleToNewsDetail = (params) => {
-    const { id } = params;
-    Taro.navigateTo({ url: '/pages/NewsDetail/index?nid=' + id });
+    dispatch({ type: 'main/updateNewsInfo', payload: params });
+
+    const { url } = params;
+    console.log("params", params);
+    
+
+    Taro.navigateTo({ url: '/pages/NewsDetail/index?url=' +  encodeURIComponent(url)});
   };
   useEffect(() => {
     getNewsSearch().then(d=>{
-      if(Array.isArray(d.news)){
-        setHotNews(d.news.map(item=>{
+      if(Array.isArray(d.item)){
+        const news:any  = formatNews(d.item)
+        console.log(news);
+        setHotNews(news.map(item=>{
           return {
             ...item,
-            id:item.id,
+            // id:item.id,
             title:item.title,
-            image:item.cover || defaultNews,
-            desc:item.ndes || '无',
+            image:item.thumb_url || defaultNews,
+            desc:item.digest || '无',
             handleClick:handleToNewsDetail
           }
         })) 

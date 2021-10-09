@@ -1,8 +1,9 @@
 const MOCK = 'http://easy-mock.sftcwl.com/mock/5f6a20a67266ef5678785185/wxschool';
 const yjw_test = 'https://xch.xuexiao.ntof.club/index.php/MiniApi';
 const yjw_new = 'http://gameapi.gete-di.com/ditrain/index.php/MiniApi';
+const yjw_new2 = 'https://xcxapi.gete-di.com/index.php//MiniApi';
 export const host = 'https://xch.xuexiao.ntof.club';
-const WxApiRoot = yjw_new;
+const WxApiRoot = yjw_new2;
 export default {
   getJscode2session: WxApiRoot + '/User/jscode2session', // 29、	小程序登录更新session
   saveUserData: WxApiRoot + '/User/saveuserdata', // 30、	添加小程序用户信息
@@ -22,7 +23,7 @@ export default {
   delOrder: WxApiRoot + '/Order/del', // 16.	删除订单
   CourseHotcourse:WxApiRoot+'/Course/hotcourse', //2、	热门课程
   NewsBanners:WxApiRoot+'/News/banners', //3、	Banner图
-  NewsSearch:WxApiRoot+'/News/search', //4、	搜索新闻
+  NewsSearch:WxApiRoot+'/News/getaccountnews', //4、	搜索新闻
   NewsDetail:WxApiRoot+'/News/detail', //9、	新闻详情
   CourseCatesearch:WxApiRoot+'/Course/catesearch', //1、 搜索课程分类	
   CourseDetail:WxApiRoot+'/Course/detail', //10、	课程详情
@@ -56,4 +57,9 @@ export default {
   userClock: WxApiRoot + '/User/clock', // 今日签到
   userMyScore: WxApiRoot + '/User/myscore', // 我的积分信息
   userMyinfo: WxApiRoot + '/User/myinfo', // 我的积分信息
+  userCommit: WxApiRoot + '/User/commit', // 30、      小程序用户提交信息
+  isBuyCid: WxApiRoot + '/Course/isbuycoursebyid', // 46、      是否已购买课程
+  createorder: WxApiRoot + '/User/createorder', // 44、      创建订单
+  payex: WxApiRoot + '/User/payex', // 45、      预支付付款
+  upload: WxApiRoot + '/User/upload', // 31、   上传文件User/upload
 };

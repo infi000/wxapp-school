@@ -1,6 +1,5 @@
 import { zyzgz, } from '@/static/images/index';
 
-
 export const ROUTER_NAME_MAP = {
     industryNews: 'IndustryNews',
     onlineStudy: 'OnlineStudy',
@@ -91,3 +90,50 @@ export const SCORE_TYPE = {
     9:'其他分享',
     10:'反馈（奖励分数）'
 }
+
+// utype:用户类型，2领队、3裁判、4讲师、5ACM
+export const UTYPE_MAP = {
+    2:'领队', 3: '裁判',4:'讲师',5:'ACM'
+}
+
+// englevel:英语水平；一般、很好、非常好
+export const ELEVEL_MAP = {
+    '一般':'一般', '很好':'很好','非常好':'非常好'
+}
+
+// goodtype:擅长DI类型；A题、B题、C题、D题、E题、RS、PO、IC、DI课程、DI裁判、DI讲师、DI活动组织
+export const GOODTYPE_MAP = {
+    'A题':'A题','B题':'B题','C题':'C题','D题':'D题','E题':'E题','RS':'RS','PO':'PO','IC':'IC','DI课程':'DI课程','DI裁判':'DI裁判','DI讲师':'DI讲师','DI活动组织':'DI活动组织'
+}
+
+
+// billtype: 发票种类，1电子发票，2纸质发票
+export const BILLTYPE_MAP = {
+    1:'电子发票',2:'纸质发票'
+}
+
+
+export const SEX_MAP = {
+    '男':'男','女':'女'
+}
+
+export const formatMap = (params:{[key:string]: any}) => {
+    if(params instanceof Object){
+        return Object.keys(params).map(key => ({label:params[key], value:key}))
+    }
+    return [];
+}
+
+export const formatArr = (params: Array<number, string>) => {
+    if( params instanceof Array){
+        return params.reduce((res,  cur) => {
+            res[cur] = cur;
+            return res;
+          },{})
+    }
+    return {};
+}
+
+export const YEAR_MAP = ['2021', '2020', '2019', '2018', '2017', '2016', '2015', '2014', '2013', '2012', '2011', '2010', '2009', '2008', '2007', '2006', '2005', '2004', '2003', '2002', '2001', '2000']
+
+export const TONGYISHU = 'https://gameapi.gete-di.com/ditrain/Uploads/DIHead/di.pdf';

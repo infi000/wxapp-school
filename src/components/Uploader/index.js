@@ -6,47 +6,49 @@ export default class Index extends Taro.Component {
     super(...arguments);
     this.state = {
       files: [],
-      ids: [],
+      ids:[]
     };
   }
   onChange(files) {
     const value = Taro.getStorageSync('wxUserInfo');
-    const { ids } = this.state;
+    const {ids} = this.state;
     const { length } = this.props;
     let openid = '';
     if (value) {
       openid = value.openid;
     }
     const uploadTask = Taro.uploadFile({
-      url: api.ccUpload,
+      url: api.upload,
       filePath: files[0].url,
       name: 'upimg',
       formData: {
         'openid': openid,
       },
-      success: (res) => {
+      success: (res)=>{
         const data = JSON.parse(res.data);
-
-        const _files = length === 1 ? [files[files.length - 1]] : files;
-        const _ids = length === 1 ? [data.data] : ids.concat(data.data);
+      
+      const _files = length === 1?[files[files.length-1]]:files;
+      const _ids = length === 1? [data.data]:ids.concat(data.data);
 
         this.setState({
-          files: _files,
-          ids: _ids,
+          files:_files,
+          ids:_ids,
         });
-        this.props.uploadSucc(_ids.join(','));
+        this.props.uploadSucc(_ids.join(","))
       },
     });
   }
   onFail(mes) {
+    console.log(mes);
   }
   onImageClick(index, file) {
+    console.log(index, file);
   }
   render() {
     const { length } = this.props;
     return (
       <AtImagePicker
-        multiple={false}
+      multiple={false}
         count={length}
         files={this.state.files}
         onChange={this.onChange.bind(this)}

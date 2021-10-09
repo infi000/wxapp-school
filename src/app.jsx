@@ -70,14 +70,21 @@ class App extends Component {
     }
     Taro.checkSession({
       success(res) {
+        dispatch({ type: 'main/updateIsLogIn', payload: 1 });
         //session_key 未过期，并且在本生命周期一直有效
         Taro.getStorage({
           key: 'wxUserInfo',
           success: function(res) {
+            console.log("getStorage:succ",res);
             const wxUserInfo = res.data;
             dispatch({ type: 'main/updateIsLogIn', payload: 1 });
             dispatch({ type: 'main/updateWxUserInfo', payload: wxUserInfo });
             dispatch({ type: 'main/updateOpenid', payload: wxUserInfo.openid });
+          },fail(err){
+            console.log("getStorage:err",res);
+            dispatch({ type: 'main/updateIsLogIn', payload: 2 });
+            console.log('session验证未登陆！');
+            Taro.removeStorageSync('wxUserInfo');
           },
         });
         getScorepos()
@@ -109,12 +116,15 @@ class App extends Component {
   }
   config = {
     pages: [
-      'pages/UserAuth/index',
+  
       'pages/Main/index',
+      'pages/Login/index',
+      'pages/UserAuth/index',
+      'pages/Live/index',
 
       'pages/MeRanking/index',
       'pages/Feedback/index',
-      'pages/Login/index',
+ 
       'pages/ClassPlay/index',
       'pages/TestResult/index',
       'pages/NewExamDetail/components/Result',
@@ -143,12 +153,8 @@ class App extends Component {
 
       'pages/MyCollect/index',
       'pages/MyScore/index',
-      //  'pages/ClassPlay/index',
       'pages/NewsDetail/index',
-      // 'pages/HotNews/index',
-      // 'pages/ExamDetail/index',
-      // 'pages/ExamClass/index',
-      // 'pages/Me/index',
+
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -245,8 +251,8 @@ class App extends Component {
       withShareTicket: true,
       menus: ['shareAppMessage', 'shareTimeline'],
       success:(res) => {
-        console.log("分享啦", res);
-        postUserShare({stype:7})
+        // console.log("分享啦", res);
+        // postUserShare({stype:7})
       }
     });
     // user

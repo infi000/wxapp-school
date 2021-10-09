@@ -41,7 +41,7 @@ const Main = (props) => {
           <Tabbar />
         </Block>
       )}
-      {isLogIn === 2 && (
+      {(isLogIn === 2 || isLogIn === 0 ) && (
         <View className='sq-box'>
           <Image mode='aspectFill' src={logo12345}  style='width: 300px;height: 100px;background: #fff;' />
           <View className='sq-line1'>申请获取您的以下权限:</View>

@@ -13,6 +13,7 @@ interface IParams {
 
 }
 export const postUserModify = (params:IParams) => request.post(Api.userModify,params);
+export const postUserCommit = (params:any) => request.post(Api.userCommit,params);
 export const getAreaAll = () => request.get(Api.areaAll);
 
 

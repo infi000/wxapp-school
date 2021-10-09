@@ -32,6 +32,18 @@ export const courseWareLearn = (payload:{cid:number|string,cwid:number|string}) 
  */
 export const getLastcourse = (payload: {cid: number | string }) => request.get(Api.lastcourse,payload);
 /**
+ * 46、 是否已购买课程
+ */
+export const isBuyCid = (payload: {cid: number | string }) => request.get(Api.isBuyCid,payload);
+/**
+ * 44、      创建订单
+ */
+export const createorder = (payload: {money: number | string;cid: number | string;}) => request.get(Api.createorder,payload);
+/**
+ *45、      预支付付款
+ */
+export const payex = (payload: {orderid: number | string ;paytype: 'miniwxpay' }) => request.get(Api.payex,payload);
+/**
  *  36、	用户是否已经考试通过（通过后可选修和进阶课程）
  */
 export const getUserIspass = () => request.get(Api.userIspass);

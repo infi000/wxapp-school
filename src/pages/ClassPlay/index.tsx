@@ -2,21 +2,21 @@ import Taro, { useDidShow, useRouter } from '@tarojs/taro';
 import { View, Block, Video } from '@tarojs/components';
 import TitleCon from '@/components/TitleCon';
 import { get, isArray } from 'lodash';
-import { AtTag } from 'taro-ui';
+import { AtTag, AtButton } from 'taro-ui';
 import { getCourseDetail } from './services';
 import { CWTYPE_MAP } from './canstants';
 import './index.scss';
 const { useState, useEffect } = Taro;
 
 const ClassPlay = () => {
-  const [info, setInfo] = useState({ cwid: '', fpath: '', id: '', cwname: '', cid: '' });
+  const [info, setInfo] = useState({ cwid: '', fpath: '', id: '', cwname: '', cid: '', cwtype: '' });
   const [classDetail, setClassDetail]: [any, any] = useState({});
   const [videoShow, setVideoShow]: [any, any] = useState(true);
   const router = useRouter();
   useDidShow(() => {
     const { params } = router;
-    const { cwid, fpath, id, cwname, cid } = params || {};
-    setInfo({ cwid, fpath, id, cwname, cid });
+    const { cwid, fpath, id, cwname, cid, cwtype } = params || {};
+    setInfo({ cwid, fpath, id, cwname, cid, cwtype });
     Taro.setNavigationBarTitle({
       title: 'DI动力课堂',
     });
@@ -35,13 +35,21 @@ const ClassPlay = () => {
     }, 100);
   };
   const sourceware = get(classDetail, ['sourceware'], []);
+  const handlePlayLive = () => {
+   
+    const url = `/pages/Live/index?url=${encodeURIComponent(info.fpath)}`;
+    Taro.navigateTo({ url });
+  }
 console.log(info);
   return (
     <View className='classPlay-wrap'>
       <View className='vido-wrap'>
-        {/* {
-           videoShow && <Video src={info.fpath} controls={true} autoplay={false} initialTime={0} id='video' loop={false} muted={false} />
-        } */}
+        {
+           videoShow &&  info.cwtype == 3 && <AtButton type='primary' className='btn-live' onClick={handlePlayLive}>点击观看直播</AtButton>
+        }
+        {
+           videoShow &&  info.cwtype == 1 &&  <Video src={info.fpath} controls={true} autoplay={false} initialTime={0} id='video' loop={false} muted={false} />
+        }
       </View>
       <Block>
         <View className='tool-wrap'>

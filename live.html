@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./TcPlayer-2.4.1.js" charset="utf-8"></script>
+
+</head>
+
+<body>
+
+    <div id="id_test_video" style="width:100%; height:auto; background:#000"></div>
+    <script type="text/javascript">
+
+        let urlToJson = (url = window.location.href) => {        // 箭头函数默认传值为当前页面url
+
+            let obj = {},
+                index = url.indexOf('?'), // 看url有没有参数
+                params = url.substr(index + 1); // 截取url参数部分 id = 1 & type = 2
+
+            if (index != -1) { // 有参数时
+                let parr = params.split('&');  // 将参数分割成数组 ["id = 1 ", " type = 2"]
+                for (let i of parr) {           // 遍历数组
+                    let arr = i.split('=');  // 1） i id = 1   arr = [id, 1]  2）i type = 2  arr = [type, 2]
+                    obj[arr[0]] = arr[1];  // obj[arr[0]] = id, obj.id = 1   obj[arr[0]] = type, obj.type = 2
+                }
+            }
+
+            return obj;
+        }
+        console.log(urlToJson());
+        var player = new TcPlayer('id_test_video', {
+            "m3u8": urlToJson().url, //请替换成实际可用的播放地址
+            "autoplay": true,      //iOS 下 safari 浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的
+            "width": '480',//视频的显示宽度，请尽量使用视频分辨率宽度
+            "height": '320'//视频的显示高度，请尽量使用视频分辨率高度
+        });
+    </script>
+</body>
+
+</html>

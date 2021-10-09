@@ -12,11 +12,11 @@ const GRID_OPTION = [
     value: '我的队伍',
     path: '/pages/ExamClass/index',
   },
-  {
-    image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
-    value: '展示成绩',
-    path: '/pages/MeRanking/index'
-  },
+  // {
+  //   image: 'https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png',
+  //   value: '展示成绩',
+  //   path: '/pages/MeRanking/index'
+  // },
   {
     image: 'https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png',
     value: '我的证书',
@@ -86,11 +86,11 @@ const MyAvatar = () => {
             </View>
           
             {userIsAuth == 1 ? <Block>
-              <View className='at-col'>{wxUserInfo.nickName}</View>
+              {/* <View className='at-col'>{wxUserInfo.nickName}</View>
 
               <View className='at-col'>积分：{userScoreInfo.score}</View>
               <View className='at-col'>排名：{userScoreInfo.rank}</View>
-              <View className='my-level'>等级：{myLevel}</View>
+              <View className='my-level'>等级：{myLevel}</View> */}
 
             </Block> : <View className='at-col'>{IS_AUTH_MAP.get(Number(userIsAuth))}</View>}
           </Block>

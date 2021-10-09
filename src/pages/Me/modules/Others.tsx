@@ -5,7 +5,7 @@ import { useSelector } from '@tarojs/redux';
 
 const LIST_URL_MAP = [
   // { name: '设置密码', url: '/pages/PhotoWall/index' },
-  { name: '帮助中心', type:'helpCetner' },
+  // { name: '帮助中心', type:'helpCetner' },
   { name: '反馈中心',  url: '/pages/Feedback/index' },
   // { name: '测试学习', url: '/pages/TestClass/index' },
   // { name: '小测结果', url: '/pages/TestResult/index' },

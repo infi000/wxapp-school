@@ -55,11 +55,11 @@ function request(url, data = {}, method = 'GET', noAlert = false) {
           } else {
             console.log('res', res);
             if (res.data.code == -11) {
-              Taro.removeStorageSync('userInfo');
-              Taro.removeStorageSync('token');
-              Taro.redirectTo({
-              url: '/pages/Login/index'
-            });
+            //   Taro.removeStorageSync('userInfo');
+            //   Taro.removeStorageSync('token');
+            //   Taro.redirectTo({
+            //   url: '/pages/Login/index'
+            // });
             } else {
               showErrorToast(res.data.errdata || res.data);
             }
