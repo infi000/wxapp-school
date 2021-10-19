@@ -116,10 +116,11 @@ class App extends Component {
   }
   config = {
     pages: [
-  
+      'pages/UserAuth/index',
+
       'pages/Main/index',
       'pages/Login/index',
-      'pages/UserAuth/index',
+
       'pages/Live/index',
 
       'pages/MeRanking/index',

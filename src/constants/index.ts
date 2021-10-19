@@ -23,7 +23,7 @@ export const ORDER_STATUS_MAP = new Map([
 export const IS_AUTH_MAP = new Map([
     [0, '未认证'],
     [1, '认证通过'],
-    [3, '认证中'],
+    [3, '人工审核中'],
     [4, '认证失败'],
 ])
 export const TOTAL_CLASS = [

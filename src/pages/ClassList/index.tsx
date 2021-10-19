@@ -25,7 +25,24 @@ const ClassList = () => {
 
     coursesearch({cid})
       .then((d) => {
-        d.courses && setNiceClass(d.courses || []);
+        if(d.total == '0'){
+          Taro.navigateBack({
+            delta: 2,
+            success:() => {
+              wx.showToast({
+                title: '敬请期待',
+                icon: 'loading',
+                duration: 1000
+                })
+            }
+          });
+          // wx.showModal({
+          //   title: '开发中。。',
+          // })
+
+        }else{
+          d.courses && setNiceClass(d.courses || []);
+        }
       })
       .catch((e) => {
         console.log(e);

@@ -28,7 +28,8 @@ const UserAuth = (props) => {
     title: 'DI动力课堂',
   });
   const [formParams, setFormParams]: [any, any] = useState({});
-  const [ex, setEx] = useState([{}])
+  const [ex, setEx] = useState([{}]);
+  const [exChoose, setExChoose] = useState('1');
 
   const router = useRouter();
 
@@ -42,7 +43,7 @@ const UserAuth = (props) => {
     if(Array.isArray(formParams.goodtype)){
       format.goodtype = formParams.goodtype.join(',');
     }
-    if(Array.isArray(ex)){
+    if(exChoose == '1' && Array.isArray(ex) && ex.length > 0){
     const experienceyear =  ex.map(item => item.experienceyear);
     const experiencetype =  ex.map(item => item.experiencetype);
     console.log(experienceyear, experiencetype);
@@ -106,6 +107,17 @@ const UserAuth = (props) => {
       },
     });
   }
+
+  const handleChagneEx = (e) => {
+    setExChoose(e);
+    if(e == '-1'){
+      // 无
+      setEx([]);
+    }else{
+      setEx([{}]);
+    }
+    console.log(e);
+  }
   useDidShow(() => {
     const { params } = router;
     const { cid = 1 } = params || {};
@@ -134,7 +146,7 @@ const UserAuth = (props) => {
   // }
   return (
     <View className='baseWrap'>
-      <PickerPlus title='用户类型(必填)' range={UTYPE_MAP} onChange={(e) => handleUpdateForm(e, 'utype')}  />
+      <PickerPlus title='认证类型(必填)' range={UTYPE_MAP} onChange={(e) => handleUpdateForm(e, 'utype')}  />
       <PickerPlus title='省(必填)' range={formatCityMap} onChange={(e) => handleUpdateForm(e, 'province')}   />
       <AtInput name='value' title='市(必填)' type='text' onChange={(e) => handleUpdateForm(e, 'city')} placeholder='请输入' />
       <AtInput name='value' title='单位(必填)' type='text' onChange={(e) => handleUpdateForm(e, 'companyname')}  placeholder='请输入'/>
@@ -146,18 +158,26 @@ const UserAuth = (props) => {
       <AtInput name='value' title='邮箱(必填)' type='text' onChange={(e) => handleUpdateForm(e, 'mail')} placeholder='请输入' />
       <PickerPlus title='英语水平(必填)' range={ELEVEL_MAP} onChange={(e) => handleUpdateForm(e, 'englevel')} />
       <AtInput name='value' title='专业特长' type='text' onChange={(e) => handleUpdateForm(e, 'specialty')} placeholder='请输入' />
-      <View className='Multi-title'>认证经历(必填):</View>
+      <View className='Multi-title'>认证经历:</View>
+      <AtRadio
+        options={[
+          { label: '无', value: '-1', desc: '无认证经历'  },
+          { label: '有', value: '1', desc: '有认证经历' },
+        ]}
+        value={exChoose}
+        onClick={handleChagneEx}
+      />
 
       {
-        ex.map((item, index) => (
+       exChoose == '1' &&   ex.map((item, index) => (
           <Block key={index}>
             <PickerPlus title='认证年份' range={formatYearMap} onChange={(e) => handleEx(e, 'experienceyear', index)} />
             <PickerPlus title='认证类型' range={UTYPE_MAP} onChange={(e) => handleEx(e, 'experiencetype', index)} />
           </Block>
         ))
       }
-      { ex.length < 4 && <AtButton  type='secondary' size='small' onClick={() => setEx(opt => { opt.push({}); return [...opt] })}> 添加一段认证经历</AtButton>}
-      { ex.length > 1 && <AtButton  size='small' onClick={() => setEx(opt => { opt.pop(); return [...opt] })}> 删除认证经历</AtButton>}
+      { exChoose == '1' && ex.length < 4 && <AtButton  type='secondary' size='small' onClick={() => setEx(opt => { opt.push({}); return [...opt] })}> 添加一段认证经历</AtButton>}
+      { exChoose == '1' && ex.length > 1 && <AtButton  size='small' onClick={() => setEx(opt => { opt.pop(); return [...opt] })}> 删除认证经历</AtButton>}
       <AtInput name='value' title='学历' type='text' onChange={(e) => handleUpdateForm(e, 'education')}  placeholder='请输入'/>
       <PickerPlus title='发票种类' range={BILLTYPE_MAP} onChange={(e) => handleUpdateForm(e, 'billtype')} />
       <AtInput name='value' title='开票抬头' type='text' onChange={(e) => handleUpdateForm(e, 'company')} placeholder='请输入' />

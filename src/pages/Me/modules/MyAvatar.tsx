@@ -9,7 +9,7 @@ import { getUserMyinfo } from '../services';
 const GRID_OPTION = [
   {
     image: 'https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png',
-    value: '我的队伍',
+    value: '我的认证',
     path: '/pages/ExamClass/index',
   },
   // {

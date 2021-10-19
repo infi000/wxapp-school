@@ -30,11 +30,15 @@ const Main = (props) => {
   console.log('isLogIn=====', isLogIn);
   return (
     <View>
-      {isLogIn === 0 && <View></View>}
+        <Block>
+          {nav[currentNavIndex].type == ROUTER_NAME_MAP.industryNews && <IndustryNews />}
+          {nav[currentNavIndex].type == ROUTER_NAME_MAP.onlineStudy && <OnlineStudy />}
+          {nav[currentNavIndex].type == ROUTER_NAME_MAP.me && <Me />}
+          <Tabbar />
+        </Block>
+      {/* {isLogIn === 0 && <View></View>}
       {isLogIn === 1 && (
         <Block>
-          {/* <View>123213123213</View> */}
-          {/* <IndustryNews /> */}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.industryNews && <IndustryNews />}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.onlineStudy && <OnlineStudy />}
           {nav[currentNavIndex].type == ROUTER_NAME_MAP.me && <Me />}
@@ -52,7 +56,7 @@ const Main = (props) => {
             </Button>
           </View>
         </View>
-      )}
+      )} */}
     </View>
   );
 };

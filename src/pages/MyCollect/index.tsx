@@ -30,10 +30,10 @@ const MyCollect = (props) => {
             value: '课件',
             path:'/pages/MyCollect/components/Courseware'
           },
-          {
-            value: '新闻',
-            path:'/pages/MyCollect/components/News'
-          },
+          // {
+          //   value: '新闻',
+          //   path:'/pages/MyCollect/components/News'
+          // },
         ]}
       />
     </View>
