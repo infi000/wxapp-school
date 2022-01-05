@@ -3,6 +3,7 @@ import { View, Image } from '@tarojs/components';
 import './index.scss';
 import { tkjf } from '@/static/images/index';
 import { isArray } from 'lodash';
+import { useSelector } from '@tarojs/redux';
 
 interface IProps{
     hotClass:Array<any>;
@@ -10,9 +11,13 @@ interface IProps{
 }
 
 const ClassTagGroup = (props:IProps) => {
+  const { isLogIn } = useSelector((state) => state.main);
+
   const handleToClass = (opt) => {
     const { id,cname } = opt;
-    Taro.navigateTo({ url: '/pages/ClassList/index?title='+cname+'&cid=' + id });
+    console.log('isLogIn',isLogIn);
+
+    isLogIn == 1 &&  Taro.navigateTo({ url: '/pages/ClassList/index?title='+cname+'&cid=' + id });
   };
   const { hotClass , col = '3' } = props;
   return (

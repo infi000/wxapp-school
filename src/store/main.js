@@ -5,6 +5,7 @@ export default {
   state: {
     windowHeight:getWindowHeight(),
     isLogIn:0, // 0默认 1登陆 2未登陆
+    isShowMe: '1', // 是否展示"我的"按钮 1 | 0
     wxUserInfo:{},
     userScoreInfo:{score:'',rank:''},
     openid:'',
@@ -23,6 +24,9 @@ export default {
     },
     updateNewsInfo: (state, { payload }) => {
       state.newsInfo = payload;
+    },
+    updateIsShowMe: (state, { payload }) => {
+      state.isShowMe = payload;
     },
     updateUserScoreInfo: (state, { payload }) => {
       const { uid, scores } = payload;

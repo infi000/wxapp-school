@@ -60,14 +60,17 @@ const MyAvatar = () => {
     })
   };
   const handleChoose = (item) => {
-    console.log(item);
+    if(userIsAuth !== 1){
+      Taro.navigateTo({ url: '/pages/UserAuth/index' });
+      return;
+    }
     const { path } = item;
     if (path) {
       Taro.navigateTo({ url: path });
     }
   }
   const grid_option = useMemo(() => { 
-    return userIsAuth == 1 ? GRID_OPTION:[];
+  return GRID_OPTION;
   }, [userIsAuth])
   console.log("userScoreInfo", userScoreInfo);
   useEffect(() => {

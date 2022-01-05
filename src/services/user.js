@@ -39,3 +39,5 @@ export const postUserShare = async () => request(Api.userShare, {}, 'GET', true)
  * @returns 
  */
 export const postUserClock = async () => request(Api.userClock, {}, 'GET', true);
+
+export const isopencertification= async () => request.get(Api.isopencertification, {}, 'GET', true);

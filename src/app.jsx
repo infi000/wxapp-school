@@ -5,7 +5,7 @@ import dva from './dva';
 import models from './store';
 // import { ROUTER_MAP } from './router';
 import { set as setGlobalData, get as getGlobalData } from './global_data';
-import { getScorepos, getUserIsauth, getOpenId, postUserShare, postUserClock } from '@/services/user';
+import { getScorepos, getUserIsauth, getOpenId, isopencertification, postUserClock } from '@/services/user';
 import { isArray } from 'lodash';
 import Index from './pages/index';
 
@@ -40,6 +40,7 @@ class App extends Component {
   async componentWillMount() {
 
     this.update();
+    this.init();
     const { dispatch } = this.props;
     // 这块的逻辑就是为了过审核
 
@@ -116,10 +117,15 @@ class App extends Component {
   }
   config = {
     pages: [
-      'pages/UserAuth/index',
 
+    
+ 
       'pages/Main/index',
       'pages/Login/index',
+      'pages/BannerDetail/index',
+      'pages/ExamClass/index',
+
+      'pages/UserAuth/index',
 
       'pages/Live/index',
 
@@ -142,7 +148,6 @@ class App extends Component {
       'pages/NewExamDetail/index',
 
 
-      'pages/ExamClass/index',
       'pages/TestClass/index',
 
       'pages/Mycert/index',
@@ -229,6 +234,17 @@ class App extends Component {
     'enableShareTimeline': true,
     'enableShareAppMessage': true,
   };
+
+  init = () => {
+    console.log('初始化了')
+    const { dispatch } = this.props;
+    isopencertification().then(d => {
+      console.log("ddddddd",d)
+      dispatch({ type: 'main/updateIsShowMe', payload: d });
+    });
+
+  };
+
   update = () => {
     if (process.env.TARO_ENV === 'weapp') {
       const updateManager = Taro.getUpdateManager();

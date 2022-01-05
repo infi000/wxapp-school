@@ -59,11 +59,11 @@ const ExamClass = () => {
               <View className='at-row  at-row--wrap examClass-item' key={id}>
                 <View className='at-col at-col-12 examClass-tag-desc'>
                   <View className='examClass-tag-name'>名称：</View>
-                  {title}
+                  <View className='examClass-tag-con'>{title}</View> 
                 </View>
                 <View className='at-col at-col-12 examClass-tag-desc'>
                   <View className='examClass-tag-name'>描述：</View>
-                  {paperdes}
+                  <View className='examClass-tag-con'>{paperdes}</View> 
                 </View>
                 <View className='at-col at-col-12 examClass-tag-desc'>
                   <View className='examClass-tag-name'>时间：</View>

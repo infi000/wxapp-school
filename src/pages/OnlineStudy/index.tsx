@@ -6,15 +6,19 @@ import './index.scss';
 import ClassTagGroup from '@/components/ClassTagGroup';
 import { ctype1, ctype2, ctype3 } from '@/static/images/index';
 import { useIspass } from '@/utils/hooks';
+import { useSelector } from '@tarojs/redux';
 
 const IMGAGE_TAG = ['',ctype1,ctype2, ctype3];
 const OnlineStudy = () => {
+  const { isLogIn } = useSelector((state) => state.main);
+
   const [tagClass, setTagClass] = useState([]);
   const [niceClass, setNiceClass] = useState([]);
   const checktPass = useIspass();
   const handleToClass = (item) => {
+  
     const { id, ctype } = item;
-    checktPass(ctype,()=>{
+    isLogIn == 1 && checktPass(ctype,()=>{
       Taro.navigateTo({ url: '/pages/ClassDetail/index?cid=' + id });
     })
   };

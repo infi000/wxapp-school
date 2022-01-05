@@ -29,7 +29,7 @@ const Main = (props) => {
       <View className='sq-box'>
         <Image mode='aspectFill' src={logo12345} style='width: 300px;height: 100px;background: #fff;' />
         <View className='sq-line1'>申请获取您的以下权限:</View>
-        <View className='sq-line2'>获得您的公开信息(昵称、头像等)</View>
+        <View className='sq-line2'>为了提供DI领队、DI裁判实名认证和推送培训资料，开发者将在获取你的明示同意后，收集你的微信昵称、头像。</View>
         <View className='sq-line3'>
           <Button onClick={handleLogIn}>
             授权登陆

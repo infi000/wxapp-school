@@ -8,7 +8,7 @@ const Banner = () => {
   const [bannerList, setBannerList] = useState([]);
   const handleToNewsDetail = (params) => {
     const { id } = params;
-    Taro.navigateTo({ url: '/pages/NewsDetail/index?nid=' + id });
+    Taro.navigateTo({ url: '/pages/BannerDetail/index?nid=' + id });
   };
   useEffect(() => {
     getNewsBanners()

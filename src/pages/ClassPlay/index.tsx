@@ -16,11 +16,12 @@ const ClassPlay = () => {
   useDidShow(() => {
     const { params } = router;
     const { cwid, fpath, id, cwname, cid, cwtype } = params || {};
+    console.log("params",params);
     setInfo({ cwid, fpath, id, cwname, cid, cwtype });
     Taro.setNavigationBarTitle({
       title: 'DI动力课堂',
     });
-    getCourseDetail({ cid: 1 }).then((d) => {
+    getCourseDetail({ cid }).then((d) => {
       setClassDetail(d);
     });
   });

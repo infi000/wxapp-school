@@ -2,7 +2,7 @@ const MOCK = 'http://easy-mock.sftcwl.com/mock/5f6a20a67266ef5678785185/wxschool
 const yjw_test = 'https://xch.xuexiao.ntof.club/index.php/MiniApi';
 const yjw_new = 'http://gameapi.gete-di.com/ditrain/index.php/MiniApi';
 const yjw_new2 = 'https://xcxapi.gete-di.com/index.php//MiniApi';
-export const host = 'https://xch.xuexiao.ntof.club';
+export const host = 'https://xcxapi.gete-di.com';
 const WxApiRoot = yjw_new2;
 export default {
   getJscode2session: WxApiRoot + '/User/jscode2session', // 29、	小程序登录更新session
@@ -62,4 +62,5 @@ export default {
   createorder: WxApiRoot + '/User/createorder', // 44、      创建订单
   payex: WxApiRoot + '/User/payex', // 45、      预支付付款
   upload: WxApiRoot + '/User/upload', // 31、   上传文件User/upload
-};
+  isopencertification: WxApiRoot + '/User/isopencertification', // 
+}

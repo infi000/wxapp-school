@@ -21,6 +21,10 @@
         .examClass-tag-name {
           @include examClass-tag;
         }
+        .examClass-tag-con {
+          display: inline;
+          white-space: pre-wrap;
+        }
         .examClass-tag-desc {
           @include examClass-tag;
           padding-bottom: 10px;

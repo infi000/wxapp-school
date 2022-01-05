@@ -103,8 +103,15 @@ export const ELEVEL_MAP = {
 
 // goodtype:擅长DI类型；A题、B题、C题、D题、E题、RS、PO、IC、DI课程、DI裁判、DI讲师、DI活动组织
 export const GOODTYPE_MAP = {
-    'A题':'A题','B题':'B题','C题':'C题','D题':'D题','E题':'E题','RS':'RS','PO':'PO','IC':'IC','DI课程':'DI课程','DI裁判':'DI裁判','DI讲师':'DI讲师','DI活动组织':'DI活动组织'
+    'A':'A技术类挑战','B':'B科技类挑战','C':'C艺术类挑战','D':'D即兴类挑战','E':'E工程类挑战','RS':'RS早教类挑战','PO':'PO服务学习类挑战'
 }
+
+
+
+
+
+
+
 
 
 // billtype: 发票种类，1电子发票，2纸质发票

@@ -9,11 +9,13 @@ import './index.scss';
 import { get, isArray } from 'lodash';
 import { CWTYPE_MAP } from './canstants';
 import { useShare } from '@/utils/hooks';
+import { useSelector } from '@tarojs/redux';
 const { useState, useEffect } = Taro;
 const tabList = [{ title: '课程大纲' }, { title: '课程介绍' }];
 
 const ClassDetail = () => {
   const [classDetail, setClassDetail]: [any, any] = useState({});
+  const {userIsAuth } = useSelector((state: any) => state.main);
   const [actionSheet, setActionSheet]: [any, any] = useState({ show: false, data: {} });
   const [classActionSheet, setClassActionSheet]: [any, any] = useState({ show: false, data: {} });
   const [currentTab, setCurrentTab] = useState(0);
@@ -31,7 +33,7 @@ const ClassDetail = () => {
     setClassActionSheet({ show: false, data: {} });
     courseWareLearn({ cwid: id, cid: classDetail.id });
     if (cwtype == 1 || cwtype == 3) {
-      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${id}&cwtype=${cwtype}` });
+      Taro.navigateTo({ url: `/pages/ClassPlay/index?cwid=${files[0].cwid}&fpath=${files[0].fpath}&id=${files[0].id}&cwname=${cwname}&cid=${classDetail.id}&cwtype=${cwtype}` });
       return;
     }
     if ([4,5].includes(Number(cwtype))) {
@@ -176,9 +178,11 @@ const ClassDetail = () => {
                     isBuy ? <AtButton disabled type='secondary' size='small' className='at-button-mini  classDetail-btn-buy'>
                     已购买
                   </AtButton> : 
-                   <AtButton type='secondary' size='small'   className='at-button classDetail-btn-buy' onClick={() => handleBuy(classDetail.id, classDetail.money)}>
+                  
+                    userIsAuth==1? <AtButton type='secondary' size='small'  className='at-button classDetail-btn-buy' onClick={() => handleBuy(classDetail.id, classDetail.money)}>
                     {`请付款：¥${get(classDetail, ['money'], '-')}`}
-                 </AtButton> 
+                 </AtButton> :null
+                  
                   }
             
                 </View>
@@ -217,7 +221,7 @@ const ClassDetail = () => {
                           className='at-button-mini'
                           onClick={() => setActionSheet({ show: true, data: item })}
                         >
-                          操作
+                          学习
                         </AtButton>
                       </View>
                     </View>
@@ -244,7 +248,7 @@ const ClassDetail = () => {
       >
         <AtActionSheetItem onClick={handleToClassPlay}>学习</AtActionSheetItem>
         {/* <AtActionSheetItem onClick={() => handleToExam('3')}>每日一测</AtActionSheetItem> */}
-        <AtActionSheetItem onClick={() => handleToExam('2')}>随堂测验</AtActionSheetItem>
+        {/* <AtActionSheetItem onClick={() => handleToExam('2')}>随堂测验</AtActionSheetItem> */}
         {/* <AtActionSheetItem onClick={() => handleToExam('1')}>考试</AtActionSheetItem> */}
       </AtActionSheet>
       <AtActionSheet
