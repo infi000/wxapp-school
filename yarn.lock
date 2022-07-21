@@ -1009,6 +1009,32 @@
     swiper "4.4.2"
     weui "^1.1.2"
 
+"@tarojs/helper@2.2.18":
+  version "2.2.18"
+  resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-2.2.18.tgz#e0eb012d50bef3efe5e3bf7f5063d7270a7f6547"
+  integrity sha512-KDMR6mN/4CgaItekSerIpR0dVUvaXUiE6zVufBYFrvhHPPvA8wEVjqIN8AxMtcTFXpIHerp0crN88zTK8Os5PA==
+  dependencies:
+    "@babel/core" "7.9.0"
+    "@babel/plugin-proposal-class-properties" "7.8.3"
+    "@babel/plugin-proposal-decorators" "7.8.3"
+    "@babel/plugin-proposal-object-rest-spread" "7.9.0"
+    "@babel/plugin-transform-runtime" "7.9.0"
+    "@babel/preset-env" "7.9.0"
+    "@babel/preset-typescript" "7.9.0"
+    "@babel/register" "7.9.0"
+    "@babel/runtime" "7.9.2"
+    "@tarojs/taro" "2.2.18"
+    babel-plugin-transform-react-jsx "^6.24.1"
+    chalk "3.0.0"
+    chokidar "3.3.1"
+    cross-spawn "7.0.1"
+    debug "4.1.1"
+    find-yarn-workspace-root "1.2.1"
+    fs-extra "8.1.0"
+    lodash "4.17.19"
+    resolve "^2.0.0-next.0"
+    yauzl "2.10.0"
+
 "@tarojs/helper@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@tarojs/helper/-/helper-2.2.9.tgz#a917f25cdf1e496cc668c6d8c59debfdc47c3aec"
@@ -1075,13 +1101,13 @@
     webpack-chain "4.9.0"
     webpack-format-messages "^2.0.5"
 
-"@tarojs/plugin-less@2.2.9":
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/@tarojs/plugin-less/-/plugin-less-2.2.9.tgz#a262666244a213d58ebe788c67f4b4e485735d29"
-  integrity sha512-xIm158TRCBUwzEexuHoygf8YlrBPMfk4ceyuQBYc6JC/6WalGmbid8rqyV4V7uqLTGPHOa2QFX4V2hAaNcAD7g==
+"@tarojs/plugin-less@^2.2.9":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@tarojs/plugin-less/-/plugin-less-2.2.10.tgz#b230639ffb2fb5bf59546317aeb86a21dd57ed54"
+  integrity sha512-fVDR6I6P/rPbeC0leyaw1IstbY79hwPFneuxhMiCUUqeqK402awmPhsLmFL9MLBoDA64/nW4jpzFyAWS7hgasA==
   dependencies:
-    "@tarojs/runner-utils" "^2.2.9"
-    "@tarojs/service" "^2.2.9"
+    "@tarojs/runner-utils" "^2.2.10"
+    "@tarojs/service" "^2.2.10"
     less "3.11.1"
     less-loader "6.1.0"
 
@@ -1096,13 +1122,13 @@
     resolve-url-loader "3.1.1"
     sass-loader "8.0.2"
 
-"@tarojs/plugin-terser@2.2.9":
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/@tarojs/plugin-terser/-/plugin-terser-2.2.9.tgz#bd1ed9b2fb3ef6cf2bae587e74cd5d9b2e74978a"
-  integrity sha512-yzW3w5dPrYjJhBOFSHwczqzeD0YdEcny00lD9/7q0bgz2Gpb2iCQug2Xf2Jc9maKOVeKd70rOYgIvJH4jCSOZw==
+"@tarojs/plugin-terser@^2.2.9":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@tarojs/plugin-terser/-/plugin-terser-2.2.10.tgz#5dee954155ef1751a0496dffd8ee1ddc7b680772"
+  integrity sha512-GarGFA0UcT++hrnzG1CEV+rncODO1Jna9pwu1GN0+oOtgEViJk2vD2Usfx5PCKskr3nNiFSIlQmlBnJ6w9c6CQ==
   dependencies:
-    "@tarojs/runner-utils" "^2.2.9"
-    "@tarojs/service" "^2.2.9"
+    "@tarojs/runner-utils" "^2.2.10"
+    "@tarojs/service" "^2.2.10"
     terser-webpack-plugin "3.0.2"
 
 "@tarojs/redux-h5@2.2.9":
@@ -1135,12 +1161,32 @@
     value-equal "0.4.0"
     warning "4.0.2"
 
+"@tarojs/runner-utils@^2.2.10":
+  version "2.2.18"
+  resolved "https://registry.yarnpkg.com/@tarojs/runner-utils/-/runner-utils-2.2.18.tgz#16f8cf38528f0467e15a9e9c1be39e1aa6de7f5e"
+  integrity sha512-XdwucaJwJbdu6YplH1FVWX4RloEXgO/4nctlfDEAKgHZtkFVZNx3j8yEE81ATU0mUeqYRJYmG9CXxcBmngAKag==
+  dependencies:
+    scss-bundle "^3.0.2"
+
 "@tarojs/runner-utils@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@tarojs/runner-utils/-/runner-utils-2.2.9.tgz#c294be10c0b6bb5968a29a88487bb5d34d83770f"
   integrity sha512-d1iODPK25vApsvZKDDdUkbrQ/yiQtPproDurwvcyyAuNlTvtrMl7wWtR5yDSj+ZOBJRuH0pFa8DlHsKRlRtHVg==
   dependencies:
     scss-bundle "^3.0.2"
+
+"@tarojs/service@^2.2.10":
+  version "2.2.18"
+  resolved "https://registry.yarnpkg.com/@tarojs/service/-/service-2.2.18.tgz#3b89903680fedb711b63e5069f7564bad6647e04"
+  integrity sha512-Tk+XYuiZOKKFTWPZO9OAuYDxCklGQysGQTJgfJZbB3If5Ub7PFncn+7jvfgjicB2/d6sZnswhzddg60WY4Q7ZA==
+  dependencies:
+    "@hapi/joi" "17.1.1"
+    "@tarojs/helper" "2.2.18"
+    "@tarojs/taro" "2.2.18"
+    fs-extra "8.1.0"
+    lodash "4.17.19"
+    resolve "1.15.1"
+    tapable "1.1.3"
 
 "@tarojs/service@^2.2.9":
   version "2.2.9"
@@ -1226,6 +1272,13 @@
     lodash "^4.17.10"
     prop-types "^15.6.1"
 
+"@tarojs/taro@2.2.18":
+  version "2.2.18"
+  resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-2.2.18.tgz#bf13096a3f7776e67ef48c4fe6bd29f8cc2585d2"
+  integrity sha512-hXyHo9/TEnNNE1IINL81FsBA7WZP4dNkfqp9i5mCTsV+a7nEgbXhLcBmUwChoGuIO4k3uo525AwNKSdUvqAkaA==
+  dependencies:
+    "@tarojs/utils" "2.2.18"
+
 "@tarojs/taro@2.2.9", "@tarojs/taro@^2.2.9":
   version "2.2.9"
   resolved "https://registry.yarnpkg.com/@tarojs/taro/-/taro-2.2.9.tgz#b507dc3813c0c3c5ee5265aba183aa19247bc68f"
@@ -1263,6 +1316,11 @@
     lodash "^4.17.5"
     prettier "^1.14.2"
     typescript "^3.2.2"
+
+"@tarojs/utils@2.2.18":
+  version "2.2.18"
+  resolved "https://registry.yarnpkg.com/@tarojs/utils/-/utils-2.2.18.tgz#86c94bb711a7ef461a64632c88c3233541fff686"
+  integrity sha512-TJpwCDbX7aDsjtmx9d5HEhwAnsUYW8apVqqw0OJ6SGnigJfABKXXsUcEBesttQdDxxLamDhA5gMROtR/Wd5yLg==
 
 "@tarojs/utils@^2.2.9":
   version "2.2.9"
@@ -1364,6 +1422,11 @@
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.155.tgz#e2b4514f46a261fd11542e47519c20ebce7bc23a"
   integrity sha512-vEcX7S7aPhsBCivxMwAANQburHBtfN9RdyXFk84IJmu2Z4Hkg1tOFgaslRiEqqvoLtbCBi6ika1EMspE+NZ9Lg==
 
+"@types/lodash@^4.14.157":
+  version "4.14.182"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.182.tgz#05301a4d5e62963227eaafe0ce04dd77c54ea5c2"
+  integrity sha512-/THyiqyQAP9AfARo4pF+aCGcyiQ94tX/Is2I7HofNRqoYLgN1PBoOWu2/zTA5zMxzP5EFutMtWtGAFRKUe961Q==
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -1398,6 +1461,11 @@
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/@types/webpack-env/-/webpack-env-1.15.2.tgz#927997342bb9f4a5185a86e6579a0a18afc33b0a"
   integrity sha512-67ZgZpAlhIICIdfQrB5fnDvaKFcDxpKibxznfYRVAT4mQE41Dido/3Ty+E3xGBmTogc5+0Qb8tWhna+5B8z1iQ==
+
+"@types/wechat-miniprogram@^3.3.0":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@types/wechat-miniprogram/-/wechat-miniprogram-3.4.1.tgz#e237ebaa5f541b816ca2ab648e40b74faeb014cb"
+  integrity sha512-szbuYR32VotxNQNQ4YyQ6Ob3ya0tLY0zpf/xvi6DF8Oqb+0Y+5CL5BpxS+4wBSJvlu3VfSXhjxZ0ze1a3l16Pw==
 
 "@typescript-eslint/eslint-plugin@^2.13.0":
   version "2.34.0"
@@ -3030,9 +3098,9 @@ buffer-crc32@~0.2.3:
   integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
 
 buffer-from@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
-  integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
+  integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
 buffer-indexof@^1.0.0:
   version "1.1.1"
@@ -6684,6 +6752,11 @@ lodash@4.17.15, lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.12
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
+lodash@4.17.19:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
+  integrity sha512-JNvd8XER9GQX0v2qJgsaN/mzFCNA5BRe/j8JN9d+tWyGLSodKQHKFicdwNYzWwI3wjRnaKPsGj1XkBjx/F96DQ==
+
 log-symbols@^2.0.0, log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
@@ -7202,33 +7275,6 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
-
-nerv-devtools@^1.5.5:
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/nerv-devtools/-/nerv-devtools-1.5.7.tgz#6321721ba3052d8e917f1868da1d10c132d44209"
-  integrity sha512-0EgQfMAARzhEy8qjU4JqVDu00fb84XHVY4qBGkCbsg/EmVD7ZzLar1e27VRD+juMAIc1QPSMS8wlariwDblAPA==
-  dependencies:
-    nerv-shared "1.4.0"
-    nerv-utils "1.4.5"
-    nervjs "1.5.7"
-
-nerv-shared@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/nerv-shared/-/nerv-shared-1.4.0.tgz#4ae903f215888ab886b3d04ae3b95d5327e67f43"
-  integrity sha512-cCyeP1hnnnMfM5HRcmMKconGwI8Wl0xwekAU4DvqDC1M8NxCOF4TwDmedgdgyNt9EkWNbiotBRUV5zJsbfOQWA==
-
-nerv-utils@1.4.5:
-  version "1.4.5"
-  resolved "https://registry.yarnpkg.com/nerv-utils/-/nerv-utils-1.4.5.tgz#3e017a8a1b605b35ee31ad396a038207fbc597b0"
-  integrity sha512-9XeifC0l+aDXhA0aXcklxS2o7o87xJxMQAl1+iIHrD5Sei/61ubap0oOzb4t9VMhSEvwWm4/rJRd8PGMKZiwiA==
-
-nervjs@1.5.7, nervjs@^1.5.5:
-  version "1.5.7"
-  resolved "https://registry.yarnpkg.com/nervjs/-/nervjs-1.5.7.tgz#29798a8e1473b33329b9d2af4022d8818c7ff4cd"
-  integrity sha512-x+hGSOETqA+7lbChW+c/NIXEMrCCvm6IaEHlDbZmaNVX0TAyKZinRIHcYr7o5K/pA4qGWjJQmjoNyx+Mx+rVLg==
-  dependencies:
-    nerv-shared "1.4.0"
-    nerv-utils "1.4.5"
 
 next-tick@~1.0.0:
   version "1.0.0"
@@ -9461,9 +9507,9 @@ source-map-support@^0.4.15:
     source-map "^0.5.6"
 
 source-map-support@^0.5.16, source-map-support@~0.5.12:
-  version "0.5.19"
-  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.19.tgz#a98b62f86dcaf4f67399648c085291ab9e8fed61"
-  integrity sha512-Wonm7zOCIJzBGQdB+thsPar0kYuCIzYvxZwlBa87yi/Mdjv7Tip2cyVbLj5o0cFPN4EVkuTwb3GDDyUx2DGnGw==
+  version "0.5.21"
+  resolved "https://registry.yarnpkg.com/source-map-support/-/source-map-support-0.5.21.tgz#04fe7c7f9e1ed2d662233c28cb2b35b9f63f6e4f"
+  integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
   dependencies:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
@@ -10018,9 +10064,9 @@ terser-webpack-plugin@^1.4.3:
     worker-farm "^1.7.0"
 
 terser@^4.1.2, terser@^4.6.13:
-  version "4.8.0"
-  resolved "https://registry.yarnpkg.com/terser/-/terser-4.8.0.tgz#63056343d7c70bb29f3af665865a46fe03a0df17"
-  integrity sha512-EAPipTNeWsb/3wLPeup1tVPaXfIaU68xMnVdPafIL1TV05OhASArYyIfFvnvJCNrR2NIOvDVNNTFRa+Re2MWyw==
+  version "4.8.1"
+  resolved "https://registry.yarnpkg.com/terser/-/terser-4.8.1.tgz#a00e5634562de2239fd404c649051bf6fc21144f"
+  integrity sha512-4GnLC0x667eJG0ewJTa6z/yXrbLGv80D9Ru6HIpCQmO+Q4PfEtBFi0ObSckqwL6VyQv/7ENJieXHo2ANmdQwgw==
   dependencies:
     commander "^2.20.0"
     source-map "~0.6.1"
